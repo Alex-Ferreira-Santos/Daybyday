@@ -6,13 +6,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        backgroundColor: 'lightblue',
     },
     title:{
         fontSize: 40,
     },
     subtitle:{
         fontSize: 20,
+        marginBottom: 20,
     },
     touchable:{
         width:'90%',
@@ -49,6 +49,14 @@ const styles = StyleSheet.create({
     },
     extra:{
         backgroundColor: '#9C359E'
+    },
+    closeAd:{
+        textAlign: 'center',
+        alignItems:'center',
+        backgroundColor: '#C4C4C4',
+        position: 'absolute',
+        bottom:0,
+        width:'100%'
     }
 })
 
