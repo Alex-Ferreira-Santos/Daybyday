@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Text, View, TouchableHighlight,Image} from 'react-native'
-import {styles} from './src/styles/index'
+import {styles} from '../styles/index'
 
 import copoDeagua from '../img/copo-de-agua.png'
 import brocolis from '../img/brocolis.png'
@@ -16,7 +16,7 @@ class Homepage extends Component{
         <Text style={styles.title}>Day by day</Text>
         <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
 
-        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={()=>this.props.navigation.navigate('Test')}>
+        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={()=>this.props.navigation.navigate('AguaHome')}>
           <View style={styles.Buttoncontainer}>
             <Image source={copoDeagua} style={styles.img}/>
             <Text style={{fontSize: 20}}>Lembrete de água</Text>
