@@ -133,4 +133,63 @@ const aguaSuccessful = StyleSheet.create({
     }
 })
 
-export {agua,aguaForm,aguaSuccessful}
+const aguaOptions = StyleSheet.create({
+    container:{
+        flex: 1,
+        backgroundColor: '#3EDDE8',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    title:{
+        textAlign: 'center',
+        fontSize: 25,
+        margin: 20,
+        marginTop: 50,
+    },
+    subtitle:{
+        fontSize: 25,
+        margin: 10,
+    },
+    editar:{
+        backgroundColor: 'white',
+        width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingBottom: 20,
+        marginBottom: 30,
+    },
+    data:{
+        fontSize: 18
+    },
+    editButton:{
+        backgroundColor: '#5AB0FF',
+        paddingVertical: 3,
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        marginTop:20,
+    },
+    ButtonText:{
+        fontSize: 20
+    },
+    excluir:{
+        backgroundColor: 'white',
+        width: '80%',
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    excluirButton:{
+        backgroundColor: '#E85A5A',
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        margin: 20,
+        paddingVertical: 3,
+    },
+})
+
+export {agua,aguaForm,aguaSuccessful,aguaOptions}
