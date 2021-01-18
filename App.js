@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator()
 import Homepage from './src/components/Homepage'
 import AguaHome from './src/components/AguaHome'
+import AguaForm from './src/components/AguaForm';
 
 class App extends Component{
   render(){
@@ -20,6 +21,11 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AguaHome"
             component={AguaHome}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AguaForm"
+            component={AguaForm}
           />
         </Stack.Navigator>
       </NavigationContainer>
