@@ -12,7 +12,7 @@ import config from '../img/configuracao.png'
 class Homepage extends Component{
   render(){
     return (
-      <View style={styles.container}>
+      <View style={styles.container}> 
         <Text style={styles.title}>Day by day</Text>
         <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
 

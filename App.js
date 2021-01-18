@@ -4,8 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator()
 import Homepage from './src/components/Homepage'
-import AguaHome from './src/components/AguaHome'
-import AguaForm from './src/components/AguaForm';
+import AguaHome from './src/components/Agua/AguaHome'
+import AguaForm from './src/components/Agua/AguaForm';
+import AguaSuccessful from './src/components/Agua/AguaSuccessful';
+import AguaOptions from './src/components/Agua/AguaOptions';
 
 class App extends Component{
   render(){
@@ -26,6 +28,16 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AguaForm"
             component={AguaForm}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AguaSuccessful"
+            component={AguaSuccessful}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AguaOptions"
+            component={AguaOptions}
           />
         </Stack.Navigator>
       </NavigationContainer>
