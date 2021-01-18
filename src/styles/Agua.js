@@ -6,6 +6,19 @@ const agua = StyleSheet.create({
         backgroundColor: '#3EDDE8',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    title:{
+        fontSize: 30,
+    },
+    text:{
+        width: '70%',
+        textAlign: 'center',
+        fontSize: 20
+    },
+    copo:{
+        width: '35%',
+        height: '30%'
+        
     }
 })
 
