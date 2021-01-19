@@ -61,6 +61,9 @@ class AguaOptions extends Component {
                         <Text style={aguaOptions.ButtonText}>{this.state.textExcludeButton}</Text>
                     </TouchableHighlight>
                 </View>
+                <TouchableHighlight underlayColor='#114A4A' style={aguaOptions.menuButton} onPress={()=>this.props.navigation.navigate('Homepage')}>
+                    <Text style={aguaOptions.textButton}>Voltar ao menu</Text>
+                </TouchableHighlight>
                 {this.state.visivel && (<AguaPopUp invisible={this.ClosePopUp} change={this.ChangeToActivateButton}/>)}
             </View>
         )

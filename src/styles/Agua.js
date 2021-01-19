@@ -190,6 +190,19 @@ const aguaOptions = StyleSheet.create({
         margin: 20,
         paddingVertical: 3,
     },
+    menuButton:{
+        backgroundColor: '#177070',
+        width: '70%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 5,
+        marginTop: 20,
+    },
+    textButton:{
+        fontSize: 20,
+        color: 'white'
+    }
 })
 
 const aguaPopup = StyleSheet.create({
