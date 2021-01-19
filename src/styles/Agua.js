@@ -192,4 +192,54 @@ const aguaOptions = StyleSheet.create({
     },
 })
 
-export {agua,aguaForm,aguaSuccessful,aguaOptions}
+const aguaPopup = StyleSheet.create({
+    container:{
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(40,137,143,0.8)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+    },
+    section:{
+        backgroundColor: 'white',
+        width: '70%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingBottom: 15,
+    },
+    text:{
+        fontSize: 20,
+        width: '88%',
+        textAlign: 'center',
+        marginVertical: 30,
+    },
+    backButton:{
+        backgroundColor: '#c4c4c4',
+        borderRadius: 20,
+        width: '60%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 3,
+        marginVertical: 5
+    },
+    back:{
+        fontSize: 16
+    },
+    desableButton:{
+        backgroundColor: '#9E0D0D',
+        borderRadius: 20,
+        width: '60%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 3,
+        marginVertical: 5
+    },
+    desable:{
+        fontSize: 16,
+        color: 'white'
+    }
+})
+
+export {agua,aguaForm,aguaSuccessful,aguaOptions,aguaPopup}

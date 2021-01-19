@@ -1,8 +1,21 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native'
 import {aguaOptions} from '../../styles/Agua'
+import AguaPopUp from './AguaPopUp'
  
 class AguaOptions extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            visivel:false,
+        }
+        this.ClosePopUp = this.ClosePopUp.bind(this)
+    }
+
+    ClosePopUp(){
+        this.setState({visible:false})
+    }
+    
     render(){
         return(
             <View style={aguaOptions.container}>
@@ -16,12 +29,15 @@ class AguaOptions extends Component {
                     </TouchableHighlight>
                 </View>
                 <View style={aguaOptions.excluir}>
-                    <Text style={aguaOptions.subtitle}>Excluir notificação</Text>
+                    <Text style={aguaOptions.subtitle}>Desativar notificação</Text>
                     <Text>Caso desative pode-se habilitar novamente</Text>
-                    <TouchableHighlight style={aguaOptions.excluirButton} underlayColor='#BF4F4F' onPress={()=>{}}>
-                        <Text style={aguaOptions.ButtonText}>Excluir</Text>
+                    <TouchableHighlight style={aguaOptions.excluirButton} underlayColor='#BF4F4F' onPress={()=>{
+                        this.setState({visivel: true})
+                    }}>
+                        <Text style={aguaOptions.ButtonText}>Desativar</Text>
                     </TouchableHighlight>
                 </View>
+                {this.state.visivel && (<AguaPopUp invisible={this.ClosePopUp}/>)}
             </View>
         )
     }
