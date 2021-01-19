@@ -8,18 +8,37 @@ class AguaOptions extends Component {
         super(props)
         this.state = {
             visivel:false,
+            excludeButton: '',
+            textExcludeButton: 'Desativar',
+            title: 'A proxima notificação virá em x minutos',
+            subtitle: 'Desativar notificação'
         }
         this.ClosePopUp = this.ClosePopUp.bind(this)
+        this.ChangeToActivateButton = this.ChangeToActivateButton.bind(this)
     }
 
     ClosePopUp(){
-        this.setState({visible:false})
+        this.setState({visivel:false})
+    }
+
+    ChangeToActivateButton(){
+        this.setState({excludeButton:{backgroundColor:'#8A53D0'}})
+        this.setState({textExcludeButton:'Habilitar'})
+        this.setState({title: 'As notificações estão desativadas'})
+        this.setState({subtitle: 'Habilitar notificação'})
+    }
+
+    ChangeToDesableButton(){
+        this.setState({excludeButton:''})
+        this.setState({textExcludeButton:'Desativar'})
+        this.setState({title: 'A proxima notificação virá em x minutos'})
+        this.setState({subtitle: 'Desativar notificação'})
     }
     
     render(){
         return(
             <View style={aguaOptions.container}>
-                <Text style={aguaOptions.title}>A proxima notificação virá em x minutos</Text>
+                <Text style={aguaOptions.title}>{this.state.title}</Text>
                 <View style={aguaOptions.editar}>
                     <Text style={aguaOptions.subtitle}>Editar Notificação</Text>
                     <Text style={aguaOptions.data}>Litros atuais: x litros</Text>
@@ -29,15 +48,20 @@ class AguaOptions extends Component {
                     </TouchableHighlight>
                 </View>
                 <View style={aguaOptions.excluir}>
-                    <Text style={aguaOptions.subtitle}>Desativar notificação</Text>
+                    <Text style={aguaOptions.subtitle}>{this.state.subtitle}</Text>
                     <Text>Caso desative pode-se habilitar novamente</Text>
-                    <TouchableHighlight style={aguaOptions.excluirButton} underlayColor='#BF4F4F' onPress={()=>{
-                        this.setState({visivel: true})
+                    <TouchableHighlight style={[aguaOptions.excluirButton,this.state.excludeButton]} underlayColor='#BF4F4F' onPress={()=>{
+                        if(this.state.textExcludeButton === 'Desativar'){
+                            this.setState({visivel: true})
+                        }else{
+                            this.ChangeToDesableButton()
+                            alert('As notificações foram habilitadas')
+                        }          
                     }}>
-                        <Text style={aguaOptions.ButtonText}>Desativar</Text>
+                        <Text style={aguaOptions.ButtonText}>{this.state.textExcludeButton}</Text>
                     </TouchableHighlight>
                 </View>
-                {this.state.visivel && (<AguaPopUp invisible={this.ClosePopUp}/>)}
+                {this.state.visivel && (<AguaPopUp invisible={this.ClosePopUp} change={this.ChangeToActivateButton}/>)}
             </View>
         )
     }
