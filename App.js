@@ -9,6 +9,7 @@ import AguaForm from './src/components/Agua/AguaForm';
 import AguaSuccessful from './src/components/Agua/AguaSuccessful';
 import AguaOptions from './src/components/Agua/AguaOptions';
 import MassaHome from './src/components/Massa/MassaHome';
+import MassaForm from './src/components/Massa/MassaForm';
 
 class App extends Component{
   render(){
@@ -44,6 +45,11 @@ class App extends Component{
             options={{ headerShown: false }}
             name="MassaHome"
             component={MassaHome}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="MassaForm"
+            component={MassaForm}
           />
         </Stack.Navigator>
       </NavigationContainer>

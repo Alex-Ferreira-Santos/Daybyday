@@ -19,7 +19,7 @@ class AguaForm extends Component{
                     <View style={aguaForm.view}>
                         <Text style={aguaForm.label}>Quantos litros deseja beber:</Text>
                         <TextInput placeholder='Digite a quantidade de litros aqui' style={aguaForm.input} keyboardType='number-pad' maxLength={3} value={this.state.litros} onChangeText={value=>{
-                            if(parseInt(value)>4){
+                            if(parseFloat(value)>4){
                                 value = '4.0'
                             }
                             this.setState({litros:value})
@@ -28,8 +28,8 @@ class AguaForm extends Component{
                             if(value.nativeEvent.text === ''){
                                 return   
                             }
-                            value.nativeEvent.text = parseInt(value.nativeEvent.text).toFixed(2).toString()
-                            if (parseInt(value.nativeEvent.text) < 1.5) {
+                            value.nativeEvent.text = parseFloat(value.nativeEvent.text).toFixed(2).toString()
+                            if (parseFloat(value.nativeEvent.text) < 1.5) {
                                 value.nativeEvent.text = '1.5'; 
                             }
                             this.setState({litros: value.nativeEvent.text}) 
