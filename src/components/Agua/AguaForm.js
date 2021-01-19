@@ -18,12 +18,23 @@ class AguaForm extends Component{
                     <Text style={aguaForm.dica}>Dica: para saber a quantidade de litros que é recomendado beber, cheque seu peso para aparecer a quantidade ideal</Text>
                     <View style={aguaForm.view}>
                         <Text style={aguaForm.label}>Quantos litros deseja beber:</Text>
-                        <TextInput placeholder='Digite a quantidade de litros aqui' style={aguaForm.input} keyboardType='number-pad' maxLength={1} value={this.state.litros} onChangeText={value=>{
+                        <TextInput placeholder='Digite a quantidade de litros aqui' style={aguaForm.input} keyboardType='number-pad' maxLength={3} value={this.state.litros} onChangeText={value=>{
                             if(parseInt(value)>4){
-                                value = '4'
+                                value = '4.0'
                             }
                             this.setState({litros:value})
-                        }}/>
+                        }}
+                        onEndEditing={(value)=>{
+                            if(value.nativeEvent.text === ''){
+                                return   
+                            }
+                            value.nativeEvent.text = parseInt(value.nativeEvent.text).toFixed(2).toString()
+                            if (parseInt(value.nativeEvent.text) < 1.5) {
+                                value.nativeEvent.text = '1.5'; 
+                            }
+                            this.setState({litros: value.nativeEvent.text}) 
+                        }}
+                        />
                     </View>
                     <View style={aguaForm.view}>
                         <Text style={aguaForm.label}>Em quanto tempo:</Text>
@@ -41,7 +52,7 @@ class AguaForm extends Component{
                         }}
                         />
                     </View>
-                    <Text style={aguaForm.tips}>O valor maximo para litros é 4. Para as horas o minimo é 10 e o maximo é 20</Text>
+                    <Text style={aguaForm.tips}>O valor minimo para litros é 1,5 e o maximo é 4. Para as horas o minimo é 10 e o maximo é 20</Text>
                     <Text style={aguaForm.tips}>De acordo com a quantidade de horas, o tempo da notificação vai mudar</Text>
 
                     <TouchableHighlight style={aguaForm.next} underlayColor='#114A4A' onPress={()=>{

@@ -19,8 +19,8 @@ const agua = StyleSheet.create({
         
     },
     copo:{
-        width: '35%',
-        height: '30%',
+        width: 171,
+        height: 171,
         marginBottom: 20,
     },
     button:{
@@ -115,8 +115,8 @@ const aguaSuccessful = StyleSheet.create({
         fontSize: 20,
     },
     copo:{
-        width: '35%',
-        height: '30%',
+        width: 171,
+        height: 171,
         margin: 50,
     },
     button:{
