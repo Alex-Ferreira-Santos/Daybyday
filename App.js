@@ -8,6 +8,7 @@ import AguaHome from './src/components/Agua/AguaHome'
 import AguaForm from './src/components/Agua/AguaForm';
 import AguaSuccessful from './src/components/Agua/AguaSuccessful';
 import AguaOptions from './src/components/Agua/AguaOptions';
+import MassaHome from './src/components/Massa/MassaHome';
 
 class App extends Component{
   render(){
@@ -38,6 +39,11 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AguaOptions"
             component={AguaOptions}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="MassaHome"
+            component={MassaHome}
           />
         </Stack.Navigator>
       </NavigationContainer>

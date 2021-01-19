@@ -30,7 +30,7 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.peso]} underlayColor='#B6A721' onPress={()=>{}}>
+        <TouchableHighlight style={[styles.touchable,styles.peso]} underlayColor='#B6A721' onPress={()=>this.props.navigation.navigate('MassaHome')}>
           <View style={styles.Buttoncontainer}>
             <Image source={peso} style={styles.img}/>
             <Text style={{fontSize: 20}}>Massa corporal</Text>
