@@ -6,7 +6,8 @@ class MassaForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            altura: ''
+            altura: '',
+            peso: ''
         }
     }
     render(){
@@ -32,10 +33,26 @@ class MassaForm extends Component {
                     </View>
                     <View style={massaForm.inputBox}>
                         <Text style={massaForm.label}>Peso</Text>
-                        <TextInput placeholder='Digite seu peso em kg aqui' style={massaForm.input}/>
+                        <TextInput placeholder='Digite seu peso em kg aqui' style={massaForm.input} maxLength={5} onChangeText={ value =>{
+                            if(parseFloat(value)>250){
+                                value = '250.0'
+                            }
+                            this.setState({peso: value})
+                        }} keyboardType='number-pad' value={this.state.peso}
+                        onEndEditing={(value)=>{
+                            if(value.nativeEvent.text === ''){
+                                return   
+                            }
+                            value.nativeEvent.text = parseFloat(value.nativeEvent.text).toFixed(1).toString()
+                            this.setState({peso: value.nativeEvent.text}) 
+                        }}/>
                     </View>
                     <TouchableHighlight style={massaForm.button} underlayColor='#4E5000' onPress={()=>{
-
+                        if(this.state.altura === '' || this.state.peso === ''){
+                            alert('Ainda há campos incompletos')
+                            return
+                        }
+                        this.props.navigation.navigate('MassaData')
                     }} keyboardType='number-pad'>
                         <Text style={massaForm.textButton}>Confirmar</Text>
                     </TouchableHighlight>

@@ -11,7 +11,7 @@ class MassaHome extends Component {
                 <Text style={massa.text}>Está sessão mostrará para você o sua massa coporal utilizando a formula de IMC(indice de massa corporal), essa formula pega o seu peso e  sua altura ao quadrado e divide para saber o seu peso ideal.</Text>
                 <Image source={peso} style={massa.img}/>
                 <TouchableHighlight style={massa.button} underlayColor='#4E5000' onPress={()=>this.props.navigation.navigate('MassaForm')}>
-                    <Text style={massa.textButton}>Proximo</Text>
+                    <Text style={massa.textButton}>Próximo</Text>
                 </TouchableHighlight>
             </View>
         )

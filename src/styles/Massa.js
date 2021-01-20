@@ -93,4 +93,52 @@ const massaForm = StyleSheet.create({
     }
 })
 
-export {massa,massaForm}
+const massaData = StyleSheet.create({
+    container:{
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: '#DFCD2A',
+    },
+    mainData:{
+        fontSize: 30,
+        marginTop: 20,
+    },
+    data:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 40,
+    },
+    textLitros:{
+        fontSize: 20,
+        marginTop: 20,
+    },
+    estado:{
+        fontSize: 23,
+        marginTop: 20,
+    },
+    customText:{
+        fontSize: 20,
+        textAlign: 'center',
+        marginTop: 20
+    },
+    button:{
+        backgroundColor: '#323301',
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginTop: 40,
+        
+    },
+    textButton:{
+        color: 'white',
+        fontSize: 20
+    },
+    bold:{
+        fontWeight: 'bold',
+    }
+})
+
+export {massa,massaForm,massaData}

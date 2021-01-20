@@ -56,7 +56,7 @@ class AguaForm extends Component{
                     <Text style={aguaForm.tips}>De acordo com a quantidade de horas, o tempo da notificação vai mudar</Text>
 
                     <TouchableHighlight style={aguaForm.next} underlayColor='#114A4A' onPress={()=>{
-                        if(this.state.horas === '' && this.state.litros === ''){
+                        if(this.state.horas === '' || this.state.litros === ''){
                             alert('Ainda há campos incompletos')
                             return
                         }
