@@ -10,6 +10,8 @@ target 'Daybyday' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
+
   target 'DaybydayTests' do
     inherit! :complete
     # Pods for testing

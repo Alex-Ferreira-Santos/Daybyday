@@ -13,6 +13,7 @@ import MassaForm from './src/components/Massa/MassaForm';
 import MassaData from './src/components/Massa/MassaData';
 import MassaFinal from './src/components/Massa/MassaFinal';
 import SonoHome from './src/components/Dormir/SonoHome';
+import SonoForm from './src/components/Dormir/SonoForm';
 
 class App extends Component{
   render(){
@@ -68,6 +69,11 @@ class App extends Component{
             options={{ headerShown: false }}
             name="SonoHome"
             component={SonoHome}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="SonoForm"
+            component={SonoForm}
           />
         </Stack.Navigator>
       </NavigationContainer>
