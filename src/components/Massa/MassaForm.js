@@ -27,6 +27,9 @@ class MassaForm extends Component {
                             if(value.nativeEvent.text === ''){
                                 return   
                             }
+                            if(this.state.altura<1.00){
+                                value.nativeEvent.text = '1.00'
+                            }
                             value.nativeEvent.text = parseFloat(value.nativeEvent.text).toFixed(2).toString()
                             this.setState({altura: value.nativeEvent.text}) 
                         }} keyboardType='number-pad'/>
@@ -42,6 +45,9 @@ class MassaForm extends Component {
                         onEndEditing={(value)=>{
                             if(value.nativeEvent.text === ''){
                                 return   
+                            }
+                            if(this.state.peso<25.0){
+                                value.nativeEvent.text = '25.0'
                             }
                             value.nativeEvent.text = parseFloat(value.nativeEvent.text).toFixed(1).toString()
                             this.setState({peso: value.nativeEvent.text}) 

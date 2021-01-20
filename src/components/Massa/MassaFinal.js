@@ -14,6 +14,9 @@ class MassaFinal extends Component {
                 <TouchableHighlight style={massaFinal.button} underlayColor='#4E5000' onPress={()=>this.props.navigation.navigate('MassaForm')}>
                     <Text style={massaFinal.textButton}>Refazer o teste</Text>
                 </TouchableHighlight>
+                <TouchableHighlight style={[massaFinal.button,massaFinal.menuButton]} onPress={()=>this.props.navigation.navigate('Homepage')}>
+                    <Text style={massaFinal.textButton}>Voltar ao menu</Text>
+                </TouchableHighlight>
             </View>
         )
     }

@@ -166,8 +166,8 @@ const massaFinal = StyleSheet.create({
         marginBottom: 20
     },
     peso:{
-        width: 171,
-        height: 171,
+        width: 150,
+        height: 150,
     },
     button:{
         backgroundColor: '#323301',
@@ -176,13 +176,16 @@ const massaFinal = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 20,
         paddingVertical: 3,
-        marginTop: 20,
+        marginTop: 18,
         
     },
     textButton:{
         color: 'white',
         fontSize: 20
     },
+    menuButton:{
+        backgroundColor: '#379EC3'
+    }
 })
 
 export {massa,massaForm,massaData,massaFinal}
