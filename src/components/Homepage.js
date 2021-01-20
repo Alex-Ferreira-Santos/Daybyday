@@ -44,7 +44,7 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={()=>{}}>
+        <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={()=>this.props.navigation.navigate('SonoHome')}>
           <View style={styles.Buttoncontainer}>
             <Image source={lua} style={styles.img}/>
             <Text style={{fontSize: 20,color: 'white'}}>Auxiliador de sono</Text>
