@@ -141,4 +141,48 @@ const massaData = StyleSheet.create({
     }
 })
 
-export {massa,massaForm,massaData}
+const massaFinal = StyleSheet.create({
+    container:{
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: '#DFCD2A',
+    },
+    bold:{
+        fontWeight: 'bold',
+    },
+    title:{
+        fontSize: 30,
+        marginVertical: 40
+    },
+    agua:{
+        fontSize: 20,
+        marginBottom: 20,
+    },
+    mensagem:{
+        fontSize: 23,
+        textAlign: 'center',
+        width: '90%',
+        marginBottom: 20
+    },
+    peso:{
+        width: 171,
+        height: 171,
+    },
+    button:{
+        backgroundColor: '#323301',
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginTop: 20,
+        
+    },
+    textButton:{
+        color: 'white',
+        fontSize: 20
+    },
+})
+
+export {massa,massaForm,massaData,massaFinal}
