@@ -20,9 +20,19 @@ class SonoForm extends Component{
                     <Text style={sonoForm.tip}>Para comerçar, informe a quantidade de horas que você dormiu na última noite e a hora que deseja acordar</Text>
                     <View style={sonoForm.section}>
                         <Text style={sonoForm.label}>Horas dormidas</Text>
-                        <TextInput placeholder='Digite a quantidade de horas' placeholderTextColor='#4F58A1' style={sonoForm.input} keyboardType='number-pad' maxLength={2} onChangeText={value=>{
-                            value = parseInt(value).toString()
+                        <TextInput placeholder='Digite a quantidade de horas' placeholderTextColor='#4F58A1' style={sonoForm.input} value={this.state.sleep} keyboardType='number-pad' maxLength={2} onChangeText={value=>{
+                            if(parseInt(value)>24){
+                                value = '24'
+                            }
                             this.setState({sleep:value})
+                        }} onEndEditing={(value)=>{
+                            if(value.nativeEvent.text === ''){
+                                return
+                            }
+                            if (parseInt(value.nativeEvent.text) < 1) {
+                                value = '1';
+                                this.setState({sleep: value}) 
+                            }
                         }}/>
                     </View>
                     <View style={sonoForm.section}>
