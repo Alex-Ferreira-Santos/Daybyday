@@ -1,20 +1,25 @@
 import React,{Component} from 'react';
 import {View,Text, TouchableHighlight} from 'react-native'
 import {extraHome} from '../../styles/Extra'
+import ExtraCopy from './ExtraCopy'
 
 class ExtraHome extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            copyVisible: false,
+            admVisible: false,
+        }
     }
     render() {
         return(
             <View style={extraHome.container}>
                 <View style={extraHome.main}>
-                    <TouchableHighlight style={extraHome.copyrightButton} underlayColor='#FF9E9E' onPress={()=>{}}>
+                    <TouchableHighlight style={extraHome.copyrightButton} underlayColor='#FF9E9E' onPress={()=>{this.setState({copyVisible: true})}}>
                         <Text style={extraHome.buttonText}>Copyrights</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight style={extraHome.admButton} underlayColor='#92F3F3' onPress={()=>{}}>
+                    <TouchableHighlight style={extraHome.admButton} underlayColor='#92F3F3' onPress={()=>{this.setState({admVisible:true})}}>
                         <Text style={extraHome.buttonText}>Modo adm</Text>
                     </TouchableHighlight>
 
@@ -28,6 +33,7 @@ class ExtraHome extends Component {
                         <Text style={extraHome.buttonText}>Voltar</Text>
                     </TouchableHighlight>
                 </View>
+                {this.state.copyVisible && (<ExtraCopy/>)}
             </View>
         )
     }
