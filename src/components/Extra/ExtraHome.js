@@ -1,0 +1,36 @@
+import React,{Component} from 'react';
+import {View,Text, TouchableHighlight} from 'react-native'
+import {extraHome} from '../../styles/Extra'
+
+class ExtraHome extends Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return(
+            <View style={extraHome.container}>
+                <View style={extraHome.main}>
+                    <TouchableHighlight style={extraHome.copyrightButton} underlayColor='#FF9E9E' onPress={()=>{}}>
+                        <Text style={extraHome.buttonText}>Copyrights</Text>
+                    </TouchableHighlight>
+
+                    <TouchableHighlight style={extraHome.admButton} underlayColor='#92F3F3' onPress={()=>{}}>
+                        <Text style={extraHome.buttonText}>Modo adm</Text>
+                    </TouchableHighlight>
+
+                    <Text style={extraHome.contato}>Contato</Text>
+                    <Text style={extraHome.send}>Mande um email para:</Text>
+                    <Text style={extraHome.email}>email@gmail.com</Text>
+
+                    <TouchableHighlight style={extraHome.backButton} underlayColor='#5AA73F' onPress={()=>{
+                        this.props.close()
+                    }}>
+                        <Text style={extraHome.buttonText}>Voltar</Text>
+                    </TouchableHighlight>
+                </View>
+            </View>
+        )
+    }
+}
+
+export default ExtraHome
