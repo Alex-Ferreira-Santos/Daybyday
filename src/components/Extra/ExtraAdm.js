@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {extraAdm} from '../../styles/Extra'
+import {sha512} from 'react-native-sha512'
+// colocar criptografia na senha
 
 class ExtraAdm extends Component{
     constructor(props){
