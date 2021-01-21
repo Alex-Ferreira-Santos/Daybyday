@@ -46,7 +46,15 @@ class SonoForm extends Component{
                             this.setState({hour: data.toString().slice(15,21)})
                         }} is24Hour={true}/>)}
                     </View>
-                    <TouchableHighlight style={sonoForm.button} underlayColor='#00104A' onPress={()=>{}}>
+                    <TouchableHighlight style={sonoForm.button} underlayColor='#00104A' onPress={()=>{
+                        if(this.state.hour === '' || this.state.sleep === ''){
+                            alert('Ainda há campos incompletos')
+                            return
+                        }
+
+                        this.props.navigation.navigate('SonoData')
+                        
+                    }}>
                         <Text style={sonoForm.textButton}>Confirmar</Text>
                     </TouchableHighlight>
                 </View>
