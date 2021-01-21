@@ -145,6 +145,66 @@ const sonoData = StyleSheet.create({
         paddingVertical: 3,
         marginVertical: 10,
     },
+    menuButton:{
+        backgroundColor: '#14B023',
+        width: '67%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginVertical: 10,
+    }
 })
 
-export {sono,sonoForm,sonoData}
+const sonoPopup = StyleSheet.create({
+    container:{
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'rgba(35,30,86,0.8)',
+        justifyContent: 'center',
+        alignItems:'center'
+    },
+    popup:{
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '70%',
+        borderRadius: 20,
+        paddingVertical: 20,
+    },
+    text:{
+        fontSize: 20,
+        textAlign: 'center',
+        width: '85%',
+        marginBottom: 20,
+    },
+    backButton:{
+        backgroundColor: '#C4C4C4',
+        width: '55%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginVertical: 10,
+    },
+    backButtonText:{
+        fontSize: 15
+    },
+    desableButton:{
+        backgroundColor: '#9E0D0D',
+        width: '55%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginVertical: 10,
+    },
+    desableButtonText:{
+        fontSize: 15,
+        color:'white',
+    },
+
+})
+
+export {sono,sonoForm,sonoData, sonoPopup}
