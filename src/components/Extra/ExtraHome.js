@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Text, TouchableHighlight} from 'react-native'
 import {extraHome} from '../../styles/Extra'
 import ExtraCopy from './ExtraCopy'
+import ExtraAdm from './ExtraAdm'
 
 class ExtraHome extends Component {
     constructor(props) {
@@ -10,7 +11,14 @@ class ExtraHome extends Component {
             copyVisible: false,
             admVisible: false,
         }
+        this.ClosePopup = this.ClosePopup.bind(this)
     }
+
+    ClosePopup(){
+        this.setState({copyVisible: false})
+        this.setState({admVisible: false})
+    }
+
     render() {
         return(
             <View style={extraHome.container}>
@@ -33,7 +41,8 @@ class ExtraHome extends Component {
                         <Text style={extraHome.buttonText}>Voltar</Text>
                     </TouchableHighlight>
                 </View>
-                {this.state.copyVisible && (<ExtraCopy/>)}
+                {this.state.copyVisible && (<ExtraCopy close={this.ClosePopup}/>)}
+                {this.state.admVisible && (<ExtraAdm close={this.ClosePopup}/>)}
             </View>
         )
     }
