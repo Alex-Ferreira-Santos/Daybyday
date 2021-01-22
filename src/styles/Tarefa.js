@@ -167,4 +167,55 @@ const tarefa = StyleSheet.create({
     },
 })
 
-export {tarefaHome, tarefaMain,tarefa}
+const tarefaForm = StyleSheet.create({
+    container:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#B94B4B',
+    },
+    title:{
+        fontSize: 30,
+        marginBottom: 50,
+    },
+    form:{
+        backgroundColor: 'white',
+        borderRadius: 20,
+        width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    section:{
+        width: '90%',
+        marginVertical: 10
+    },
+    label:{
+        fontSize: 18
+    },
+    input:{
+        backgroundColor: '#EAEAEA',
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: '#8B8B8B',
+        height: 30,
+        paddingVertical:0,
+    },
+    description:{
+        height: 'auto',
+    },
+    button:{
+        backgroundColor: '#680000',
+        width: '50%',
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 5,
+        marginVertical: 10
+    },
+    buttonText:{
+        fontSize: 20,
+        color: 'white'
+    },
+})
+
+export {tarefaHome, tarefaMain,tarefa,tarefaForm}

@@ -15,7 +15,7 @@ class TarefaMain extends Component{
                             <Text style={tarefaMain.lowerText}>Box</Text>
                         </View>
                         <View style={[tarefaMain.others,tarefaMain.description]}>
-                            <Text style={tarefaMain.lowerText}>Descrição</Text>
+                            <Text style={tarefaMain.lowerText}>Titulo</Text>
                         </View>
                         <View style={[tarefaMain.others,tarefaMain.date]}>
                             <Text style={tarefaMain.lowerText}>Data de término</Text>
@@ -29,11 +29,11 @@ class TarefaMain extends Component{
                     </View>
                     <ScrollView style={tarefaMain.scroll}>
                         <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'}/>
-                        <Tarefa descricao={'descrição 2'} data={'Jan 22 2021 14:00'} prioridade={'média'}/>
+                        <Tarefa descricao={'Titulo 2'} data={'Jan 22 2021 14:00'} prioridade={'média'}/>
                         
                     </ScrollView>
                 </View>
-                <TouchableHighlight style={tarefaMain.button}>
+                <TouchableHighlight style={tarefaMain.button} underlayColor='#5B0000' onPress={()=>this.props.navigation.navigate('TarefaForm')}>
                     <Text style={tarefaMain.buttonText}>Inserir nova tarefa</Text>
                 </TouchableHighlight>
             </View>
