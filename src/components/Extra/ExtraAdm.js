@@ -19,7 +19,9 @@ class ExtraAdm extends Component{
                     <Text style={extraAdm.title}>Modo adm</Text>
                     <Text style={extraAdm.label}>Digite sua senha</Text>
                     <TextInput placeholder='Digite sua senha aqui' secureTextEntry={true} style={extraAdm.input} onChangeText={ value =>{
-                        this.setState({password: value})
+                        sha512(value).then(hash =>{
+                            this.setState({password: hash})
+                        })
                     }}/>
                     <Text style={extraAdm.fail}>{this.state.failed}</Text>
                     <View style={extraAdm.buttons}>
@@ -29,6 +31,20 @@ class ExtraAdm extends Component{
 
                         <TouchableHighlight style={extraAdm.verifiedButton} underlayColor='#30A9A2' onPress={()=>{
                             if(this.state.password === 'x'){
+
+
+
+
+                                // colocar comparação
+
+
+
+
+
+
+
+
+
                                 alert('Modo adm está ativado')
                                 this.props.close()
                             }else{
