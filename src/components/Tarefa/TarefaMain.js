@@ -4,6 +4,13 @@ import {tarefaMain} from '../../styles/Tarefa'
 import Tarefa from './Tarefa';
 
 class TarefaMain extends Component{
+    constructor(props){
+        super(props)
+        this.go = this.go.bind(this)
+    }
+    go(){
+        this.props.navigation.navigate('TarefaDetail')
+    }
     render() {
         return(
             <View style={tarefaMain.container}>
@@ -28,8 +35,8 @@ class TarefaMain extends Component{
                         </View>
                     </View>
                     <ScrollView style={tarefaMain.scroll}>
-                        <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'}/>
-                        <Tarefa descricao={'Titulo 2'} data={'Jan 22 2021 14:00'} prioridade={'média'}/>
+                        <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
+                        <Tarefa descricao={'Titulo 2'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
                         
                     </ScrollView>
                 </View>

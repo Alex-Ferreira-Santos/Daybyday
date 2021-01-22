@@ -37,7 +37,7 @@ class Tarefa extends Component {
                     <Text style={tarefa.lowerText}>{this.props.prioridade}</Text>
                 </View>
                 <View style={tarefa.detail}>
-                    <TouchableHighlight underlayColor='white' onPress={()=>{}}>
+                    <TouchableHighlight underlayColor='white' onPress={()=>this.props.go()}>
                         <Text style={[tarefa.lowerText,tarefa.textDetails]}>Detalhes</Text>
                     </TouchableHighlight> 
                 </View>
