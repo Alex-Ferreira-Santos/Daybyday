@@ -68,21 +68,32 @@ const tarefaMain = StyleSheet.create({
         borderTopLeftRadius:20,
         borderTopRightRadius: 20,
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         borderBottomWidth: 1,
     },
     box:{
-        padding: 5,
+        paddingVertical: 6,
         borderRightWidth: 1,
+        width: '10%',
+    },
+    description:{
+        width: '28%'
+    },
+    date:{
+        width: '30%'
+    },
+    priority:{
+        width: '18%'
     },
     others:{
-        padding: 5,
-        paddingLeft: 0,
+        paddingVertical: 6,
         borderRightWidth: 1,
+        
     },
     detail:{
         position: 'relative',
-        right: 3
+        right: 3,
+        padding: 5
     },
     button:{
         backgroundColor: '#680000',
@@ -96,7 +107,63 @@ const tarefaMain = StyleSheet.create({
     buttonText:{
         fontSize: 20,
         color: 'white'
+    },
+    lowerText:{
+        fontSize: 12,
+        textAlign: 'center',
     }
 })
 
-export {tarefaHome, tarefaMain}
+const tarefa = StyleSheet.create({
+    container:{
+        flexDirection: 'row',
+        backgroundColor: '#C4C4C4',
+        justifyContent: 'center',
+        borderBottomWidth: 1,
+    },
+    done:{
+        backgroundColor: '#3EE882'
+    },
+    late:{
+        backgroundColor: '#CD9696'
+    },
+    textLate:{
+        color: 'red'
+    },
+    box:{
+        paddingVertical: 6,
+        borderRightWidth: 1,
+        width: '10%',
+        justifyContent: 'center',
+    },
+    description:{
+        width: '28%',
+        justifyContent: 'center',
+    },
+    date:{
+        width: '30%'
+    },
+    priority:{
+        width: '18%'
+    },
+    others:{
+        paddingVertical: 6,
+        borderRightWidth: 1,
+        justifyContent: 'center',
+    },
+    detail:{
+        position: 'relative',
+        right: 3,
+        padding: 5,
+        justifyContent: 'center',
+    },
+    textDetails:{
+        color: 'blue'
+    },
+    lowerText:{
+        fontSize: 12,
+        textAlign: 'center',
+    },
+})
+
+export {tarefaHome, tarefaMain,tarefa}

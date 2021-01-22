@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
 import {tarefaMain} from '../../styles/Tarefa'
+import Tarefa from './Tarefa';
 
 class TarefaMain extends Component{
     render() {
@@ -11,23 +12,23 @@ class TarefaMain extends Component{
                 <View style={tarefaMain.main}>
                     <View style={tarefaMain.head}>
                         <View style={tarefaMain.box}>
-                            <Text>Box</Text>
+                            <Text style={tarefaMain.lowerText}>Box</Text>
                         </View>
-                        <View style={tarefaMain.others}>
-                            <Text>Descrição</Text>
+                        <View style={[tarefaMain.others,tarefaMain.description]}>
+                            <Text style={tarefaMain.lowerText}>Descrição</Text>
                         </View>
-                        <View style={tarefaMain.others}>
-                            <Text>Data de término</Text>
+                        <View style={[tarefaMain.others,tarefaMain.date]}>
+                            <Text style={tarefaMain.lowerText}>Data de término</Text>
                         </View>
-                        <View style={tarefaMain.others}>
-                            <Text>Prioridade</Text>
+                        <View style={[tarefaMain.others,tarefaMain.priority]}>
+                            <Text style={tarefaMain.lowerText}>Prioridade</Text>
                         </View>
                         <View style={tarefaMain.detail}>
-                            <Text>Detalhes</Text>
+                            <Text style={tarefaMain.lowerText}>Detalhes</Text>
                         </View>
                     </View>
                     <ScrollView style={tarefaMain.scroll}>
-
+                        <Tarefa/>
                     </ScrollView>
                 </View>
                 <TouchableHighlight style={tarefaMain.button}>
