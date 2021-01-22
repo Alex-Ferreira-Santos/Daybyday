@@ -49,7 +49,7 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={()=>{}}>
+        <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={()=>this.props.navigation.navigate('TarefaHome')}>
           <View style={styles.Buttoncontainer}>
             <Image source={lista} style={styles.img}/>
             <Text style={{fontSize: 20}}>Lista de tarefas</Text>
