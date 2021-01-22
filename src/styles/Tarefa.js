@@ -59,7 +59,8 @@ const tarefaMain = StyleSheet.create({
         backgroundColor: 'white',
         height: '60%',
         width: '92%',
-        borderRadius: 20,
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
         borderWidth: 1,
     },
     head:{

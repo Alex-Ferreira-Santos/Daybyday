@@ -28,7 +28,9 @@ class TarefaMain extends Component{
                         </View>
                     </View>
                     <ScrollView style={tarefaMain.scroll}>
-                        <Tarefa/>
+                        <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'}/>
+                        <Tarefa descricao={'descrição 2'} data={'Jan 22 2021 14:00'} prioridade={'média'}/>
+                        
                     </ScrollView>
                 </View>
                 <TouchableHighlight style={tarefaMain.button}>
