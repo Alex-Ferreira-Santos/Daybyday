@@ -190,7 +190,8 @@ const tarefaForm = StyleSheet.create({
         marginVertical: 10
     },
     label:{
-        fontSize: 18
+        fontSize: 18,
+        marginBottom: 5
     },
     input:{
         backgroundColor: '#EAEAEA',
@@ -199,9 +200,11 @@ const tarefaForm = StyleSheet.create({
         borderColor: '#8B8B8B',
         height: 30,
         paddingVertical:0,
+        paddingLeft: 10,
     },
     description:{
         height: 'auto',
+        maxHeight: 100
     },
     button:{
         backgroundColor: '#680000',
@@ -218,4 +221,30 @@ const tarefaForm = StyleSheet.create({
     },
 })
 
-export {tarefaHome, tarefaMain,tarefa,tarefaForm}
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        backgroundColor: '#f0f0f0',
+        fontSize: 16,
+        paddingVertical: 2,
+        borderWidth: 1,
+        borderColor: '#959595',
+        borderRadius: 15,
+        color: 'black',
+    },
+    inputAndroid: {  
+        backgroundColor: '#f0f0f0',
+        fontSize: 16,
+        paddingVertical: 2,
+        borderWidth: 1,
+        borderColor: '#959595',
+        borderRadius: 15,
+        color: 'black',
+    },
+    placeholder:{
+        fontSize: 14,
+        color: '#919191',
+        paddingLeft: 10
+    }
+});
+
+export {tarefaHome, tarefaMain,tarefa,tarefaForm,pickerSelectStyles}
