@@ -16,6 +16,7 @@ import SonoHome from './src/components/Dormir/SonoHome';
 import SonoForm from './src/components/Dormir/SonoForm';
 import SonoData from './src/components/Dormir/SonoData';
 import TarefaHome from './src/components/Tarefa/TarefaHome';
+import TarefaMain from './src/components/Tarefa/TarefaMain';
 
 class App extends Component{
   render(){
@@ -71,6 +72,11 @@ class App extends Component{
             options={{ headerShown: false }}
             name="TarefaHome"
             component={TarefaHome}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="TarefaMain"
+            component={TarefaMain}
           />
           <Stack.Screen
             options={{ headerShown: false }}
