@@ -247,4 +247,79 @@ const pickerSelectStyles = StyleSheet.create({
     }
 });
 
-export {tarefaHome, tarefaMain,tarefa,tarefaForm,pickerSelectStyles}
+const tarefaDetails = StyleSheet.create({
+    container:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#B94B4B',
+    },
+    pageTitle:{
+        fontSize: 30,
+        position: 'relative',
+        bottom: 50
+    },
+    main:{
+        width: '80%',
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+    },
+    title:{
+        fontSize: 25,
+        marginVertical: 20,
+    },
+    text:{
+        fontSize: 16,
+        width: '90%',
+        textAlign: 'center',
+    },
+    category:{
+        fontSize: 22,
+        marginVertical: 10
+    },
+    concluir:{
+        backgroundColor:'#469A28',
+        borderRadius: 20,
+        width: '50%',
+        paddingVertical: 3,
+        alignItems: 'center',
+        marginVertical: 10
+    },
+    editar:{
+        backgroundColor:'#D3D713',
+        borderRadius: 20,
+        width: '46%',
+        paddingVertical: 3,
+        alignItems: 'center',
+    },
+    excluir:{
+        backgroundColor:'#CF0D0D',
+        borderRadius: 20,
+        width: '46%',
+        paddingVertical: 3,
+        alignItems: 'center',
+    },
+    buttonText:{
+        fontSize: 16
+    },
+    excludeButtonText:{
+        fontSize: 16,
+        color: 'white'
+    },
+    buttons:{
+        flexDirection:'row',
+        justifyContent: 'space-between',
+        width:'90%',
+        marginVertical: 10
+    },
+    done:{
+        backgroundColor: '#3EE882'
+    },
+    textLate:{
+        color: 'red'
+    },
+})
+
+export {tarefaHome, tarefaMain,tarefa,tarefaForm,pickerSelectStyles,tarefaDetails}
