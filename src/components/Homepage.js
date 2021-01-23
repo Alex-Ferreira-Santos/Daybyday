@@ -35,7 +35,7 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={()=>{}}>
+        <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={()=>this.props.navigation.navigate('AlimentacaoHome')}>
           <View style={styles.Buttoncontainer}>
             <Image source={brocolis} style={styles.img}/>
             <Text style={{fontSize: 20}}>Alimentação</Text>

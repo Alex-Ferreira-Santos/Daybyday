@@ -19,6 +19,7 @@ import TarefaHome from './src/components/Tarefa/TarefaHome';
 import TarefaMain from './src/components/Tarefa/TarefaMain';
 import TarefaForm from './src/components/Tarefa/TarefaForm';
 import TarefaDetail from './src/components/Tarefa/TarefaDetails';
+import AlimentacaoHome from './src/components/Alimentacao/AlimentacaoHome';
 
 class App extends Component{
   render(){
@@ -49,6 +50,11 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AguaOptions"
             component={AguaOptions}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AlimentacaoHome"
+            component={AlimentacaoHome}
           />
           <Stack.Screen
             options={{ headerShown: false }}
