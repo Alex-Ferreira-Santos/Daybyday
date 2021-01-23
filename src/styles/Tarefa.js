@@ -320,6 +320,75 @@ const tarefaDetails = StyleSheet.create({
     textLate:{
         color: 'red'
     },
+    unChecked:{
+        backgroundColor: '#8F8F8F'
+    }
 })
 
-export {tarefaHome, tarefaMain,tarefa,tarefaForm,pickerSelectStyles,tarefaDetails}
+const tarefaPopup = StyleSheet.create({
+    container:{
+        backgroundColor: 'rgba(94,28,28,0.8)',
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    main:{
+        backgroundColor:'white',
+        width: '70%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 10
+    },
+    warning:{
+        color: 'red',
+        fontSize: 20,
+        textAlign: 'center',
+        width: '80%',
+        marginBottom: 10
+    },
+    text:{
+        fontSize: 15,
+        textAlign: 'center',
+        width: '70%',
+        marginBottom: 10
+    },
+    name:{
+        fontSize: 20,
+        textAlign: 'center',
+        width: '80%',
+        fontWeight: 'bold',
+        marginBottom: 40
+    },
+    buttons:{
+        flexDirection: 'row',
+        width: '90%',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    backButton:{
+        backgroundColor:'#C4C4C4',
+        borderRadius: 20,
+        width: '46%',
+        paddingVertical: 3,
+        alignItems: 'center',
+    },
+    backButtonText:{
+        fontSize: 15
+    },
+    excludeButton:{
+        backgroundColor:'#D81D1D',
+        borderRadius: 20,
+        width: '46%',
+        paddingVertical: 3,
+        alignItems: 'center',
+    },
+    excludeButtonText:{
+        fontSize: 15,
+        color: 'white'
+    }
+})
+
+export {tarefaHome, tarefaMain,tarefa,tarefaForm,pickerSelectStyles,tarefaDetails,tarefaPopup}
