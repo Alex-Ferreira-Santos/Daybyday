@@ -51,7 +51,14 @@ class TarefaDetail extends Component {
                         <Text style={tarefaDetails.buttonText}>{this.state.buttonText}</Text>
                     </TouchableHighlight>
                     <View style={tarefaDetails.buttons}>
-                        <TouchableHighlight style={tarefaDetails.editar} underlayColor='#B6B916' onPress={()=>this.props.navigation.navigate('TarefaForm')}>
+                        <TouchableHighlight style={tarefaDetails.editar} underlayColor='#B6B916' onPress={()=>this.props.navigation.navigate('TarefaForm',{
+                            title:'Editar a tarefa',
+                            taskName:'teste de tarefa',
+                            buttonColor:{backgroundColor:'#D3D713'},
+                            underlayColor:'#B6B916',
+                            buttonText: 'Editar',
+                            buttonTextColor:{color:'black'}
+                        })}>
                             <Text style={tarefaDetails.buttonText}>Editar</Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={tarefaDetails.excluir} underlayColor='#AA0E0E' onPress={()=>{this.setState({show: true})}}>

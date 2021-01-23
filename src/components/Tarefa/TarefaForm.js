@@ -9,9 +9,6 @@ class TarefaForm extends Component {
         super(props)
         this.state = {
             Pagetitle: '',
-            buttonText: '',
-            buttonStyle: '',
-            taskName: '',
             title:'',
             description: '',
             day: '',
@@ -22,15 +19,18 @@ class TarefaForm extends Component {
             mode: 'date'
         }
     }
+
     render(){
+        console.log(JSON.stringify(this.props.route))
+        const params = this.props.route.params
         return (
             <View style={tarefaForm.container}>
-                <Text style={tarefaForm.title}>Inserir nova tarefa</Text>
-                <Text>{this.state.taskName}</Text>
+                <Text style={tarefaForm.title}>{params.title}</Text>
+                <Text style={tarefaForm.taskName}>{params.taskName}</Text>
                 <View style={tarefaForm.form}>
                     <View style={tarefaForm.section}>
                         <Text style={tarefaForm.label}>Título</Text>
-                        <TextInput placeholder='Digite o título da tarefa aqui' style={tarefaForm.input} onChangeText={value=>{
+                        <TextInput placeholder='Digite o título da tarefa aqui' style={tarefaForm.input} onChangeText={value=>{ 
                             this.setState({title: value})
                         }}/>
                     </View>
@@ -86,7 +86,7 @@ class TarefaForm extends Component {
                                 ]}
                             />
                     </View>
-                    <TouchableHighlight underlayColor='#5B0000' style={tarefaForm.button} onPress={()=>{
+                    <TouchableHighlight underlayColor={params.underlayColor} style={[tarefaForm.button,params.buttonColor]} onPress={()=>{
                         if(this.state.title === '' || this.state.description === '' || this.state.time === '' || this.state.priority === ''){
                             alert('Ainda há campos incompletos')
                             return
@@ -99,7 +99,7 @@ class TarefaForm extends Component {
 
                         this.props. navigation.navigate('TarefaMain')
                     }}>
-                        <Text style={tarefaForm.buttonText}>Inserir</Text>
+                        <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
                     </TouchableHighlight>
                 </View>
             </View>

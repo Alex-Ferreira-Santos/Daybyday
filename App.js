@@ -84,6 +84,14 @@ class App extends Component{
             options={{ headerShown: false }}
             name="TarefaForm"
             component={TarefaForm}
+            initialParams={{
+              title:'Inserir nova tarefa',
+              taskName:'',
+              buttonColor:'#680000',
+              underlayColor: '#5B0000',
+              buttonText: 'Inserir',
+              buttonTextColor: 'white',
+            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}

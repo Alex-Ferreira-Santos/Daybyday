@@ -219,6 +219,12 @@ const tarefaForm = StyleSheet.create({
         fontSize: 20,
         color: 'white'
     },
+    taskName:{
+        position: 'relative',
+        bottom: 30,
+        fontSize: 20,
+        fontWeight: 'bold'
+    }
 })
 
 const pickerSelectStyles = StyleSheet.create({
