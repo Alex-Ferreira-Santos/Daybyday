@@ -2,8 +2,23 @@ import React,{Component} from 'react';
 import { Linking } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
+import AlimentacaoPopup from './AlimentacaoPopup'
 
 class AlimentacaoDieta extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            show: false
+        }
+        this.goback = this.goback.bind(this)
+        this.backToMain = this.backToMain.bind(this)
+    }
+    goback(){
+        this.setState({show: false})
+    }
+    backToMain(){
+        this.props.navigation.navigate('AlimentacaoMain')
+    }
     render() {
         return(
             <View style={alimentacaoDieta.container}>
@@ -34,11 +49,12 @@ class AlimentacaoDieta extends Component {
                         <Text style={alimentacaoDieta.buttonText}>Editar</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight style={alimentacaoDieta.deleteButton} underlayColor='#8D1B1B' onPress={()=>{}}>
+                    <TouchableHighlight style={alimentacaoDieta.deleteButton} underlayColor='#8D1B1B' onPress={()=>{this.setState({show: true})}}>
                         <Text style={alimentacaoDieta.buttonText}>Excluir</Text>
                     </TouchableHighlight>
 
                 </ScrollView>
+                {this.state.show && (<AlimentacaoPopup goback={this.goback} backToMain={this.backToMain}/>)}
             </View>
         )
     }
