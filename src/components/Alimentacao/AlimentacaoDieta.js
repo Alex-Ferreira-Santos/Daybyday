@@ -8,18 +8,21 @@ class AlimentacaoDieta extends Component {
         return(
             <View style={alimentacaoDieta.container}>
                 <ScrollView style={alimentacaoDieta.main} contentContainerStyle={alimentacaoDieta.containerMain}>
-                    <Text style={alimentacaoDieta.title}>Dieta da batata doce</Text>
-                    <Text style={alimentacaoDieta.descricao}>A batata doce é uma fonte de carboidrato muito saudável e benéfica para a dieta, por isso tem consumida por quem quer emagrecer. Tanto que a dieta da batata doce tem se popularizado por aí. Entre as vantagens da batata doce está sua grande quantidade de amido resistente, uma fibra insolúvel que não é digerida pelo organismo e que retarda a absorção da gordura e da glicose.</Text>
+                    <Text style={alimentacaoDieta.title}>Chips assado de batata doce e alecrim</Text>
 
-                    <Text style={alimentacaoDieta.cardapio}>Cardápio</Text>
+                    <Text style={alimentacaoDieta.subtitle}>Ingredientes</Text>
+                    <View style={alimentacaoDieta.ingredients}>
+                        <Text style={alimentacaoDieta.bold}>{'\u2022'} 3 batatas-doces</Text>
+                        <Text style={alimentacaoDieta.bold}>{'\u2022'} Azeite de oliva</Text>
+                        <Text style={alimentacaoDieta.bold}>{'\u2022'} Sal e pimenta a gosto</Text>
+                        <Text style={alimentacaoDieta.bold}>{'\u2022'} Alecrim a gosto</Text>
+                    </View>
 
-                    <Text style={alimentacaoDieta.opcao}><Text style={alimentacaoDieta.bold}>Opção 1:</Text> 4 rodelas de batata doce + 2 filés de frango grelhado com molho de tomate + salada verde crua + 1 fatia de melancia</Text>
+                    <Text style={alimentacaoDieta.subtitle}>Modo de preparo</Text>
 
-                    <Text style={alimentacaoDieta.opcao}><Text style={alimentacaoDieta.bold}>Opção 2:</Text>O 2 rodelas de batata doce + 2 col. (sopa) de arroz integral + 1 posta de peixe cozido + salada de legumes refogados no azeite + 4 morangos</Text>
+                    <Text style={alimentacaoDieta.preparo}>Lave as batatas. Com o auxílio de um mandolin, corte-as, com casca, em rodelas bem fininhas. Ajeite as fatias em uma assadeira coberta com silpat ou papel-manteiga e untada com azeite. Tempere com sal e pimenta, regue com um fio de azeite e complete com o alecrim. Leve ao forno preaquecido a 200° por 20 minutos ou até as fatias ficarem douradas. O tempo pode variar de um forno para outro. Quanto mais fininhas forem as fatias, mais rápido elas assam. Retire do forno e deixe esfriar uns cinco minutinhos antes de servir porque assim elas ficam bem crocantes.</Text>
 
-                    <Text style={alimentacaoDieta.opcao}><Text style={alimentacaoDieta.bold}>Opção 3:</Text> 2 rodelas de batata doce + Salada de atum, ovo cozido, acelga, tomate, cenoura ralada, berinjela e milho + 1 laranja.</Text>
-
-                    <Text style={alimentacaoDieta.font}>Fonte: <Text style={[alimentacaoDieta.bold,alimentacaoDieta.link]} onPress={()=>Linking.openURL('https://www.minhavida.com.br/alimentacao/tudo-sobre/21232-dieta-da-batata-doce')}>https://www.minhavida.com.br</Text></Text>
+                    <Text style={alimentacaoDieta.font}>Fonte: <Text style={[alimentacaoDieta.bold,alimentacaoDieta.link]} onPress={()=>Linking.openURL('https://www.receiteria.com.br/receita/chips-assado-de-batata-doce-e-alecrim/')}>https://www.receiteria.com.br</Text></Text>
 
                     <Text style={alimentacaoDieta.text}>Lembrando, sempre é recomendado consultar um nutricionista</Text>
 
@@ -27,7 +30,7 @@ class AlimentacaoDieta extends Component {
                         <Text style={alimentacaoDieta.buttonText}>Voltar</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>{}}>
+                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm')}>
                         <Text style={alimentacaoDieta.buttonText}>Editar</Text>
                     </TouchableHighlight>
 

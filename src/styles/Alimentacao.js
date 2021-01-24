@@ -79,7 +79,9 @@ const alimentacaoMain = StyleSheet.create({
         borderBottomWidth: 1,
     },
     dietaName:{
-        fontSize: 18
+        fontSize: 18,
+        textAlign: 'center',
+        width:'90%'
     }
 })
 
@@ -103,6 +105,7 @@ const alimentacaoDieta = StyleSheet.create({
     title:{
         fontSize: 30,
         marginTop: 10,
+        textAlign: 'center',
     },
     descricao:{
         width: '80%',
@@ -110,13 +113,9 @@ const alimentacaoDieta = StyleSheet.create({
         marginTop: 20,
         fontSize: 15
     },
-    cardapio:{
+    subtitle:{
         fontSize: 20,
         marginVertical: 20,
-    },
-    opcao:{
-        width: '90%',
-        marginBottom: 20
     },
     bold:{
         fontWeight: 'bold',
@@ -166,6 +165,29 @@ const alimentacaoDieta = StyleSheet.create({
         fontSize: 20,
         color: 'white'
     },
+    ingredients:{
+        width:'80%',
+        marginBottom: 20
+    },
+    preparo:{
+        width:'90%',
+        textAlign: 'center',
+        marginBottom: 20
+    }
 })
 
-export {alimentacaoHome,alimentacaoMain, alimentacaoDieta}
+const alimentacaoForm = StyleSheet.create({
+    container:{
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#59A73D'
+    },
+    main:{
+        backgroundColor:'white',
+        width: '80%',
+        borderRadius: 20,
+    },
+})
+
+export {alimentacaoHome,alimentacaoMain, alimentacaoDieta, alimentacaoForm}

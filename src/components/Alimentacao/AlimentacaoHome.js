@@ -8,7 +8,7 @@ class AlimentacaoHome extends Component {
         return (
             <View style={alimentacaoHome.container}>
                 <Text style={alimentacaoHome.title}>Alimentação</Text>
-                <Text style={alimentacaoHome.text}>Está sessão mostrará para você algumas dietas e receitas para que possa manter uma alimentação  mais saúdavel lembrando que consultar um nutricionista é recomendado </Text>
+                <Text style={alimentacaoHome.text}>Está sessão mostrará para você algumas receitas para que possa manter uma alimentação  mais saúdavel lembrando que consultar um nutricionista é recomendado </Text>
                 <Image source={brocolis} style={alimentacaoHome.brocolis}/>
                 <TouchableHighlight style={alimentacaoHome.button} underlayColor='#1D470E' onPress={()=>this.props.navigation.navigate('AlimentacaoMain')}>
                     <Text style={alimentacaoHome.buttonText}>Próximo</Text>

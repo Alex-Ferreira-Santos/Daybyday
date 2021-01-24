@@ -24,13 +24,13 @@ class AlimentacaoMain extends Component{
         return ( 
             <View style={alimentacaoMain.container}>
                 <Text style={alimentacaoMain.title}>Alimentação</Text>
-                <Text style={alimentacaoMain.text}>Dietas e receitas disponíveis</Text>
+                <Text style={alimentacaoMain.text}>Receitas disponíveis</Text>
                 <ScrollView style={alimentacaoMain.dietas}>
                     <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>this.props.navigation.navigate('AlimentacaoDieta')}>
-                        <Text style={alimentacaoMain.dietaName}>Dieta da batata doce</Text>
+                        <Text style={alimentacaoMain.dietaName}>Chips assado de batata doce e alecrim</Text>
                     </TouchableHighlight>
                 </ScrollView>
-                <TouchableHighlight style={alimentacaoMain.button} underlayColor='#1D470E' onPress={()=>{}}>
+                <TouchableHighlight style={alimentacaoMain.button} underlayColor='#1D470E' onPress={()=>this.props.navigation.navigate('AlimentacaoForm')}>
                     <Text style={alimentacaoMain.buttonText}>Inserir</Text>
                 </TouchableHighlight>
             </View>
