@@ -192,11 +192,11 @@ const alimentacaoForm = StyleSheet.create({
     },
     title:{
         fontSize: 30,
-        marginBottom: 30
+        marginBottom: 20
     },
     section:{
         width: '90%',
-        marginVertical: 10
+        marginVertical: 5
     },
     label:{
         fontSize: 20
@@ -226,8 +226,15 @@ const alimentacaoForm = StyleSheet.create({
     },
     biggerInput:{
         height: 50
-    }
-    
+    },
+    name:{
+        fontSize: 20,
+        width: '80%',
+        textAlign: 'center',
+        position: 'relative',
+        bottom: 10,
+        fontWeight: 'bold'
+    } 
 })
 
 export {alimentacaoHome,alimentacaoMain, alimentacaoDieta, alimentacaoForm}

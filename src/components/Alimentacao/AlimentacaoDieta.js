@@ -30,7 +30,7 @@ class AlimentacaoDieta extends Component {
                         <Text style={alimentacaoDieta.buttonText}>Voltar</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm')}>
+                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm',{title: 'Editar a receita', receita: 'Chips assado de batata doce e alecrim', buttonColor: {backgroundColor: '#A59F1A'},buttonText:'Editar',underlayColor:'#8D8918'})}>
                         <Text style={alimentacaoDieta.buttonText}>Editar</Text>
                     </TouchableHighlight>
 

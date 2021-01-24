@@ -73,6 +73,13 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AlimentacaoForm"
             component={AlimentacaoForm}
+            initialParams={{
+              title: 'Inserir receita',
+              receita: '',
+              buttonColor: '',
+              buttonText: 'Inserir',
+              underlayColor: '#1D470E'
+            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}
