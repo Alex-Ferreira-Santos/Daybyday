@@ -187,7 +187,47 @@ const alimentacaoForm = StyleSheet.create({
         backgroundColor:'white',
         width: '80%',
         borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
+    title:{
+        fontSize: 30,
+        marginBottom: 30
+    },
+    section:{
+        width: '90%',
+        marginVertical: 10
+    },
+    label:{
+        fontSize: 20
+    },
+    input:{
+        backgroundColor: '#E5E5E5',
+        height: 30,
+        paddingVertical: 0,
+        borderRadius: 20,
+        paddingLeft: 8,
+        borderWidth: 1,
+        borderColor: '#979797',
+        marginTop: 8
+    },
+    button:{
+        backgroundColor: '#21560E',
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginVertical: 10
+    },
+    buttonText:{
+        fontSize: 20,
+        color: 'white'
+    },
+    biggerInput:{
+        height: 50
+    }
+    
 })
 
 export {alimentacaoHome,alimentacaoMain, alimentacaoDieta, alimentacaoForm}
