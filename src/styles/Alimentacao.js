@@ -83,4 +83,89 @@ const alimentacaoMain = StyleSheet.create({
     }
 })
 
-export {alimentacaoHome,alimentacaoMain}
+const alimentacaoDieta = StyleSheet.create({
+    container:{
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#59A73D'
+    },
+    main:{
+        backgroundColor:'white',
+        width: '90%',
+        maxHeight: 500,
+        borderRadius: 30,
+    },
+    containerMain:{
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    title:{
+        fontSize: 30,
+        marginTop: 10,
+    },
+    descricao:{
+        width: '80%',
+        textAlign: 'center',
+        marginTop: 20,
+        fontSize: 15
+    },
+    cardapio:{
+        fontSize: 20,
+        marginVertical: 20,
+    },
+    opcao:{
+        width: '90%',
+        marginBottom: 20
+    },
+    bold:{
+        fontWeight: 'bold',
+    },
+    font:{
+        fontSize: 15,
+        width: '90%',
+        marginBottom: 10
+    },
+    link:{
+        color: 'blue',
+        textDecorationLine: 'underline'
+    },
+    text:{
+        width:'80%',
+        textAlign: 'center',
+        fontSize: 15,
+    },
+    backButton:{
+        backgroundColor: '#21560E',
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginTop: 10
+    },
+    editButton:{
+        backgroundColor: '#A59F1A',
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginTop: 10
+    },
+    deleteButton:{
+        backgroundColor: '#A11F1F',
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        paddingVertical: 3,
+        marginVertical: 10
+    },
+    buttonText:{
+        fontSize: 20,
+        color: 'white'
+    },
+})
+
+export {alimentacaoHome,alimentacaoMain, alimentacaoDieta}

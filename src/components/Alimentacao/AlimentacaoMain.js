@@ -24,16 +24,10 @@ class AlimentacaoMain extends Component{
         return ( 
             <View style={alimentacaoMain.container}>
                 <Text style={alimentacaoMain.title}>Alimentação</Text>
-                <Text style={alimentacaoMain.text}>Dietas disponíveis</Text>
+                <Text style={alimentacaoMain.text}>Dietas e receitas disponíveis</Text>
                 <ScrollView style={alimentacaoMain.dietas}>
-                    <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>{}}>
-                        <Text style={alimentacaoMain.dietaName}>Dieta da batata</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>{}}>
-                        <Text style={alimentacaoMain.dietaName}>Dieta da batata</Text>
-                    </TouchableHighlight> 
-                    <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>{}}>
-                        <Text style={alimentacaoMain.dietaName}>Dieta da batata</Text>
+                    <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>this.props.navigation.navigate('AlimentacaoDieta')}>
+                        <Text style={alimentacaoMain.dietaName}>Dieta da batata doce</Text>
                     </TouchableHighlight>
                 </ScrollView>
                 <TouchableHighlight style={alimentacaoMain.button} underlayColor='#1D470E' onPress={()=>{}}>

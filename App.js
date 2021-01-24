@@ -21,6 +21,7 @@ import TarefaForm from './src/components/Tarefa/TarefaForm';
 import TarefaDetail from './src/components/Tarefa/TarefaDetails';
 import AlimentacaoHome from './src/components/Alimentacao/AlimentacaoHome';
 import AlimentacaoMain from './src/components/Alimentacao/AlimentacaoMain';
+import AlimentacaoDieta from './src/components/Alimentacao/AlimentacaoDieta';
 
 class App extends Component{
   render(){
@@ -61,6 +62,11 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AlimentacaoMain"
             component={AlimentacaoMain}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AlimentacaoDieta"
+            component={AlimentacaoDieta}
           />
           <Stack.Screen
             options={{ headerShown: false }}
