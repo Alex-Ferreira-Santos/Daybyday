@@ -233,7 +233,7 @@ const alimentacaoForm = StyleSheet.create({
         color: 'white'
     },
     biggerInput:{
-        height: 50
+        height: 80
     },
     name:{
         fontSize: 20,
