@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {extraAdm} from '../../styles/Extra'
 import {sha512} from 'react-native-sha512'
+import Usuario from '../../Database/usuario'
+import User from '../../Model/User'
 
 class ExtraAdm extends Component{
     constructor(props){
@@ -9,8 +11,26 @@ class ExtraAdm extends Component{
         this.state = {
             failed: '',
             password: '',
+            usuario: []
         }
+        this.user = []
     }
+
+    async select(){
+        const usuario = new Usuario
+        await usuario.select().then(data =>{
+            this.atribuiValor(data, this.user)
+        })
+        this.setState({usuario: this.user})
+    }
+
+    atribuiValor(data,array){ 
+        array.push(data)
+        if(array.length > 1){
+          array.shift()
+        }
+      } 
+
     render(){
         return(
             <View style={extraAdm.container}>
@@ -28,8 +48,9 @@ class ExtraAdm extends Component{
                             <Text style={extraAdm.buttonText}>Voltar</Text>
                         </TouchableHighlight>
 
-                        <TouchableHighlight style={extraAdm.verifiedButton} underlayColor='#30A9A2' onPress={()=>{
-                            if(this.state.password === 'x'){
+                        <TouchableHighlight style={extraAdm.verifiedButton} underlayColor='#30A9A2' onPress={async ()=>{
+                            await this.select()
+                            if(this.state.password === this.state.usuario[0][0].senha){
 
 
 

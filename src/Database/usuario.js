@@ -7,7 +7,7 @@ const database_version = '1.0'
 const database_display_name = 'DayByDay'
 const database_size = 200000
 
-export default class Database{
+export default class Usuario{
     initDB(){
         let db
         return new Promise(resolve => {
@@ -61,9 +61,9 @@ export default class Database{
             this.initDB().then( db => {
                 db.transaction( tx => {
                     tx.executeSql('SELECT * FROM usuario',[]).then(([tx,result]) => {
-                        var len = result.row.length
+                        var len = result.rows.length
                         for(let i = 0; i < len; i++){
-                            let row = result.row.item(i)
+                            let row = result.rows.item(i)
                             const {id,senha} = row
                             products.push({id,senha})
                         }
