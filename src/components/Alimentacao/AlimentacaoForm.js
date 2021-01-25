@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,TouchableHighlight,TextInput} from 'react-native'
+import {View,Text,TouchableHighlight,TextInput,ScrollView} from 'react-native'
 import {alimentacaoForm} from '../../styles/Alimentacao'
 
 class AlimentacaoForm extends Component {
@@ -9,13 +9,14 @@ class AlimentacaoForm extends Component {
             name: '',
             ingredients: '',
             preparo: '',
-            font: ''
+            font: '',
+            uri: ''
         }
     }
     render() {
         const params = this.props.route.params
         return(
-            <View style={alimentacaoForm.container}>
+            <ScrollView style={alimentacaoForm.container} contentContainerStyle={alimentacaoForm.scrollContainer}>
                 <Text style={alimentacaoForm.title}>{params.title}</Text>
                 <Text style={alimentacaoForm.name}>{params.receita}</Text>
                 <View style={alimentacaoForm.main}>
@@ -23,6 +24,12 @@ class AlimentacaoForm extends Component {
                         <Text style={alimentacaoForm.label}>Nome da receita</Text>
                         <TextInput placeholder='Digite o nome da receita aqui' style={alimentacaoForm.input} onChangeText={value=>{
                             this.setState({name: value})
+                        }}/>
+                    </View>
+                    <View style={alimentacaoForm.section}>
+                        <Text style={alimentacaoForm.label}>Imagem receita</Text>
+                        <TextInput placeholder='Digite o caminho da imagem aqui' style={alimentacaoForm.input} onChangeText={value=>{
+                            this.setState({uri: value})
                         }}/>
                     </View>
                     <View style={alimentacaoForm.section}>
@@ -56,7 +63,7 @@ class AlimentacaoForm extends Component {
                         <Text style={alimentacaoForm.buttonText}>{params.buttonText}</Text>
                     </TouchableHighlight>
                 </View>
-            </View>
+            </ScrollView>
         )
     }
 }

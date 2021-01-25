@@ -173,22 +173,30 @@ const alimentacaoDieta = StyleSheet.create({
         width:'90%',
         textAlign: 'center',
         marginBottom: 20
+    },
+    image:{
+        width: '60%',
+        minHeight: 200,
+        marginTop: 10
     }
 })
 
 const alimentacaoForm = StyleSheet.create({
     container:{
         flex:1,
+        backgroundColor: '#59A73D'
+    },
+    scrollContainer:{
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#59A73D'
     },
     main:{
         backgroundColor:'white',
         width: '80%',
         borderRadius: 20,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 30
     },
     title:{
         fontSize: 30,
