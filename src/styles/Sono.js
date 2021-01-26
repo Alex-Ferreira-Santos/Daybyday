@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 const sono = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#483FB1',
     },
@@ -41,7 +41,7 @@ const sono = StyleSheet.create({
 const sonoForm = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#483FB1',
     },
@@ -98,7 +98,7 @@ const sonoForm = StyleSheet.create({
 const sonoData = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#483FB1',
     },

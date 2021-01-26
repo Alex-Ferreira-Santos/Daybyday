@@ -40,7 +40,7 @@ const massa = StyleSheet.create({
 const massaForm = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#DFCD2A'
     },
@@ -96,7 +96,7 @@ const massaForm = StyleSheet.create({
 const massaData = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#DFCD2A',
     },
@@ -144,7 +144,7 @@ const massaData = StyleSheet.create({
 const massaFinal = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#DFCD2A',
     },
