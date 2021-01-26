@@ -77,7 +77,7 @@ class MassaForm extends Component {
                         if(params.edit){
                             this.update(this.state.altura,this.state.peso)
                         }else{
-                            this.insert(this.state.altura,this.state.peso)
+                            //this.insert(this.state.altura,this.state.peso)
                         }
                         this.props.navigation.navigate('MassaData')
                     }} keyboardType='number-pad'>
