@@ -43,6 +43,9 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AguaForm"
             component={AguaForm}
+            initialParams={{
+              edit:false
+            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}

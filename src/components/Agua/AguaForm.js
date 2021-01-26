@@ -19,7 +19,14 @@ class AguaForm extends Component{
         agua.insert(water)
     }
 
+    async update(litros,horas,tempo){
+        const water = new Water(litros,horas,tempo)
+        const agua = new Agua
+        await agua.update(water)
+    }
+
     render() { 
+        const params = this.props.route.params
         return(
             <View style={aguaForm.container}>
                 <Text style={aguaForm.title}>Lembrete de água</Text>
@@ -71,6 +78,11 @@ class AguaForm extends Component{
                         }
                         if(parseInt(this.state.horas)<10){
                             this.setState({horas: '10'})
+                        }
+                        if(params.edit){
+                            this.update(this.state.litros,this.state.horas,59)
+                        }else{
+                            //this.insert(this.state.litros,this.state.horas,59)
                         }
                         
                         this.props.navigation.navigate('AguaSuccessful')
