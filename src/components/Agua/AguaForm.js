@@ -13,13 +13,13 @@ class AguaForm extends Component{
         }
     }
 
-    insert(litros,horas){
-        const water = new Water(litros,horas)
+    insert(litros,horas,tempo){
+        const water = new Water(litros,horas,tempo)
         const agua = new Agua
         agua.insert(water)
     }
 
-    render() {
+    render() { 
         return(
             <View style={aguaForm.container}>
                 <Text style={aguaForm.title}>Lembrete de água</Text>

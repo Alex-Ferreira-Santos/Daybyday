@@ -3,6 +3,7 @@ import {View,Text,TouchableHighlight} from 'react-native'
 import {aguaOptions} from '../../styles/Agua'
 import AguaPopUp from './AguaPopUp'
 import Agua from '../../Database/agua'
+import Water from '../../Model/water';
  
 class AguaOptions extends Component {
     constructor(props){
@@ -15,13 +16,11 @@ class AguaOptions extends Component {
             subtitle: 'Desativar notificação',
             agua: [],
             quantidade: '',
-            notificationTime: 59,
         }
         this.agua = []
         this.ClosePopUp = this.ClosePopUp.bind(this)
         this.ChangeToActivateButton = this.ChangeToActivateButton.bind(this)
         this.ProximaNotificação = this.ProximaNotificação.bind(this)
-        this.select()
         this.ProximaNotificação()
     }
 
@@ -34,6 +33,13 @@ class AguaOptions extends Component {
         this.CalculaQuantidade()
     }
 
+    async update(tempo){
+        const water = new Water(this.state.agua[0][0].litros,this.state.agua[0][0].horas, tempo)
+        const agua = new Agua
+        await agua.update(water)
+        await this.select()
+    }
+
     atribuiValor(data,array){
         array.push(data)
         if(array.length > 1){
@@ -41,15 +47,16 @@ class AguaOptions extends Component {
         }
     }
 
-    ProximaNotificação(){
-        setInterval(()=>{
-            if(this.state.notificationTime>0){
-                let tempo = this.state.notificationTime - 1
-                this.setState({notificationTime: tempo})
+    async ProximaNotificação(){
+        await this.select()  
+        this.setState({title: `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`})
+        setInterval( async()=>{
+            if(this.state.agua[0][0].tempo>0){
+                await this.update(this.state.agua[0][0].tempo - 1)
             }else{
-                this.setState({notificationTime: 59}) 
+                await this.update(59)
             }
-            this.setState({title: `A proxima notificação virá em ${this.state.notificationTime} minutos`})
+            this.setState({title: `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`})
         },60000)
     }
 

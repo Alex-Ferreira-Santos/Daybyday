@@ -20,7 +20,7 @@ export default class Agua{
                     console.log('erro recebido: ' + error)
                     console.log('criando banco de dados')
                     db.transaction(tx => {
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS agua (id INTEGER PRIMARY KEY AUTOINCREMENT, litros INTEGER NOT NULL, horas INTEGER NOT NULL)')
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS agua (id INTEGER PRIMARY KEY AUTOINCREMENT, litros INTEGER NOT NULL, horas INTEGER NOT NULL, tempo INTEGER NOT NULL)')
                     }).then(()=>{
                         console.log('tabela agua criada com sucesso')
                     }).catch(error=>{
@@ -45,7 +45,7 @@ export default class Agua{
         return new Promise(resolve =>{
             this.initDB().then(db => {
                 db.transaction(tx => {
-                    tx.executeSql('INSERT INTO agua VALUES(?,?,?)',[agua.id,agua.litros,agua.horas]).then(([tx,results]) => {
+                    tx.executeSql('INSERT INTO agua VALUES(?,?,?,?)',[agua.id,agua.litros,agua.horas,agua.tempo]).then(([tx,results]) => {
                         resolve(results)
                     })
                 }).then( results => {
@@ -64,13 +64,25 @@ export default class Agua{
                         var len = result.rows.length
                         for(let i = 0; i < len; i++){
                             let row = result.rows.item(i)
-                            const {id,litros,horas} = row
-                            products.push({id,litros,horas})
+                            const {id,litros,horas,tempo} = row
+                            products.push({id,litros,horas,tempo})
                         }
                         resolve(products)
                     })
                 }).then(result => this.closeDB(db)).catch(err => console.log(err))
             }).catch( err => console.log(err))
+        })
+    }
+
+    update(agua){
+        return new Promise((resolve, reject) =>{
+            this.initDB().then( db => {
+                db.transaction(tx => {
+                    tx.executeSql(`UPDATE agua SET litros = ${agua.litros}, horas = ${agua.horas}, tempo = ${agua.tempo} WHERE id = 1`,[]).then(([tx,results])=>{
+                        resolve(results)
+                    }) 
+                }).then((results)=>this.closeDB()).catch(err => console.log(err))
+            }).catch(err => console.log(err))
         })
     }
 }
