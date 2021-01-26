@@ -3,7 +3,6 @@ import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {extraAdm} from '../../styles/Extra'
 import {sha512} from 'react-native-sha512'
 import Usuario from '../../Database/usuario'
-import User from '../../Model/User'
 
 class ExtraAdm extends Component{
     constructor(props){
@@ -51,20 +50,7 @@ class ExtraAdm extends Component{
                         <TouchableHighlight style={extraAdm.verifiedButton} underlayColor='#30A9A2' onPress={async ()=>{
                             await this.select()
                             if(this.state.password === this.state.usuario[0][0].senha){
-
-
-
-
-                                // colocar comparação
-
-
-
-
-
-
-
-
-
+                                this.props.setAdm()
                                 alert('Modo adm está ativado')
                                 this.props.close()
                             }else{

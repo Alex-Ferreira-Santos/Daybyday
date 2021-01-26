@@ -42,7 +42,7 @@ class ExtraHome extends Component {
                     </TouchableHighlight>
                 </View>
                 {this.state.copyVisible && (<ExtraCopy close={this.ClosePopup}/>)}
-                {this.state.admVisible && (<ExtraAdm close={this.ClosePopup}/>)}
+                {this.state.admVisible && (<ExtraAdm close={this.ClosePopup} setAdm={this.props.setAdm}/>)}
             </View>
         )
     }

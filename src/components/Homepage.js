@@ -14,13 +14,19 @@ class Homepage extends Component{
   constructor(props){
     super(props)
     this.state = {
-      visible: false
+      visible: false,
+      adm:false
     }
     this.ClosePopUp = this.ClosePopUp.bind(this)
+    this.setAdm = this.setAdm.bind(this)
   }
 
   ClosePopUp(){
     this.setState({visible: false})
+  }
+
+  setAdm(){
+    this.setState({adm:true})
   }
   render(){
     return (
@@ -74,7 +80,7 @@ class Homepage extends Component{
           <Text>Remover anúncios</Text>
         </TouchableHighlight>
 
-        {this.state.visible && (<ExtraHome close={this.ClosePopUp}/>)}
+        {this.state.visible && (<ExtraHome close={this.ClosePopUp} setAdm={this.setAdm}/>)}
       </View>
     )
   }

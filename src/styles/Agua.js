@@ -144,7 +144,6 @@ const aguaOptions = StyleSheet.create({
         textAlign: 'center',
         fontSize: 25,
         margin: 20,
-        marginTop: 50,
     },
     subtitle:{
         fontSize: 25,
@@ -202,6 +201,10 @@ const aguaOptions = StyleSheet.create({
     textButton:{
         fontSize: 20,
         color: 'white'
+    },
+    quantidade:{
+        fontSize: 15,
+        marginBottom: 10
     }
 })
 

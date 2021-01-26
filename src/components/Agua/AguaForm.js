@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {aguaForm} from '../../styles/Agua'
+import Water from '../../Model/water'
+import Agua from '../../Database/agua'
 
 class AguaForm extends Component{
     constructor(props){
@@ -10,6 +12,13 @@ class AguaForm extends Component{
             horas: '',
         }
     }
+
+    insert(litros,horas){
+        const water = new Water(litros,horas)
+        const agua = new Agua
+        agua.insert(water)
+    }
+
     render() {
         return(
             <View style={aguaForm.container}>
@@ -63,6 +72,7 @@ class AguaForm extends Component{
                         if(parseInt(this.state.horas)<10){
                             this.setState({horas: '10'})
                         }
+                        
                         this.props.navigation.navigate('AguaSuccessful')
                         }}>
                         <Text style={aguaForm.confirmar}>Confirmar</Text>
