@@ -10,15 +10,19 @@ import lua from '../img/lua-crescente.png'
 import config from '../img/configuracao.png'
 import ExtraHome from './Extra/ExtraHome';
 
+import Agua from '../Database/agua'
+
 class Homepage extends Component{
   constructor(props){
     super(props)
     this.state = {
       visible: false,
-      adm:false
+      adm:false,
+      aguaVisited: false
     }
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
+    this.select()
   }
 
   ClosePopUp(){
@@ -28,13 +32,29 @@ class Homepage extends Component{
   setAdm(){
     this.setState({adm:true})
   }
+
+  async select(){
+    const agua = new Agua
+    await agua.select().then( value => {
+      if(value[0].id !== undefined){
+        this.setState({aguaVisited: true})
+      }
+    })
+  }
+
   render(){
     return (
       <View style={styles.container}> 
         <Text style={styles.title}>Day by day</Text>
         <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
 
-        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={()=>this.props.navigation.navigate('AguaHome')}>
+        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={()=>{
+          if(this.state.aguaVisited){
+            this.props.navigation.navigate('AguaOptions')
+          }else{
+            this.props.navigation.navigate('AguaHome')
+          }
+          }}>
           <View style={styles.Buttoncontainer}>
             <Image source={copoDeagua} style={styles.img}/>
             <Text style={{fontSize: 20}}>Lembrete de água</Text>
