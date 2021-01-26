@@ -93,6 +93,9 @@ class App extends Component{
             options={{ headerShown: false }}
             name="MassaForm"
             component={MassaForm}
+            initialParams={{
+              edit:false
+            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}

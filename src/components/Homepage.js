@@ -22,7 +22,6 @@ class Homepage extends Component{
     }
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
-    this.select()
   }
 
   ClosePopUp(){
@@ -33,7 +32,7 @@ class Homepage extends Component{
     this.setState({adm:true})
   }
 
-  async select(){
+  async selectAgua(){
     const agua = new Agua
     await agua.select().then( value => {
       if(value[0].id !== undefined){
@@ -48,7 +47,8 @@ class Homepage extends Component{
         <Text style={styles.title}>Day by day</Text>
         <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
 
-        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={()=>{
+        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={async ()=>{
+          await this.selectAgua()
           if(this.state.aguaVisited){
             this.props.navigation.navigate('AguaOptions')
           }else{

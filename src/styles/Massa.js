@@ -162,7 +162,7 @@ const massaFinal = StyleSheet.create({
     mensagem:{
         fontSize: 23,
         textAlign: 'center',
-        width: '90%',
+        width: '92%',
         marginBottom: 20
     },
     peso:{

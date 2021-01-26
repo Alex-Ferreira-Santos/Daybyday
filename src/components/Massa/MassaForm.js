@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {massaForm} from '../../styles/Massa'
+import Massa from '../../Database/massa'
+import Mass from '../../Model/mass'
 
 class MassaForm extends Component {
     constructor(props){
@@ -10,7 +12,21 @@ class MassaForm extends Component {
             peso: ''
         }
     }
+
+    insert(altura,peso){
+        const mass = new Mass(altura,peso)
+        const massa = new Massa
+        massa.insert(mass)
+    }
+
+    update(altura,peso){
+        const mass = new Mass(altura,peso)
+        const massa = new Massa
+        massa.update(mass)
+    }
+
     render(){
+        const params = this.props.route.params
         return(
             <View style={massaForm.container}>
                 <Text style={massaForm.title}>Massa Corporal</Text>
@@ -57,6 +73,11 @@ class MassaForm extends Component {
                         if(this.state.altura === '' || this.state.peso === ''){
                             alert('Ainda há campos incompletos')
                             return
+                        }
+                        if(params.edit){
+                            this.update(this.state.altura,this.state.peso)
+                        }else{
+                            this.insert(this.state.altura,this.state.peso)
                         }
                         this.props.navigation.navigate('MassaData')
                     }} keyboardType='number-pad'>
