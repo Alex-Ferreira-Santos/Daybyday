@@ -11,6 +11,7 @@ import config from '../img/configuracao.png'
 import ExtraHome from './Extra/ExtraHome';
 
 import Agua from '../Database/agua'
+import Massa from '../Database/massa';
 
 class Homepage extends Component{
   constructor(props){
@@ -18,7 +19,8 @@ class Homepage extends Component{
     this.state = {
       visible: false,
       adm:false,
-      aguaVisited: false
+      aguaVisited: false,
+      massaVisited: false
     }
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
@@ -37,6 +39,15 @@ class Homepage extends Component{
     await agua.select().then( value => {
       if(value[0].id !== undefined){
         this.setState({aguaVisited: true})
+      }
+    })
+  }
+
+  async selectMassa(){
+    const massa = new Massa
+    await massa.select().then( value => {
+      if(value[0].id !== undefined){
+        this.setState({massaVisited: true})
       }
     })
   }
@@ -68,7 +79,14 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.peso]} underlayColor='#B6A721' onPress={()=>this.props.navigation.navigate('MassaHome')}>
+        <TouchableHighlight style={[styles.touchable,styles.peso]} underlayColor='#B6A721' onPress={async ()=>{
+          await this.selectMassa()
+          if(this.state.massaVisited){
+            this.props.navigation.navigate('MassaFinal')
+          }else{
+            this.props.navigation.navigate('MassaHome')
+          }
+          }}>
           <View style={styles.Buttoncontainer}>
             <Image source={peso} style={styles.img}/>
             <Text style={{fontSize: 20}}>Massa corporal</Text>
