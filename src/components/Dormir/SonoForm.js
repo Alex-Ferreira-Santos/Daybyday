@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight,TextInput} from 'react-native'
 import {sonoForm} from '../../styles/Sono'
 import DateTimePicker from '@react-native-community/datetimepicker'
+import Sono from '../../Database/Sono';
+import Sleep from '../../Model/sleep'
 
 class SonoForm extends Component{
     constructor(props){
@@ -12,7 +14,21 @@ class SonoForm extends Component{
             sleep: ''
         }
     }
+
+    insert(horasDormidas,horaAcordar){
+        const sono = new Sono
+        const sleep = new Sleep(horasDormidas,horaAcordar)
+        sono.insert(sleep)
+    }
+
+    update(horasDormidas,horaAcordar){
+        const sono = new Sono
+        const sleep = new Sleep(horasDormidas,horaAcordar)
+        sono.update(sleep)
+    }
+
     render(){
+        const params = this.props.route.params
         return (
             <View style={sonoForm.container}>
                 <Text style={sonoForm.title}>Auxiliador de sono</Text>
@@ -51,9 +67,12 @@ class SonoForm extends Component{
                             alert('Ainda há campos incompletos')
                             return
                         }
-
+                        if(params.edit){
+                            this.update(this.state.sleep,this.state.hour)
+                        }else{
+                            this.insert(this.state.sleep,this.state.hour)
+                        }
                         this.props.navigation.navigate('SonoData')
-                        
                     }}>
                         <Text style={sonoForm.textButton}>Confirmar</Text>
                     </TouchableHighlight>

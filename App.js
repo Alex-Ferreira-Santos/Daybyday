@@ -144,6 +144,9 @@ class App extends Component{
             options={{ headerShown: false }}
             name="SonoForm"
             component={SonoForm}
+            initialParams={{
+              edit: false
+            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}

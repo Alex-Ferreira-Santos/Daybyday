@@ -12,6 +12,7 @@ import ExtraHome from './Extra/ExtraHome';
 
 import Agua from '../Database/agua'
 import Massa from '../Database/massa';
+import Sono from '../Database/Sono';
 
 class Homepage extends Component{
   constructor(props){
@@ -20,7 +21,8 @@ class Homepage extends Component{
       visible: false,
       adm:false,
       aguaVisited: false,
-      massaVisited: false
+      massaVisited: false,
+      sonoVisited: false,
     }
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
@@ -37,7 +39,7 @@ class Homepage extends Component{
   async selectAgua(){
     const agua = new Agua
     await agua.select().then( value => {
-      if(value[0].id !== undefined){
+      if(value[0] !== undefined){
         this.setState({aguaVisited: true})
       }
     })
@@ -46,8 +48,17 @@ class Homepage extends Component{
   async selectMassa(){
     const massa = new Massa
     await massa.select().then( value => {
-      if(value[0].id !== undefined){
+      if(value[0] !== undefined){
         this.setState({massaVisited: true})
+      }
+    })
+  }
+
+  async selectSono(){
+    const sono = new Sono
+    await sono.select().then( value => {
+      if(value[0] !== undefined){
+        this.setState({sonoVisited: true})
       }
     })
   }
@@ -100,7 +111,14 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={()=>this.props.navigation.navigate('SonoHome')}>
+        <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={async ()=>{
+          await this.selectSono()
+          if(this.state.sonoVisited){
+            this.props.navigation.navigate('SonoData')
+          }else{
+            this.props.navigation.navigate('SonoHome')
+          }
+          }}>
           <View style={styles.Buttoncontainer}>
             <Image source={lua} style={styles.img}/>
             <Text style={{fontSize: 20,color: 'white'}}>Auxiliador de sono</Text>
