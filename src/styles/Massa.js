@@ -120,7 +120,8 @@ const massaData = StyleSheet.create({
     customText:{
         fontSize: 20,
         textAlign: 'center',
-        marginTop: 20
+        marginTop: 20,
+        width: '90%'
     },
     button:{
         backgroundColor: '#323301',
