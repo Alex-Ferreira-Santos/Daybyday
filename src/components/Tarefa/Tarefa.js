@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native'
 import {tarefa} from '../../styles/Tarefa'
 import CheckBox from '@react-native-community/checkbox'
+import TarefaDB from '../../Database/tarefa';
 
 class Tarefa extends Component {
     constructor(props){
@@ -13,6 +14,12 @@ class Tarefa extends Component {
             textLate: '',
         }
     }
+
+    updateCheck(){
+        const tarefa = new TarefaDB
+        tarefa.updateConcluido(!this.state.checked,this.props.id)
+    }
+
     render() {
         if(this.props.data < Date().slice(3,21)){
             this.state.late = tarefa.late
@@ -22,6 +29,13 @@ class Tarefa extends Component {
                 this.state.textLate = tarefa.textLate
             }   
         }
+        if(this.props.concluido == 'true'){
+            this.state.checked = true
+            this.state.done = tarefa.done
+        }else{
+            this.state.checked = false
+        }
+        // tem que modificar a check box
         return(
             <View style={[tarefa.container,this.state.late,this.state.done]}>
                 <View style={tarefa.box}>
@@ -32,6 +46,7 @@ class Tarefa extends Component {
                             this.setState({done: ''})
                         }
                         this.setState({checked: value})
+                        this.updateCheck()
                         
                     }}/></Text>
                 </View>

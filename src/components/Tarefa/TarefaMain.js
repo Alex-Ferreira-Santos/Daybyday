@@ -66,7 +66,7 @@ class TarefaMain extends Component{
                     </View>
                     <ScrollView style={tarefaMain.scroll}>
                         {this.state.show && (<View>
-                        {params.tarefa.map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go} id={tarefa.id}/>))}
+                        {params.tarefa.map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go} id={tarefa.id} concluido={tarefa.concluido}/>))}
                         </View>)}
                         
                         
