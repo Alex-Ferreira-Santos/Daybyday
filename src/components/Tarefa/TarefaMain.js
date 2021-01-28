@@ -10,7 +10,7 @@ class TarefaMain extends Component{
         this.state = {
             tarefa:[],
             tarefaExclude: [],
-            select: ''
+            show: false
         }
         this.tarefa = []
         this.tarefaExclude = []
@@ -39,6 +39,9 @@ class TarefaMain extends Component{
 
     render() {
         const params = this.props.route.params
+        if(params.tarefa !== ''){
+            this.state.show = true
+        }
         return(
             <View style={tarefaMain.container}>
                 <Text style={tarefaMain.title}>Suas tarefas</Text>
@@ -62,12 +65,12 @@ class TarefaMain extends Component{
                         </View>
                     </View>
                     <ScrollView style={tarefaMain.scroll}>
-                        <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
-                        <Tarefa descricao={'Titulo 2'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
-
+                        {this.state.show && (<View>
                         {params.tarefa.map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go} id={tarefa.id}/>))}
+                        </View>)}
                         
-                    </ScrollView>
+                        
+                    </ScrollView> 
                 </View>
                 <TouchableHighlight style={tarefaMain.button} underlayColor='#5B0000' onPress={()=>this.props.navigation.navigate('TarefaForm')}>
                     <Text style={tarefaMain.buttonText}>Inserir nova tarefa</Text>

@@ -24,14 +24,14 @@ class TarefaForm extends Component {
         this.tarefa = []
     }
 
-    async insert(titulo,descricao,dataDeTermino,prioridade){
-        const task = new Task(titulo,descricao,dataDeTermino,prioridade)
+    async insert(titulo,descricao,dataDeTermino,prioridade,concluido){
+        const task = new Task(titulo,descricao,dataDeTermino,prioridade,concluido)
         const tarefa = new TarefaDB
         await tarefa.insert(task)
     }
 
-    async update(titulo,descricao,dataDeTermino,prioridade,id){
-        const task = new Task(titulo,descricao,dataDeTermino,prioridade)
+    async update(titulo,descricao,dataDeTermino,prioridade,concluido,id){
+        const task = new Task(titulo,descricao,dataDeTermino,prioridade,concluido)
         const tarefa = new TarefaDB
         await tarefa.update(task,id)
     }
@@ -122,10 +122,10 @@ class TarefaForm extends Component {
                             return
                         }
                         if(params.buttonText === 'Inserir'){
-                            this.insert(this.state.title,this.state.description,this.state.time,this.state.priority)
+                            this.insert(this.state.title,this.state.description,this.state.time,this.state.priority,false)
                             alert(`tarefa ${this.state.title} inserida com sucesso`)
                         }else{
-                            await this.update(this.state.title,this.state.description,this.state.time,this.state.priority,params.id)
+                            await this.update(this.state.title,this.state.description,this.state.time,this.state.priority,false,params.id)
                             alert(`tarefa ${this.state.title} editada com sucesso`)
                         }
                         await this.select()
