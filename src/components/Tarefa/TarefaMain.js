@@ -1,17 +1,47 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
+import TarefaDB from '../../Database/tarefa';
 import {tarefaMain} from '../../styles/Tarefa'
 import Tarefa from './Tarefa';
 
 class TarefaMain extends Component{
     constructor(props){
         super(props)
+        this.state = {
+            tarefa:[]
+        }
+        this.tarefa = []
         this.go = this.go.bind(this)
+        this.select()
     }
+
     go(){
         this.props.navigation.navigate('TarefaDetail')
     }
+
+    async select(){
+        const tarefa = new TarefaDB
+        await tarefa.select().then( value => {
+            this.atribuiValor(value,this.tarefa)
+        })
+        this.setState({tarefa:this.tarefa})
+    }
+
+    atribuiValor(data,array){
+        array.push(data)
+        if(array.length > 1){
+          array.shift()
+        }
+    }
+
     render() {
+        if(this.state.tarefa[0] === undefined){
+            return(
+                <View style={{flex:1,justifyContent: 'center',alignItems: 'center',backgroundColor:'#B94B4B'}}>
+                    <Text style={{fontSize: 50}}>Loading...</Text>
+                </View>
+            )
+        }
         return(
             <View style={tarefaMain.container}>
                 <Text style={tarefaMain.title}>Suas tarefas</Text>
@@ -37,6 +67,8 @@ class TarefaMain extends Component{
                     <ScrollView style={tarefaMain.scroll}>
                         <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
                         <Tarefa descricao={'Titulo 2'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
+                        
+                        {this.state.tarefa[0].map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go}/>))}
                         
                     </ScrollView>
                 </View>

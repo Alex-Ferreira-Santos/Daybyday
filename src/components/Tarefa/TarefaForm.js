@@ -3,6 +3,8 @@ import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {tarefaForm,pickerSelectStyles} from '../../styles/Tarefa'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import RNPickerSelect from 'react-native-picker-select' ;
+import Task from '../../Model/task'
+import TarefaDB from '../../Database/tarefa';
 
 class TarefaForm extends Component {
     constructor(props){
@@ -18,6 +20,18 @@ class TarefaForm extends Component {
             show: false,
             mode: 'date'
         }
+    }
+
+    insert(titulo,descricao,dataDeTermino,prioridade){
+        const task = new Task(titulo,descricao,dataDeTermino,prioridade)
+        const tarefa = new TarefaDB
+        tarefa.insert(task)
+    }
+
+    update(titulo,descricao,dataDeTermino,prioridade){
+        const task = new Task(titulo,descricao,dataDeTermino,prioridade)
+        const tarefa = new TarefaDB
+        tarefa.update(task)
     }
 
     render(){
@@ -90,13 +104,14 @@ class TarefaForm extends Component {
                             alert('Ainda há campos incompletos')
                             return
                         }
-                        if(this.state.buttonText === ''){
-                            alert('tarefa inserida com sucesso')
+                        if(params.buttonText === 'Inserir'){
+                            this.insert(this.state.title,this.state.description,this.state.time,this.state.priority)
+                            alert(`tarefa ${this.state.title} inserida com sucesso`)
                         }else{
-                            alert('tarefa x editada com sucesso')
+                            this.update(this.state.title,this.state.description,this.state.time,this.state.priority)
+                            alert(`tarefa ${this.state.title} editada com sucesso`)
                         }
-
-                        this.props. navigation.navigate('TarefaMain')
+                        this.props.navigation.navigate('TarefaMain')
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
                     </TouchableHighlight>
