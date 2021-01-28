@@ -13,6 +13,7 @@ import ExtraHome from './Extra/ExtraHome';
 import Agua from '../Database/agua'
 import Massa from '../Database/massa';
 import Sono from '../Database/Sono';
+import TarefaDB from '../Database/tarefa';
 
 class Homepage extends Component{
   constructor(props){
@@ -23,6 +24,7 @@ class Homepage extends Component{
       aguaVisited: false,
       massaVisited: false,
       sonoVisited: false,
+      tarefaVisited: false,
     }
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
@@ -59,6 +61,15 @@ class Homepage extends Component{
     await sono.select().then( value => {
       if(value[0] !== undefined){
         this.setState({sonoVisited: true})
+      }
+    })
+  }
+
+  async selectTarefa(){
+    const tarefa = new TarefaDB
+    await tarefa.select().then( value => {
+      if(value[0] !== undefined){
+        this.setState({tarefaVisited: true})
       }
     })
   }
@@ -104,7 +115,14 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={()=>this.props.navigation.navigate('TarefaHome')}>
+        <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={async ()=>{
+          await this.selectTarefa()
+          if(this.state.tarefaVisited){
+            this.props.navigation.navigate('TarefaMain')
+          }else{
+            this.props.navigation.navigate('TarefaHome')
+          }
+          }}>
           <View style={styles.Buttoncontainer}>
             <Image source={lista} style={styles.img}/>
             <Text style={{fontSize: 20}}>Lista de tarefas</Text>

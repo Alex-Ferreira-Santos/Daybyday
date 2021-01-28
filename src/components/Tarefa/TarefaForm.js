@@ -21,7 +21,6 @@ class TarefaForm extends Component {
     }
 
     render(){
-        console.log(JSON.stringify(this.props.route))
         const params = this.props.route.params
         return (
             <View style={tarefaForm.container}>
