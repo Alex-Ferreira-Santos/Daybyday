@@ -22,10 +22,10 @@ class TarefaForm extends Component {
         }
     }
 
-    insert(titulo,descricao,dataDeTermino,prioridade){
+    async insert(titulo,descricao,dataDeTermino,prioridade){
         const task = new Task(titulo,descricao,dataDeTermino,prioridade)
         const tarefa = new TarefaDB
-        tarefa.insert(task)
+        await tarefa.insert(task)
     }
 
     async update(titulo,descricao,dataDeTermino,prioridade,id){

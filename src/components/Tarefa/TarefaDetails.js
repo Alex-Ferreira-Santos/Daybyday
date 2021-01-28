@@ -68,7 +68,7 @@ class TarefaDetail extends Component {
                         </TouchableHighlight>
                     </View>
                 </View>
-                {this.state.show && (<TarefaPopup hide={this.hide} goback={this.goback} titulo={params.tarefa.titulo}/>)}
+                {this.state.show && (<TarefaPopup hide={this.hide} goback={this.goback} titulo={params.tarefa.titulo} id={params.tarefa.id}/>)}
             </View>
         )
     }

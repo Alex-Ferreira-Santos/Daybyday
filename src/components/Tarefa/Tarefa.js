@@ -14,6 +14,14 @@ class Tarefa extends Component {
         }
     }
     render() {
+        if(this.props.data < Date().slice(3,21)){
+            this.state.late = tarefa.late
+            if(this.state.checked){
+                this.state.textLate = {color: 'black'}
+            }else{
+                this.state.textLate = tarefa.textLate
+            }   
+        }
         return(
             <View style={[tarefa.container,this.state.late,this.state.done]}>
                 <View style={tarefa.box}>
