@@ -25,7 +25,9 @@ class Homepage extends Component{
       massaVisited: false,
       sonoVisited: false,
       tarefaVisited: false,
+      tarefa: []
     }
+    this.tarefa = []
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
   }
@@ -71,7 +73,16 @@ class Homepage extends Component{
       if(value[0] !== undefined){
         this.setState({tarefaVisited: true})
       }
+      this.atribuiValor(value,this.tarefa)
     })
+    this.setState({tarefa:this.tarefa})
+  }
+
+  atribuiValor(data,array){
+      array.push(data)
+      if(array.length > 1){
+        array.shift()
+      }
   }
 
   render(){
@@ -118,7 +129,7 @@ class Homepage extends Component{
         <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={async ()=>{
           await this.selectTarefa()
           if(this.state.tarefaVisited){
-            this.props.navigation.navigate('TarefaMain')
+            this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
           }else{
             this.props.navigation.navigate('TarefaHome')
           }

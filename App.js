@@ -116,6 +116,9 @@ class App extends Component{
             options={{ headerShown: false }}
             name="TarefaMain"
             component={TarefaMain}
+            initialParams={{
+              tarefa:''
+            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}

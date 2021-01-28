@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native'
+import TarefaDB from '../../Database/tarefa';
 import {tarefaDetails} from '../../styles/Tarefa'
 import TarefaPopup from './TarefaPopup'
 
@@ -12,17 +13,35 @@ class TarefaDetail extends Component {
             checked: '',
             buttonText: 'Concluir',
             show: false,
+            tarefa: []
         }
+        this.tarefa = []
         this.hide = this.hide.bind(this)
         this.goback = this.goback.bind(this)
+    }
+
+    async select(){
+        const tarefa = new TarefaDB
+        await tarefa.select().then( value => {
+            this.atribuiValor(value,this.tarefa)
+        })
+        this.setState({tarefa:this.tarefa})
+    }
+
+    atribuiValor(data,array){
+        array.push(data)
+        if(array.length > 1){
+          array.shift()
+        }
     }
 
     hide(){
         this.setState({show: false})
     }
 
-    goback(){
-        this.props.navigation.navigate('TarefaMain')
+    async goback(){
+        await this.select()
+        this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
     }
 
     render() {
@@ -59,7 +78,7 @@ class TarefaDetail extends Component {
                             underlayColor:'#B6B916',
                             buttonText: 'Editar',
                             buttonTextColor:{color:'black'},
-                            id: params.tarefa.id
+                            id: params.tarefa.id,
                         })}>
                             <Text style={tarefaDetails.buttonText}>Editar</Text>
                         </TouchableHighlight>

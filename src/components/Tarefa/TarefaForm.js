@@ -19,7 +19,9 @@ class TarefaForm extends Component {
             priority:'',
             show: false,
             mode: 'date',
+            tarefa: []
         }
+        this.tarefa = []
     }
 
     async insert(titulo,descricao,dataDeTermino,prioridade){
@@ -32,6 +34,21 @@ class TarefaForm extends Component {
         const task = new Task(titulo,descricao,dataDeTermino,prioridade)
         const tarefa = new TarefaDB
         await tarefa.update(task,id)
+    }
+
+    async select(){
+        const tarefa = new TarefaDB
+        await tarefa.select().then( value => {
+            this.atribuiValor(value,this.tarefa)
+        })
+        this.setState({tarefa:this.tarefa})
+    }
+
+    atribuiValor(data,array){
+        array.push(data)
+        if(array.length > 1){
+          array.shift()
+        }
     }
 
     render(){
@@ -111,7 +128,8 @@ class TarefaForm extends Component {
                             await this.update(this.state.title,this.state.description,this.state.time,this.state.priority,params.id)
                             alert(`tarefa ${this.state.title} editada com sucesso`)
                         }
-                        this.props.navigation.navigate('TarefaMain')
+                        await this.select()
+                        this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
                     </TouchableHighlight>

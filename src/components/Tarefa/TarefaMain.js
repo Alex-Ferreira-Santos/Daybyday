@@ -10,24 +10,16 @@ class TarefaMain extends Component{
         this.state = {
             tarefa:[],
             tarefaExclude: [],
+            select: ''
         }
         this.tarefa = []
         this.tarefaExclude = []
         this.go = this.go.bind(this)
-        this.select()
     }
 
     async go(id){
         await this.selectByIdTarefaToExclude(id)
         this.props.navigation.navigate('TarefaDetail',{tarefa:this.state.tarefaExclude[0]})
-    }
-
-    async select(){
-        const tarefa = new TarefaDB
-        await tarefa.select().then( value => {
-            this.atribuiValor(value,this.tarefa)
-        })
-        this.setState({tarefa:this.tarefa})
     }
 
     async selectByIdTarefaToExclude(id){
@@ -46,13 +38,7 @@ class TarefaMain extends Component{
     }
 
     render() {
-        if(this.state.tarefa[0] === undefined){
-            return(
-                <View style={{flex:1,justifyContent: 'center',alignItems: 'center',backgroundColor:'#B94B4B'}}>
-                    <Text style={{fontSize: 50}}>Loading...</Text>
-                </View>
-            )
-        }
+        const params = this.props.route.params
         return(
             <View style={tarefaMain.container}>
                 <Text style={tarefaMain.title}>Suas tarefas</Text>
@@ -79,7 +65,7 @@ class TarefaMain extends Component{
                         <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
                         <Tarefa descricao={'Titulo 2'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
 
-                        {this.state.tarefa[0].map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go} id={tarefa.id}/>))}
+                        {params.tarefa.map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go} id={tarefa.id}/>))}
                         
                     </ScrollView>
                 </View>
