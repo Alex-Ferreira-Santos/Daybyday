@@ -26,17 +26,18 @@ class TarefaDetail extends Component {
     }
 
     render() {
+        const params = this.props.route.params
         return (
             <View style={tarefaDetails.container}>
                 <Text style={tarefaDetails.pageTitle}>Detalhes</Text>
                 <View style={[tarefaDetails.main,this.state.done]}>
-                    <Text style={tarefaDetails.title}>Estudar para prova</Text>
+                    <Text style={tarefaDetails.title}>{params.tarefa.titulo}</Text>
                     <Text style={tarefaDetails.category}>Descrição</Text>
-                    <Text style={tarefaDetails.text}>copiar os a materia para poder estudar para a prova de matematica do dia 29</Text>
+                    <Text style={tarefaDetails.text}>{params.tarefa.descricao}</Text>
                     <Text style={tarefaDetails.category}>Data de término</Text>
-                    <Text style={[tarefaDetails.text,this.state.textLate]}>Jan 22 2021 14:00</Text>
+                    <Text style={[tarefaDetails.text,this.state.textLate]}>{params.tarefa.dataDeTermino}</Text>
                     <Text style={tarefaDetails.category}>Prioridade</Text>
-                    <Text style={tarefaDetails.text}>Média</Text>
+                    <Text style={tarefaDetails.text}>{params.tarefa.prioridade}</Text>
                     <TouchableHighlight style={[tarefaDetails.concluir,this.state.checked]} underlayColor='#367720' onPress={()=>{
                         if(this.state.buttonText === 'Concluir'){
                             this.setState({done: tarefaDetails.done})
@@ -53,11 +54,12 @@ class TarefaDetail extends Component {
                     <View style={tarefaDetails.buttons}>
                         <TouchableHighlight style={tarefaDetails.editar} underlayColor='#B6B916' onPress={()=>this.props.navigation.navigate('TarefaForm',{
                             title:'Editar a tarefa',
-                            taskName:'teste de tarefa',
+                            taskName:params.tarefa.titulo,
                             buttonColor:{backgroundColor:'#D3D713'},
                             underlayColor:'#B6B916',
                             buttonText: 'Editar',
-                            buttonTextColor:{color:'black'}
+                            buttonTextColor:{color:'black'},
+                            id: params.tarefa.id
                         })}>
                             <Text style={tarefaDetails.buttonText}>Editar</Text>
                         </TouchableHighlight>
@@ -66,7 +68,7 @@ class TarefaDetail extends Component {
                         </TouchableHighlight>
                     </View>
                 </View>
-                {this.state.show && (<TarefaPopup hide={this.hide} goback={this.goback}/>)}
+                {this.state.show && (<TarefaPopup hide={this.hide} goback={this.goback} titulo={params.tarefa.titulo}/>)}
             </View>
         )
     }

@@ -8,15 +8,18 @@ class TarefaMain extends Component{
     constructor(props){
         super(props)
         this.state = {
-            tarefa:[]
+            tarefa:[],
+            tarefaExclude: [],
         }
         this.tarefa = []
+        this.tarefaExclude = []
         this.go = this.go.bind(this)
         this.select()
     }
 
-    go(){
-        this.props.navigation.navigate('TarefaDetail')
+    async go(id){
+        await this.selectByIdTarefaToExclude(id)
+        this.props.navigation.navigate('TarefaDetail',{tarefa:this.state.tarefaExclude[0]})
     }
 
     async select(){
@@ -25,6 +28,14 @@ class TarefaMain extends Component{
             this.atribuiValor(value,this.tarefa)
         })
         this.setState({tarefa:this.tarefa})
+    }
+
+    async selectByIdTarefaToExclude(id){
+        const tarefa = new TarefaDB 
+        await tarefa.SelectById(id).then(data => {
+          this.atribuiValor(data,this.tarefaExclude)
+        })
+        this.setState({tarefaExclude: this.tarefaExclude})
     }
 
     atribuiValor(data,array){
@@ -67,8 +78,8 @@ class TarefaMain extends Component{
                     <ScrollView style={tarefaMain.scroll}>
                         <Tarefa descricao={'estudar para a prova do dia 14'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
                         <Tarefa descricao={'Titulo 2'} data={'Jan 22 2021 14:00'} prioridade={'média'} go={this.go}/>
-                        
-                        {this.state.tarefa[0].map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go}/>))}
+
+                        {this.state.tarefa[0].map( tarefa => (<Tarefa key={tarefa.id} descricao={tarefa.titulo} data={tarefa.dataDeTermino} prioridade={tarefa.prioridade} go={this.go} id={tarefa.id}/>))}
                         
                     </ScrollView>
                 </View>

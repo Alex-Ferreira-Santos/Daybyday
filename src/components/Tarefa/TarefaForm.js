@@ -18,7 +18,7 @@ class TarefaForm extends Component {
             time: '',
             priority:'',
             show: false,
-            mode: 'date'
+            mode: 'date',
         }
     }
 
@@ -28,10 +28,10 @@ class TarefaForm extends Component {
         tarefa.insert(task)
     }
 
-    update(titulo,descricao,dataDeTermino,prioridade){
+    async update(titulo,descricao,dataDeTermino,prioridade,id){
         const task = new Task(titulo,descricao,dataDeTermino,prioridade)
         const tarefa = new TarefaDB
-        tarefa.update(task)
+        await tarefa.update(task,id)
     }
 
     render(){
@@ -94,12 +94,12 @@ class TarefaForm extends Component {
                                 style={pickerSelectStyles}
                                 items={[
                                     { label: 'Baixa', value: 'Baixa'},
-                                    { label: 'Média', value: 'Media'},
+                                    { label: 'Média', value: 'Média'},
                                     { label: 'Alta', value: 'Alta'},
                                 ]}
                             />
                     </View>
-                    <TouchableHighlight underlayColor={params.underlayColor} style={[tarefaForm.button,params.buttonColor]} onPress={()=>{
+                    <TouchableHighlight underlayColor={params.underlayColor} style={[tarefaForm.button,params.buttonColor]} onPress={async ()=>{
                         if(this.state.title === '' || this.state.description === '' || this.state.time === '' || this.state.priority === ''){
                             alert('Ainda há campos incompletos')
                             return
@@ -108,7 +108,7 @@ class TarefaForm extends Component {
                             this.insert(this.state.title,this.state.description,this.state.time,this.state.priority)
                             alert(`tarefa ${this.state.title} inserida com sucesso`)
                         }else{
-                            this.update(this.state.title,this.state.description,this.state.time,this.state.priority)
+                            await this.update(this.state.title,this.state.description,this.state.time,this.state.priority,params.id)
                             alert(`tarefa ${this.state.title} editada com sucesso`)
                         }
                         this.props.navigation.navigate('TarefaMain')

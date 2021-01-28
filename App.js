@@ -128,12 +128,16 @@ class App extends Component{
               underlayColor: '#5B0000',
               buttonText: 'Inserir',
               buttonTextColor: 'white',
+              id:''
             }}
           />
           <Stack.Screen
             options={{ headerShown: false }}
             name="TarefaDetail"
             component={TarefaDetail}
+            initialParams={{
+              tarefa:''
+            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}

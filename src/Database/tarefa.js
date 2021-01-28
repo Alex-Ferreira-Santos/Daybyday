@@ -78,14 +78,14 @@ export default class TarefaDB{
         return new Promise( resolve => {
             this.initDB().then(db => {
                 db.transaction( tx => {
-                    tx.executeSql(`SELECT * FROM Tarefas WHERE id = ${id}`,[]).then(([tx, result]) => {
+                    tx.executeSql(`SELECT * FROM tarefa WHERE id = ${id}`,[]).then(([tx, result]) => {
                         if(result.rows.length > 0) {
                             let row = result.rows.item(0)
                             resolve(row)
                         }
                     })
                 }).then( result => {
-                    this.closeDatabase(db)
+                    this.closeDB(db)
                 }).catch( err => console.log(err))
             }).catch( err => console.log(err))
         })
@@ -95,7 +95,7 @@ export default class TarefaDB{
         return new Promise((resolve, reject) =>{
             this.initDB().then( db => {
                 db.transaction(tx => {
-                    tx.executeSql(`UPDATE tarefa SET titulo = ${task.titulo}, descricao = ${task.descricao}, dataDeTermino = ${task.dataDeTermino}, prioridade = ${task.prioridade} WHERE id = ${id}`,[]).then(([tx,results])=>{
+                    tx.executeSql(`UPDATE tarefa SET titulo = '${task.titulo}', descricao = '${task.descricao}', dataDeTermino = '${task.dataDeTermino}', prioridade = '${task.prioridade}' WHERE id = ${id}`,[]).then(([tx,results])=>{
                         resolve(results)
                     }) 
                 }).then((results)=>this.closeDB()).catch(err => console.log(err))
@@ -107,7 +107,7 @@ export default class TarefaDB{
         return new Promise((resolve, reject) => {
             this.initDB().then( db => {
                 db.transaction( tx => {
-                    tx.executeSql(`DELETE FROM Tarefas WHERE id = ${id}`,[]).then(([tx, result]) => {
+                    tx.executeSql(`DELETE FROM tarefa WHERE id = ${id}`,[]).then(([tx, result]) => {
                         console.log(result)
                         resolve(result)
                     })
