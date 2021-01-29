@@ -22,6 +22,12 @@ class AlimentacaoForm extends Component {
         alimentacao.insert(food)
     }
 
+    update(nome,imagem,ingredientes,modoDePreparo,fonte,id){
+        const alimentacao = new AlimentacaoDB
+        const food = new Food(nome,imagem,ingredientes,modoDePreparo,fonte)
+        alimentacao.update(food,id)
+    }
+
     render() {
         const params = this.props.route.params
         return(
@@ -61,11 +67,20 @@ class AlimentacaoForm extends Component {
                         }}/>
                     </View>
                     <TouchableHighlight style={[alimentacaoForm.button,params.buttonColor]} underlayColor={params.underlayColor} onPress={()=>{
-                        
-                            alert(`Receita ${this.state.name} inserida com sucesso`)
-                            this.insert(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font)
+                        if(this.state.name === '' || this.state.uri === '' || this.state.ingredients === '' || this.state.preparo === '' || this.state.font === ''){
+                            alert('Ainda há campos incompletos')
+                            return
+                        }else{
+                            if(params.buttonText === 'Editar'){
+                                this.update(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font,params.id)
+                                alert(`Receita ${this.state.name} editada com sucesso`)
+                            }else{
+                                this.insert(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font)
+                                alert(`Receita ${this.state.name} inserida com sucesso`)
+                            }
+                            
                             this.props.navigation.navigate('AlimentacaoMain')
-                        
+                        }
                     }}>
                         <Text style={alimentacaoForm.buttonText}>{params.buttonText}</Text>
                     </TouchableHighlight>

@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import { Linking } from 'react-native';
-import { TouchableOpacityBase } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
 import AlimentacaoPopup from './AlimentacaoPopup'
@@ -19,6 +18,7 @@ class AlimentacaoDieta extends Component {
         this.separaIngredientes = this.separaIngredientes.bind(this)
         this.separaIngredientes()
         this.separaLink()
+        this.buscaImagem()
     }
     goback(){
         this.setState({show: false})
@@ -35,6 +35,13 @@ class AlimentacaoDieta extends Component {
         const link = params.receita.fonte.split('/',3)
         this.state.link = link.join('/')
     }
+    buscaImagem(){
+        const params = this.props.route.params
+        let brocolis = 'brocolis.png'
+        console.log(params.receita.imagem)
+        this.state.image = require(`../../img/${brocolis}`)
+    }
+    // renderizar imagens dinamicamente
     render() {
         const params = this.props.route.params
         return(
@@ -63,7 +70,7 @@ class AlimentacaoDieta extends Component {
                         <Text style={alimentacaoDieta.buttonText}>Voltar</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm',{title: 'Editar a receita', receita: 'Chips assado de batata doce e alecrim', buttonColor: {backgroundColor: '#A59F1A'},buttonText:'Editar',underlayColor:'#8D8918'})}>
+                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm',{title: 'Editar a receita', receita: params.receita.nome, buttonColor: {backgroundColor: '#A59F1A'},buttonText:'Editar',underlayColor:'#8D8918',id:params.receita.id})}>
                         <Text style={alimentacaoDieta.buttonText}>Editar</Text>
                     </TouchableHighlight>
 

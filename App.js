@@ -81,7 +81,8 @@ class App extends Component{
               receita: '',
               buttonColor: '',
               buttonText: 'Inserir',
-              underlayColor: '#1D470E'
+              underlayColor: '#1D470E',
+              id:''
             }}
           />
           <Stack.Screen
