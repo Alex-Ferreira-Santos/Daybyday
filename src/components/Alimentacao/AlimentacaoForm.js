@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableHighlight,TextInput,ScrollView} from 'react-native'
 import {alimentacaoForm} from '../../styles/Alimentacao'
+import AlimentacaoDB from '../../Database/alimetacao'
+import Food from '../../Model/food'
 
 class AlimentacaoForm extends Component {
     constructor(props){
@@ -14,10 +16,12 @@ class AlimentacaoForm extends Component {
         }
     }
 
-    insert(){
-
+    insert(nome,imagem,ingredientes,modoDePreparo,fonte){
+        const alimentacao = new AlimentacaoDB
+        const food = new Food(nome,imagem,ingredientes,modoDePreparo,fonte)
+        alimentacao.insert(food)
     }
-    
+
     render() {
         const params = this.props.route.params
         return(
@@ -52,18 +56,16 @@ class AlimentacaoForm extends Component {
                     </View>
                     <View style={alimentacaoForm.section}>
                         <Text style={alimentacaoForm.label}>Fonte da receita</Text>
-                        <TextInput placeholder='Digite a fonte da receita aqui' style={alimentacaoForm.input} onChange={value=>{
+                        <TextInput placeholder='Digite a fonte da receita aqui' style={alimentacaoForm.input} onChangeText={value=>{
                             this.setState({font: value})
                         }}/>
                     </View>
                     <TouchableHighlight style={[alimentacaoForm.button,params.buttonColor]} underlayColor={params.underlayColor} onPress={()=>{
-                        if(this.state.name === '' || this.state.ingredients === '' || this.state.preparo === '' || this.state.font === ''){
-                            alert('Ainda há campos incompletos')
-                            return
-                        }else{
-                            alert('Receita X inserida com sucesso')
+                        
+                            alert(`Receita ${this.state.name} inserida com sucesso`)
+                            this.insert(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font)
                             this.props.navigation.navigate('AlimentacaoMain')
-                        }
+                        
                     }}>
                         <Text style={alimentacaoForm.buttonText}>{params.buttonText}</Text>
                     </TouchableHighlight>

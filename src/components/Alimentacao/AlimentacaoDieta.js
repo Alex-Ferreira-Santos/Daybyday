@@ -3,13 +3,13 @@ import { Linking } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
 import AlimentacaoPopup from './AlimentacaoPopup'
-import chips from '../../img/chips-assado-de-batata-doce-e-alecrim.png'
 
 class AlimentacaoDieta extends Component {
     constructor(props){
         super(props)
         this.state = {
-            show: false
+            show: false,
+            image: require('../../img/chips-assado-de-batata-doce-e-alecrim.png')
         }
         this.goback = this.goback.bind(this)
         this.backToMain = this.backToMain.bind(this)
@@ -26,7 +26,7 @@ class AlimentacaoDieta extends Component {
                 <ScrollView style={alimentacaoDieta.main} contentContainerStyle={alimentacaoDieta.containerMain}>
                     <Text style={alimentacaoDieta.title}>Chips assado de batata doce e alecrim</Text>
 
-                    <Image source={chips} style={alimentacaoDieta.image}/>
+                    <Image source={this.state.image} style={alimentacaoDieta.image}/>
 
                     <Text style={alimentacaoDieta.subtitle}>Ingredientes</Text>
                     <View style={alimentacaoDieta.ingredients}>

@@ -14,15 +14,15 @@ export default class TarefaDB{
             console.log('abrindo o banco de dados')
             SQLite.openDatabase(database_name, database_version, database_display_name, database_size).then(DB =>{
                 db = DB
-                db.executeSql('SELECT 1 FROM alimentacao LIMIT 1').then(()=>{
+                db.executeSql('SELECT 1 FROM food LIMIT 1').then(()=>{
                     console.log('o banco de dados está aberto')
                 }).catch(error => {
                     console.log('erro recebido: ' + error)
                     console.log('criando banco de dados')
                     db.transaction(tx => {
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS alimentacao (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR(255) NOT NULL, imagem VARCHAR(255) NOT NULL, ingredientes VARCHAR(255) NOT NULL, modoDePreparo VARCHAR(255) NOT NULL, fonte VARCHAR(255) NOT NULL)')    
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS food (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR(255) NOT NULL, imagem VARCHAR(255) NOT NULL, ingredientes VARCHAR(255) NOT NULL, modoDePreparo VARCHAR(1000) NOT NULL, fonte VARCHAR(255) NOT NULL)')    
                     }).then(()=>{
-                        console.log('tabela alimentacao criada com sucesso')
+                        console.log('tabela food criada com sucesso')
                     }).catch(error=>{
                         console.log(error)
                     })
@@ -41,11 +41,11 @@ export default class TarefaDB{
         }
     }
 
-    insert(alimentacao){
+    insert(food){
         return new Promise(resolve =>{
             this.initDB().then(db => {
                 db.transaction(tx => {
-                    tx.executeSql('INSERT INTO alimentacao VALUES(?,?,?,?,?,?)',[alimentacao.id,alimentacao.nome,alimentacao.imagem,alimentacao.ingredientes,alimentacao.modoDePreparo,alimentacao.fonte]).then(([tx,results]) => {
+                    tx.executeSql('INSERT INTO food VALUES(?,?,?,?,?,?)',[food.id,food.nome,food.imagem,food.ingredientes,food.modoDePreparo,food.fonte]).then(([tx,results]) => {
                         resolve(results)
                     })
                 }).then( results => {
@@ -60,7 +60,7 @@ export default class TarefaDB{
             const products = []
             this.initDB().then( db => {
                 db.transaction( tx => {
-                    tx.executeSql('SELECT * FROM alimentacao',[]).then(([tx,result]) => {
+                    tx.executeSql('SELECT * FROM food',[]).then(([tx,result]) => {
                         var len = result.rows.length
                         for(let i = 0; i < len; i++){
                             let row = result.rows.item(i)
@@ -78,7 +78,7 @@ export default class TarefaDB{
         return new Promise( resolve => {
             this.initDB().then(db => {
                 db.transaction( tx => {
-                    tx.executeSql(`SELECT * FROM alimentacao WHERE id = ${id}`,[]).then(([tx, result]) => {
+                    tx.executeSql(`SELECT * FROM food WHERE id = ${id}`,[]).then(([tx, result]) => {
                         if(result.rows.length > 0) {
                             let row = result.rows.item(0)
                             resolve(row)
@@ -91,11 +91,11 @@ export default class TarefaDB{
         })
     }
 
-    update(alimentacao,id){
+    update(food,id){
         return new Promise((resolve, reject) =>{
             this.initDB().then( db => {
                 db.transaction(tx => {
-                    tx.executeSql(`UPDATE tarefa SET nome = '${alimentacao.nome}', imagem = '${alimentacao.imagem}', ingredientes = '${alimentacao.ingredientes}', modoDePreparo = '${alimentacao.modoDePreparo}', fonte = ${alimentacao.fonte} WHERE id = ${id}`,[]).then(([tx,results])=>{
+                    tx.executeSql(`UPDATE food SET nome = '${food.nome}', imagem = '${food.imagem}', ingredientes = '${food.ingredientes}', modoDePreparo = '${food.modoDePreparo}', fonte = '${food.fonte}' WHERE id = ${id}`,[]).then(([tx,results])=>{
                         resolve(results)
                     }) 
                 }).then((results)=>this.closeDB()).catch(err => console.log(err))
@@ -107,7 +107,7 @@ export default class TarefaDB{
         return new Promise((resolve, reject) => {
             this.initDB().then( db => {
                 db.transaction( tx => {
-                    tx.executeSql(`DELETE FROM alimentacao WHERE id = ${id}`,[]).then(([tx, result]) => {
+                    tx.executeSql(`DELETE FROM food WHERE id = ${id}`,[]).then(([tx, result]) => {
                         console.log(result)
                         resolve(result)
                     })
