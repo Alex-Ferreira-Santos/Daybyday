@@ -17,9 +17,9 @@ class TarefaMain extends Component{
         this.go = this.go.bind(this)
     }
 
-    async go(id){
+    async go(id,concluido){
         await this.selectByIdTarefaToExclude(id)
-        this.props.navigation.navigate('TarefaDetail',{tarefa:this.state.tarefaExclude[0]})
+        this.props.navigation.navigate('TarefaDetail',{tarefa:this.state.tarefaExclude[0],concluido:concluido})
     }
 
     async selectByIdTarefaToExclude(id){

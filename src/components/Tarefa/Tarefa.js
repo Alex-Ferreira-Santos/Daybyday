@@ -13,6 +13,15 @@ class Tarefa extends Component {
             late: '',
             textLate: '',
         }
+        this.carregarConcluido()
+    }
+    carregarConcluido(){
+        if(this.props.concluido == 'true'){
+            this.state.checked = true
+            this.state.done = tarefa.done
+        }else{
+            this.state.checked = false
+        }
     }
 
     updateCheck(){
@@ -29,13 +38,6 @@ class Tarefa extends Component {
                 this.state.textLate = tarefa.textLate
             }   
         }
-        if(this.props.concluido == 'true'){
-            this.state.checked = true
-            this.state.done = tarefa.done
-        }else{
-            this.state.checked = false
-        }
-        // tem que modificar a check box
         return(
             <View style={[tarefa.container,this.state.late,this.state.done]}>
                 <View style={tarefa.box}>
@@ -60,7 +62,7 @@ class Tarefa extends Component {
                     <Text style={tarefa.lowerText}>{this.props.prioridade}</Text>
                 </View>
                 <View style={tarefa.detail}>
-                    <TouchableHighlight underlayColor='white' onPress={()=>this.props.go(this.props.id)}>
+                    <TouchableHighlight underlayColor='white' onPress={()=>this.props.go(this.props.id,this.state.checked)}>
                         <Text style={[tarefa.lowerText,tarefa.textDetails]}>Detalhes</Text>
                     </TouchableHighlight> 
                 </View>

@@ -18,6 +18,7 @@ class TarefaDetail extends Component {
         this.tarefa = []
         this.hide = this.hide.bind(this)
         this.goback = this.goback.bind(this)
+        this.checkConcluido()
     }
 
     async select(){
@@ -48,6 +49,19 @@ class TarefaDetail extends Component {
         const tarefa = new TarefaDB
         const params = this.props.route.params
         tarefa.updateConcluido(concluido,params.tarefa.id)
+    }
+
+    checkConcluido(){
+        const params = this.props.route.params
+        if(params.concluido){
+            this.state.done = tarefaDetails.done
+            this.state.checked = tarefaDetails.unChecked
+            this.state.buttonText = 'Desfazer'
+        }else{
+            this.state.done = ''
+            this.state.checked = ''
+            this.state.buttonText = 'Concluir'
+        }
     }
 
     render() {
