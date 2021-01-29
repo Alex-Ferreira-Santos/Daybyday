@@ -8,9 +8,11 @@ class AlimentacaoMain extends Component{
         super(props)
         this.state = {
             lastColor:'',
-            alimentacao: []
+            alimentacao: [],
+            alimentacaoById: []
         }
         this.alimentacao = []
+        this.alimentacaoById = []
         this.corAleatoria = this.corAleatoria.bind(this)
         this.select()
     }
@@ -21,6 +23,14 @@ class AlimentacaoMain extends Component{
             this.atribuiValor(value,this.alimentacao)
         })
         this.setState({alimentacao:this.alimentacao})
+    }
+
+    async selectByIdTarefa(id){
+        const alimentacao = new AlimentacaoDB 
+        await alimentacao.SelectById(id).then(data => {
+          this.atribuiValor(data,this.alimentacaoById)
+        })
+        this.setState({alimentacaoById: this.alimentacaoById})
     }
 
     atribuiValor(data,array){
@@ -47,7 +57,6 @@ class AlimentacaoMain extends Component{
                 </View>
             )
         }
-        console.log(this.state.alimentacao[0])
         return ( 
             <View style={alimentacaoMain.container}>
                 <Text style={alimentacaoMain.title}>Alimentação</Text>
@@ -56,8 +65,12 @@ class AlimentacaoMain extends Component{
                     <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>this.props.navigation.navigate('AlimentacaoDieta')}>
                         <Text style={alimentacaoMain.dietaName}>Chips assado de batata doce e alecrim</Text>
                     </TouchableHighlight>
+
                     {this.state.alimentacao[0].map(receita => (
-                        <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>this.props.navigation.navigate('AlimentacaoDieta')}>
+                        <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={async ()=>{
+                            await this.selectByIdTarefa(receita.id)
+                            this.props.navigation.navigate('AlimentacaoDieta',{receita: this.state.alimentacaoById[0]})
+                            }} key={receita.id}>
                             <Text style={alimentacaoMain.dietaName}>{receita.nome}</Text>
                          </TouchableHighlight>
                     ))}

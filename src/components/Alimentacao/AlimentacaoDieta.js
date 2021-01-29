@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import { Linking } from 'react-native';
+import { TouchableOpacityBase } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
 import AlimentacaoPopup from './AlimentacaoPopup'
@@ -9,10 +10,15 @@ class AlimentacaoDieta extends Component {
         super(props)
         this.state = {
             show: false,
-            image: require('../../img/chips-assado-de-batata-doce-e-alecrim.png')
+            image: require('../../img/chips-assado-de-batata-doce-e-alecrim.png'),
+            ingredients: [],
+            link:''
         }
         this.goback = this.goback.bind(this)
         this.backToMain = this.backToMain.bind(this)
+        this.separaIngredientes = this.separaIngredientes.bind(this)
+        this.separaIngredientes()
+        this.separaLink()
     }
     goback(){
         this.setState({show: false})
@@ -20,27 +26,36 @@ class AlimentacaoDieta extends Component {
     backToMain(){
         this.props.navigation.navigate('AlimentacaoMain')
     }
+    separaIngredientes(){
+        const params = this.props.route.params
+        this.state.ingredients = params.receita.ingredientes.split(',')
+    }
+    separaLink(){
+        const params = this.props.route.params
+        const link = params.receita.fonte.split('/',3)
+        this.state.link = link.join('/')
+    }
     render() {
+        const params = this.props.route.params
         return(
             <View style={alimentacaoDieta.container}>
                 <ScrollView style={alimentacaoDieta.main} contentContainerStyle={alimentacaoDieta.containerMain}>
-                    <Text style={alimentacaoDieta.title}>Chips assado de batata doce e alecrim</Text>
+                    <Text style={alimentacaoDieta.title}>{params.receita.nome}</Text>
 
                     <Image source={this.state.image} style={alimentacaoDieta.image}/>
 
                     <Text style={alimentacaoDieta.subtitle}>Ingredientes</Text>
                     <View style={alimentacaoDieta.ingredients}>
-                        <Text style={alimentacaoDieta.bold}>{'\u2022'} 3 batatas-doces</Text>
-                        <Text style={alimentacaoDieta.bold}>{'\u2022'} Azeite de oliva</Text>
-                        <Text style={alimentacaoDieta.bold}>{'\u2022'} Sal e pimenta a gosto</Text>
-                        <Text style={alimentacaoDieta.bold}>{'\u2022'} Alecrim a gosto</Text>
+                        {this.state.ingredients.map( ingredients => (
+                            <Text style={alimentacaoDieta.bold} key={ingredients}>{'\u2022'} {ingredients}</Text>
+                        ))}
                     </View>
 
                     <Text style={alimentacaoDieta.subtitle}>Modo de preparo</Text>
 
-                    <Text style={alimentacaoDieta.preparo}>Lave as batatas. Com o auxílio de um mandolin, corte-as, com casca, em rodelas bem fininhas. Ajeite as fatias em uma assadeira coberta com silpat ou papel-manteiga e untada com azeite. Tempere com sal e pimenta, regue com um fio de azeite e complete com o alecrim. Leve ao forno preaquecido a 200° por 20 minutos ou até as fatias ficarem douradas. O tempo pode variar de um forno para outro. Quanto mais fininhas forem as fatias, mais rápido elas assam. Retire do forno e deixe esfriar uns cinco minutinhos antes de servir porque assim elas ficam bem crocantes.</Text>
+                    <Text style={alimentacaoDieta.preparo}>{params.receita.modoDePreparo}</Text>
 
-                    <Text style={alimentacaoDieta.font}>Fonte: <Text style={[alimentacaoDieta.bold,alimentacaoDieta.link]} onPress={()=>Linking.openURL('https://www.receiteria.com.br/receita/chips-assado-de-batata-doce-e-alecrim/')}>https://www.receiteria.com.br</Text></Text>
+                    <Text style={alimentacaoDieta.font}>Fonte: <Text style={[alimentacaoDieta.bold,alimentacaoDieta.link]} onPress={()=>Linking.openURL(params.receita.fonte)}>{this.state.link}</Text></Text>
 
                     <Text style={alimentacaoDieta.text}>Lembrando, sempre é recomendado consultar um nutricionista</Text>
 
