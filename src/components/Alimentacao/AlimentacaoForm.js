@@ -13,6 +13,11 @@ class AlimentacaoForm extends Component {
             uri: ''
         }
     }
+
+    insert(){
+
+    }
+    
     render() {
         const params = this.props.route.params
         return(

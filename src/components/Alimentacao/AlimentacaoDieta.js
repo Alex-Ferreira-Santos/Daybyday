@@ -3,6 +3,7 @@ import { Linking } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
 import AlimentacaoPopup from './AlimentacaoPopup'
+import chips from '../../img/chips-assado-de-batata-doce-e-alecrim.png'
 
 class AlimentacaoDieta extends Component {
     constructor(props){
@@ -25,7 +26,7 @@ class AlimentacaoDieta extends Component {
                 <ScrollView style={alimentacaoDieta.main} contentContainerStyle={alimentacaoDieta.containerMain}>
                     <Text style={alimentacaoDieta.title}>Chips assado de batata doce e alecrim</Text>
 
-                    <Image source={{uri: 'https://www.receiteria.com.br/wp-content/uploads/chips-assado-de-batata-doce-e-alecrim.png'}} style={alimentacaoDieta.image}/>
+                    <Image source={chips} style={alimentacaoDieta.image}/>
 
                     <Text style={alimentacaoDieta.subtitle}>Ingredientes</Text>
                     <View style={alimentacaoDieta.ingredients}>
