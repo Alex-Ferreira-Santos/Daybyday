@@ -125,7 +125,8 @@ class Homepage extends Component{
           if(this.state.alimentacaoVisited){
             this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0],adm:this.state.adm})
           }else{
-            this.props.navigation.navigate('AlimentacaoHome',{adm:this.state.adm})
+            console.log(this.state.alimentacao[0])
+            this.props.navigation.navigate('AlimentacaoHome',{receitas:this.state.alimentacao[0],adm:this.state.adm})
           }
           }}>
           <View style={styles.Buttoncontainer}>

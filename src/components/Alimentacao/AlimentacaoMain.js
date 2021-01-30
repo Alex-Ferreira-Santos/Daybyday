@@ -9,7 +9,8 @@ class AlimentacaoMain extends Component{
         this.state = {
             lastColor:'',
             alimentacao: [],
-            alimentacaoById: []
+            alimentacaoById: [],
+            show: true,
         }
         this.alimentacao = []
         this.alimentacaoById = []
@@ -42,16 +43,15 @@ class AlimentacaoMain extends Component{
     }
     render(){ 
         const params = this.props.route.params
+        if(params === undefined){
+            this.state.show = false
+        }
         return ( 
             <View style={alimentacaoMain.container}>
                 <Text style={alimentacaoMain.title}>Alimentação</Text>
                 <Text style={alimentacaoMain.text}>Receitas disponíveis</Text>
                 <ScrollView style={alimentacaoMain.dietas}>
-                    <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>this.props.navigation.navigate('AlimentacaoDieta')}>
-                        <Text style={alimentacaoMain.dietaName}>Chips assado de batata doce e alecrim</Text>
-                    </TouchableHighlight>
-
-                    {params.receitas.map(receita => (
+                    {this.state.show && params.receitas.map(receita => (
                         <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={async ()=>{
                             await this.selectByIdTarefa(receita.id)
                             this.props.navigation.navigate('AlimentacaoDieta',{receita: this.state.alimentacaoById[0],adm: params.adm})
