@@ -78,7 +78,6 @@ class Homepage extends Component{
     const visited = new VisitedDB()
     await visited.select().then( value => {
       this.atribuiValor(value,this.visited)
-      console.log(value[0].visited)
       if(value[0].visited){
         this.setState({alimentacaoVisited: true})
       }

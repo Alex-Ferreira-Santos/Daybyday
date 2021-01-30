@@ -60,6 +60,9 @@ class AlimentacaoMain extends Component{
                          </TouchableHighlight>
                     ))}
                 </ScrollView>
+                <TouchableHighlight style={alimentacaoMain.button} onPress={()=>this.props.navigation.navigate('Homepage')}>
+                    <Text style={alimentacaoMain.buttonText}>Voltar ao menu</Text>
+                </TouchableHighlight>
                {params.adm && (<TouchableHighlight style={alimentacaoMain.button} underlayColor='#1D470E' onPress={()=>this.props.navigation.navigate('AlimentacaoForm')}>
                     <Text style={alimentacaoMain.buttonText}>Inserir</Text>
                 </TouchableHighlight>)}

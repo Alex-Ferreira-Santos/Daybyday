@@ -1,4 +1,6 @@
 import SQLite from 'react-native-sqlite-storage'
+import senha from '../Database/senha'
+import {sha512} from 'react-native-sha512'
 SQLite.DEBUG(true)
 SQLite.enablePromise(true)
 
@@ -7,6 +9,11 @@ const database_version = '1.0'
 const database_display_name = 'DayByDay'
 const database_size = 200000
 
+let vezes = 0
+let password
+const pass = sha512(senha).then(hash => {password = hash})
+
+
 export default class Usuario{
     initDB(){
         let db
@@ -14,6 +21,7 @@ export default class Usuario{
             console.log('abrindo o banco de dados')
             SQLite.openDatabase(database_name, database_version, database_display_name, database_size).then(DB =>{
                 db = DB
+                //
                 db.executeSql('SELECT 1 FROM usuario LIMIT 1').then(()=>{
                     console.log('o banco de dados está aberto')
                 }).catch(error => {
@@ -26,6 +34,16 @@ export default class Usuario{
                     }).catch(error=>{
                         console.log(error)
                     })
+                    if(vezes<1){
+                        db.transaction(tx => {
+                            tx.executeSql(`INSERT INTO usuario VALUES(1,'${password}')`)
+                        }).then(()=>{
+                            console.log('tabela usuario criada com sucesso')
+                        }).catch(error=>{
+                            console.log(error)
+                        })
+                        
+                    }
                 })
             resolve(db)
             }).catch(error => console.log(error))
@@ -56,7 +74,7 @@ export default class Usuario{
     }
 
     select(){
-        return new Promise(resolve => {
+        return new Promise( resolve => {
             const products = []
             this.initDB().then( db => {
                 db.transaction( tx => {

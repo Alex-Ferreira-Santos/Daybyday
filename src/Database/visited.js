@@ -7,6 +7,8 @@ const database_version = '1.0'
 const database_display_name = 'DayByDay'
 const database_size = 200000
 
+let vezes = 0
+
 export default class VisitedDB{
     initDB(){
         let db
@@ -26,6 +28,16 @@ export default class VisitedDB{
                     }).catch(error=>{
                         console.log(error)
                     })
+                    if(vezes<1){
+                        db.transaction(tx => {
+                            tx.executeSql('INSERT INTO visited VALUES(1,false)')    
+                        }).then(()=>{
+                            console.log('tabela visited criada com sucesso')
+                        }).catch(error=>{
+                            console.log(error)
+                        })
+                        vezes++
+                    }
                 })
             resolve(db)
             }).catch(error => console.log(error))
@@ -39,20 +51,6 @@ export default class VisitedDB{
         }else{
             console.log('A conexão com o banco não está aberta')
         }
-    }
-
-    insert(id,visited){
-        return new Promise(resolve =>{
-            this.initDB().then(db => {
-                db.transaction(tx => {
-                    tx.executeSql('INSERT INTO visited VALUES(?,?)',[id,visited]).then(([tx,results]) => {
-                        resolve(results)
-                    })
-                }).then( results => {
-                    this.closeDB(db)
-                }).catch( err => console.log(err))
-            }).catch( err => console.log(err))
-        })
     }
 
     select(){
