@@ -141,7 +141,7 @@ const alimentacaoDieta = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 20,
         paddingVertical: 3,
-        marginTop: 10
+        marginVertical: 10
     },
     editButton:{
         backgroundColor: '#A59F1A',
