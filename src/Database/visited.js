@@ -30,7 +30,7 @@ export default class VisitedDB{
                     })
                     if(vezes<1){
                         db.transaction(tx => {
-                            tx.executeSql('INSERT INTO visited VALUES(1,false)')    
+                            tx.executeSql('INSERT INTO visited VALUES(1,0)')    
                         }).then(()=>{
                             console.log('tabela visited criada com sucesso')
                         }).catch(error=>{
