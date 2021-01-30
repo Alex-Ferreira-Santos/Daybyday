@@ -3,28 +3,33 @@ import { Linking } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
 import AlimentacaoPopup from './AlimentacaoPopup'
+import AlimentacaoDB from '../../Database/alimetacao'
 
 class AlimentacaoDieta extends Component {
     constructor(props){
         super(props)
         this.state = {
             show: false,
-            image: require('../../img/chips-assado-de-batata-doce-e-alecrim.png'),
+            image: [],
             ingredients: [],
-            link:''
+            link:'',
+            alimentacao: []
         }
+        this.alimentacao = []
         this.goback = this.goback.bind(this)
         this.backToMain = this.backToMain.bind(this)
         this.separaIngredientes = this.separaIngredientes.bind(this)
         this.separaIngredientes()
         this.separaLink()
-        this.buscaImagem()
     }
     goback(){
         this.setState({show: false})
     }
-    backToMain(){
-        this.props.navigation.navigate('AlimentacaoMain')
+    async backToMain(id){
+        const alimentacao = new AlimentacaoDB
+        await alimentacao.delete(id)
+        await this.select()
+        this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0]})
     }
     separaIngredientes(){
         const params = this.props.route.params
@@ -35,12 +40,22 @@ class AlimentacaoDieta extends Component {
         const link = params.receita.fonte.split('/',3)
         this.state.link = link.join('/')
     }
-    buscaImagem(){
-        const params = this.props.route.params
-        let brocolis = 'brocolis.png'
-        console.log(params.receita.imagem)
-        this.state.image = require(`../../img/${brocolis}`)
+
+    async select(){
+        const alimentacao = new AlimentacaoDB
+        await alimentacao.select().then( value => {
+            this.atribuiValor(value,this.alimentacao)
+        })
+        this.setState({alimentacao:this.alimentacao})
     }
+
+    atribuiValor(data,array){
+        array.push(data)
+        if(array.length > 1){
+          array.shift()
+        }
+    }
+    
     // renderizar imagens dinamicamente
     render() {
         const params = this.props.route.params
@@ -70,16 +85,16 @@ class AlimentacaoDieta extends Component {
                         <Text style={alimentacaoDieta.buttonText}>Voltar</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm',{title: 'Editar a receita', receita: params.receita.nome, buttonColor: {backgroundColor: '#A59F1A'},buttonText:'Editar',underlayColor:'#8D8918',id:params.receita.id})}>
+                    {params.adm && (<TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm',{title: 'Editar a receita', receita: params.receita.nome, buttonColor: {backgroundColor: '#A59F1A'},buttonText:'Editar',underlayColor:'#8D8918',id:params.receita.id})}>
                         <Text style={alimentacaoDieta.buttonText}>Editar</Text>
-                    </TouchableHighlight>
+                    </TouchableHighlight>)}
 
-                    <TouchableHighlight style={alimentacaoDieta.deleteButton} underlayColor='#8D1B1B' onPress={()=>{this.setState({show: true})}}>
+                    {params.adm && (<TouchableHighlight style={alimentacaoDieta.deleteButton} underlayColor='#8D1B1B' onPress={()=>{this.setState({show: true})}}>
                         <Text style={alimentacaoDieta.buttonText}>Excluir</Text>
-                    </TouchableHighlight>
+                    </TouchableHighlight>)}
 
                 </ScrollView>
-                {this.state.show && (<AlimentacaoPopup goback={this.goback} backToMain={this.backToMain}/>)}
+                {this.state.show && (<AlimentacaoPopup goback={this.goback} backToMain={this.backToMain} id={params.receita.id} titulo={params.receita.nome}/>)}
             </View>
         )
     }

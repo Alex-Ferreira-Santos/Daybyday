@@ -12,20 +12,37 @@ class AlimentacaoForm extends Component {
             ingredients: '',
             preparo: '',
             font: '',
-            uri: ''
+            uri: '',
+            alimentacao: [],
         }
+        this.alimentacao = []
     }
 
-    insert(nome,imagem,ingredientes,modoDePreparo,fonte){
+    async insert(nome,imagem,ingredientes,modoDePreparo,fonte){
         const alimentacao = new AlimentacaoDB
         const food = new Food(nome,imagem,ingredientes,modoDePreparo,fonte)
-        alimentacao.insert(food)
+        await alimentacao.insert(food)
     }
 
-    update(nome,imagem,ingredientes,modoDePreparo,fonte,id){
+    async update(nome,imagem,ingredientes,modoDePreparo,fonte,id){
         const alimentacao = new AlimentacaoDB
         const food = new Food(nome,imagem,ingredientes,modoDePreparo,fonte)
-        alimentacao.update(food,id)
+        await alimentacao.update(food,id)
+    }  
+
+    async select(){
+        const alimentacao = new AlimentacaoDB
+        await alimentacao.select().then( value => {
+            this.atribuiValor(value,this.alimentacao)
+        })
+        this.setState({alimentacao:this.alimentacao})
+    }
+
+    atribuiValor(data,array){
+        array.push(data)
+        if(array.length > 1){
+          array.shift()
+        }
     }
 
     render() {
@@ -66,20 +83,20 @@ class AlimentacaoForm extends Component {
                             this.setState({font: value})
                         }}/>
                     </View>
-                    <TouchableHighlight style={[alimentacaoForm.button,params.buttonColor]} underlayColor={params.underlayColor} onPress={()=>{
+                    <TouchableHighlight style={[alimentacaoForm.button,params.buttonColor]} underlayColor={params.underlayColor} onPress={async ()=>{
                         if(this.state.name === '' || this.state.uri === '' || this.state.ingredients === '' || this.state.preparo === '' || this.state.font === ''){
                             alert('Ainda há campos incompletos')
                             return
                         }else{
                             if(params.buttonText === 'Editar'){
-                                this.update(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font,params.id)
+                                await this.update(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font,params.id)
                                 alert(`Receita ${this.state.name} editada com sucesso`)
                             }else{
-                                this.insert(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font)
+                                await this.insert(this.state.name,this.state.uri,this.state.ingredients,this.state.preparo,this.state.font)
                                 alert(`Receita ${this.state.name} inserida com sucesso`)
                             }
-                            
-                            this.props.navigation.navigate('AlimentacaoMain')
+                            await this.select()
+                            this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0]})
                         }
                     }}>
                         <Text style={alimentacaoForm.buttonText}>{params.buttonText}</Text>

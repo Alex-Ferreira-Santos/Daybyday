@@ -14,6 +14,7 @@ import Agua from '../Database/agua'
 import Massa from '../Database/massa';
 import Sono from '../Database/Sono';
 import TarefaDB from '../Database/tarefa';
+import AlimentacaoDB from '../Database/alimetacao'
 
 class Homepage extends Component{
   constructor(props){
@@ -25,9 +26,12 @@ class Homepage extends Component{
       massaVisited: false,
       sonoVisited: false,
       tarefaVisited: false,
-      tarefa: []
+      alimentacaoVisited: false,
+      tarefa: [],
+      alimentacao: []
     }
     this.tarefa = []
+    this.alimentacao = []
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
   }
@@ -78,6 +82,17 @@ class Homepage extends Component{
     this.setState({tarefa:this.tarefa})
   }
 
+  async selectAlimentacao(){
+    const alimentacao = new AlimentacaoDB
+    await alimentacao.select().then( value => {
+      if(value[0] !== undefined){
+        this.setState({alimentacaoVisited: true})
+      }
+        this.atribuiValor(value,this.alimentacao)
+    })
+    this.setState({alimentacao:this.alimentacao})
+  }
+
   atribuiValor(data,array){
       array.push(data)
       if(array.length > 1){
@@ -105,7 +120,14 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={()=>this.props.navigation.navigate('AlimentacaoHome')}>
+        <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={async ()=>{
+          await this.selectAlimentacao()
+          if(this.state.alimentacaoVisited){
+            this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0],adm:this.state.adm})
+          }else{
+            this.props.navigation.navigate('AlimentacaoHome',{adm:this.state.adm})
+          }
+          }}>
           <View style={styles.Buttoncontainer}>
             <Image source={brocolis} style={styles.img}/>
             <Text style={{fontSize: 20}}>Alimentação</Text>

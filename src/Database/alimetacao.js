@@ -108,7 +108,6 @@ export default class TarefaDB{
             this.initDB().then( db => {
                 db.transaction( tx => {
                     tx.executeSql(`DELETE FROM food WHERE id = ${id}`,[]).then(([tx, result]) => {
-                        console.log(result)
                         resolve(result)
                     })
                 }).then( result => this.closeDatabase()).catch( err => console.log(err))

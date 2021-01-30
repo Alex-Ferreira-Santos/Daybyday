@@ -14,15 +14,6 @@ class AlimentacaoMain extends Component{
         this.alimentacao = []
         this.alimentacaoById = []
         this.corAleatoria = this.corAleatoria.bind(this)
-        this.select()
-    }
-
-    async select(){
-        const alimentacao = new AlimentacaoDB
-        await alimentacao.select().then( value => {
-            this.atribuiValor(value,this.alimentacao)
-        })
-        this.setState({alimentacao:this.alimentacao})
     }
 
     async selectByIdTarefa(id){
@@ -50,13 +41,7 @@ class AlimentacaoMain extends Component{
         return corSelecionada
     }
     render(){ 
-        if(this.state.alimentacao[0]===undefined){
-            return(
-                <View style={{flex:1,justifyContent: 'center',alignItems: 'center',backgroundColor:'#59A73D'}}>
-                    <Text style={{fontSize: 50}}>Loading...</Text>
-                </View>
-            )
-        }
+        const params = this.props.route.params
         return ( 
             <View style={alimentacaoMain.container}>
                 <Text style={alimentacaoMain.title}>Alimentação</Text>
@@ -66,18 +51,18 @@ class AlimentacaoMain extends Component{
                         <Text style={alimentacaoMain.dietaName}>Chips assado de batata doce e alecrim</Text>
                     </TouchableHighlight>
 
-                    {this.state.alimentacao[0].map(receita => (
+                    {params.receitas.map(receita => (
                         <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={async ()=>{
                             await this.selectByIdTarefa(receita.id)
-                            this.props.navigation.navigate('AlimentacaoDieta',{receita: this.state.alimentacaoById[0]})
+                            this.props.navigation.navigate('AlimentacaoDieta',{receita: this.state.alimentacaoById[0],adm: params.adm})
                             }} key={receita.id}>
                             <Text style={alimentacaoMain.dietaName}>{receita.nome}</Text>
                          </TouchableHighlight>
                     ))}
                 </ScrollView>
-                <TouchableHighlight style={alimentacaoMain.button} underlayColor='#1D470E' onPress={()=>this.props.navigation.navigate('AlimentacaoForm')}>
+               {params.adm && (<TouchableHighlight style={alimentacaoMain.button} underlayColor='#1D470E' onPress={()=>this.props.navigation.navigate('AlimentacaoForm')}>
                     <Text style={alimentacaoMain.buttonText}>Inserir</Text>
-                </TouchableHighlight>
+                </TouchableHighlight>)}
             </View>
         )
     }
