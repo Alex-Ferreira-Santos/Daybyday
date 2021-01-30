@@ -78,7 +78,7 @@ export default class VisitedDB{
         return new Promise((resolve, reject) =>{
             this.initDB().then( db => {
                 db.transaction(tx => {
-                    tx.executeSql(`UPDATE food SET visited = '${visited}' WHERE id = 1`,[]).then(([tx,results])=>{
+                    tx.executeSql(`UPDATE visited SET visited = '${visited}' WHERE id = 1`,[]).then(([tx,results])=>{
                         resolve(results)
                     }) 
                 }).then((results)=>this.closeDB()).catch(err => console.log(err))

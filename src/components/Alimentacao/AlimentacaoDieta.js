@@ -10,7 +10,7 @@ class AlimentacaoDieta extends Component {
         super(props)
         this.state = {
             show: false,
-            image: [],
+            image: require('../../img/chips-assado-de-batata-doce-e-alecrim.png'),
             ingredients: [],
             link:'',
             alimentacao: []

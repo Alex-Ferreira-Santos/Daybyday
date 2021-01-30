@@ -70,7 +70,7 @@ class SonoForm extends Component{
                         if(params.edit){
                             this.update(this.state.sleep,this.state.hour)
                         }else{
-                            //this.insert(this.state.sleep,this.state.hour)
+                            this.insert(this.state.sleep,this.state.hour)
                         }
                         this.props.navigation.navigate('SonoData')
                     }}>

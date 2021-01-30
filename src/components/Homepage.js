@@ -29,8 +29,10 @@ class Homepage extends Component{
       tarefaVisited: false,
       alimentacaoVisited: false,
       tarefa: [],
-      alimentacao: []
+      alimentacao: [],
+      visited: [],
     }
+    this.visited = [];
     this.tarefa = []
     this.alimentacao = []
     this.ClosePopUp = this.ClosePopUp.bind(this)
@@ -72,12 +74,16 @@ class Homepage extends Component{
     })
   }
 
-  insertVisited(){
+  async selectVisited(){
     const visited = new VisitedDB()
-    visited.insert(1,false)
-  }
-  selectVisited(){
-    const visited = new VisitedDB()
+    await visited.select().then( value => {
+      this.atribuiValor(value,this.visited)
+      console.log(value[0].visited)
+      if(value[0].visited){
+        this.setState({alimentacaoVisited: true})
+      }
+    })
+    this.setState({visited:this.visited})
   }
 
   async selectTarefa(){
@@ -94,9 +100,6 @@ class Homepage extends Component{
   async selectAlimentacao(){
     const alimentacao = new AlimentacaoDB
     await alimentacao.select().then( value => {
-      if(value[0] !== undefined){
-        this.setState({alimentacaoVisited: true})
-      }
         this.atribuiValor(value,this.alimentacao)
     })
     this.setState({alimentacao:this.alimentacao})
@@ -130,13 +133,14 @@ class Homepage extends Component{
         </TouchableHighlight>
 
         <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={async ()=>{
+          await this.selectVisited()
           await this.selectAlimentacao()
           if(this.state.alimentacaoVisited){
+            
             this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0],adm:this.state.adm})
           }else{
             this.props.navigation.navigate('AlimentacaoHome',{receitas:this.state.alimentacao[0],adm:this.state.adm})
           }
-          this.insertVisited()
           }}>
           <View style={styles.Buttoncontainer}>
             <Image source={brocolis} style={styles.img}/>

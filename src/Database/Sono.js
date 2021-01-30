@@ -20,7 +20,7 @@ export default class Sono{
                     console.log('erro recebido: ' + error)
                     console.log('criando banco de dados')
                     db.transaction(tx => {
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS sono (id INTEGER PRIMARY KEY AUTOINCREMENT, horasDormidas INTEGER NOT NULL, horaAcordar INTEGER NOT NULL)')
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS sono (id INTEGER PRIMARY KEY AUTOINCREMENT, horasDormidas INTEGER NOT NULL, horaAcordar VARCHAR(255) NOT NULL)')
                     }).then(()=>{
                         console.log('tabela sono criada com sucesso')
                     }).catch(error=>{
@@ -78,7 +78,7 @@ export default class Sono{
         return new Promise((resolve, reject) =>{
             this.initDB().then( db => {
                 db.transaction(tx => {
-                    tx.executeSql(`UPDATE sono SET horasDormidas = ${sono.horasDormidas}, horaAcordar = ${sono.horaAcordar} WHERE id = 1`,[]).then(([tx,results])=>{
+                    tx.executeSql(`UPDATE sono SET horasDormidas = ${sono.horasDormidas}, horaAcordar = '${sono.horaAcordar}' WHERE id = 1`,[]).then(([tx,results])=>{
                         resolve(results)
                     }) 
                 }).then((results)=>this.closeDB()).catch(err => console.log(err))
