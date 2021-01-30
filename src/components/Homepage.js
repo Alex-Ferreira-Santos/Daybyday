@@ -15,6 +15,7 @@ import Massa from '../Database/massa';
 import Sono from '../Database/Sono';
 import TarefaDB from '../Database/tarefa';
 import AlimentacaoDB from '../Database/alimetacao'
+import VisitedDB from '../Database/visited'
 
 class Homepage extends Component{
   constructor(props){
@@ -71,6 +72,14 @@ class Homepage extends Component{
     })
   }
 
+  insertVisited(){
+    const visited = new VisitedDB()
+    visited.insert(1,false)
+  }
+  selectVisited(){
+    const visited = new VisitedDB()
+  }
+
   async selectTarefa(){
     const tarefa = new TarefaDB
     await tarefa.select().then( value => {
@@ -125,9 +134,9 @@ class Homepage extends Component{
           if(this.state.alimentacaoVisited){
             this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0],adm:this.state.adm})
           }else{
-            console.log(this.state.alimentacao[0])
             this.props.navigation.navigate('AlimentacaoHome',{receitas:this.state.alimentacao[0],adm:this.state.adm})
           }
+          this.insertVisited()
           }}>
           <View style={styles.Buttoncontainer}>
             <Image source={brocolis} style={styles.img}/>

@@ -82,7 +82,7 @@ class AguaForm extends Component{
                         if(params.edit){
                             this.update(this.state.litros,this.state.horas,59)
                         }else{
-                            //this.insert(this.state.litros,this.state.horas,59)
+                            this.insert(this.state.litros,this.state.horas,59)
                         }
                         
                         this.props.navigation.navigate('AguaSuccessful')

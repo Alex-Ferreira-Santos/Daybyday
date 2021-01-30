@@ -74,7 +74,7 @@ class AguaOptions extends Component {
     ChangeToDesableButton(){
         this.setState({excludeButton:''})
         this.setState({textExcludeButton:'Desativar'})
-        this.setState({title: `A proxima notificação virá em ${this.state.notificationTime} minutos`})
+        this.setState({title: `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`})
         this.setState({subtitle: 'Desativar notificação'})
     }
 
