@@ -49,14 +49,14 @@ class AguaOptions extends Component {
 
     async ProximaNotificação(){
         await this.select()  
-        this.setState({title: `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`})
+        this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
         setInterval( async()=>{
             if(this.state.agua[0][0].tempo>0){
                 await this.update(this.state.agua[0][0].tempo - 1)
             }else{
                 await this.update(59)
             }
-            this.setState({title: `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`})
+            this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
         },60000)
     }
 

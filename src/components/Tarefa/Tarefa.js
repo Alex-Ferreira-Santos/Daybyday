@@ -47,7 +47,7 @@ class Tarefa extends Component {
                         }else{
                             this.setState({done: ''})
                         }
-                        this.setState({checked: value})
+                        this.setState({checked: value}) 
                         this.updateCheck()
                         
                     }}/></Text>
