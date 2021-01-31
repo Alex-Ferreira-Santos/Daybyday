@@ -13,6 +13,7 @@ class ExtraAdm extends Component{
             usuario: []
         }
         this.user = []
+        this.select()
     }
 
     async select(){

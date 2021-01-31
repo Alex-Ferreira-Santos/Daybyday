@@ -104,11 +104,30 @@ class Homepage extends Component{
     this.setState({alimentacao:this.alimentacao})
   }
 
+  async createTables(){
+    const agua = new Agua
+    await agua.select()
+    const alimentacao = new AlimentacaoDB
+    await alimentacao.select()
+    const massa = new Massa
+    await massa.select()
+    const tarefa = new TarefaDB
+    await tarefa.select()
+    const sono = new Sono
+    await sono.select()
+    const visited = new VisitedDB()
+    await visited.select()
+  }
+
   atribuiValor(data,array){
       array.push(data)
       if(array.length > 1){
         array.shift()
       }
+  }
+
+  componentDidMount(){
+    this.createTables()
   }
 
   render(){
