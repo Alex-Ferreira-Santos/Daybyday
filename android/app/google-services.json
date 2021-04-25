@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1024357440623",
+    "project_id": "daybyday-39a5f",
+    "storage_bucket": "daybyday-39a5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024357440623:android:fe6b30f4aa2a472b88c19a",
+        "android_client_info": {
+          "package_name": "com.daybyday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024357440623-i9qvg45beeimhc4bplvlut1gr1on42mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlxI5jjzGGOZLpCuBqVJier3WGdsjbRF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024357440623-i9qvg45beeimhc4bplvlut1gr1on42mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
