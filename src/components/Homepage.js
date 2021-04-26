@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Text, View, TouchableHighlight,Image} from 'react-native'
 import {styles} from '../styles/index'
+import {notificationManager} from '../services/NotificationManager'
 
 import copoDeagua from '../img/copo-de-agua.png'
 import brocolis from '../img/brocolis.png'
@@ -37,6 +38,9 @@ class Homepage extends Component{
     this.alimentacao = []
     this.ClosePopUp = this.ClosePopUp.bind(this)
     this.setAdm = this.setAdm.bind(this)
+    this.notificador
+    this.notificador = notificationManager
+    this.notificador.configure()
   }
 
   ClosePopUp(){
@@ -130,6 +134,30 @@ class Homepage extends Component{
     this.createTables()
   }
 
+  onPressSendNotification = () => {
+    const data = [{
+      id:1,
+      title:'Novo cupom disponível!!!',
+      message: 'Um cupom de R$15 acabou de sair especialmente para você, veja as possibilidades!'
+    },{
+      id:2,
+      title:'Já provou nosso novo espaguete?',
+      message: 'Temos uma nova receita para o nosso fabuloso espaguete com almôndegas, que tal pedir um para prová-lo?'
+    },{
+      id:3,
+      title:'Nossos pratos estão em promoção!!!',
+      message: 'Diversos dos melhores pratos que temos estão em promoção, venha ver a lista completa!'
+    }]
+    const notification = data[Math.floor(Math.random() * data.length)]
+    this.notificador.showNotification(
+      notification.id,
+      notification.title,
+      notification.message,
+      {}, // data
+      {} // options
+    )
+  }
+
   render(){
     return (
       <View style={styles.container}> 
@@ -215,7 +243,7 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.closeAd} underlayColor='#9C9C9C' onPress={()=>{}}>
+        <TouchableHighlight style={styles.closeAd} underlayColor='#9C9C9C' onPress={()=>{this.onPressSendNotification()}}>
           <Text>Remover anúncios</Text>
         </TouchableHighlight>
 
