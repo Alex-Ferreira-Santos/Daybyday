@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         textAlign: 'center',
     },
@@ -49,14 +49,6 @@ const styles = StyleSheet.create({
     },
     extra:{
         backgroundColor: '#9C359E'
-    },
-    closeAd:{
-        textAlign: 'center',
-        alignItems:'center',
-        backgroundColor: '#C4C4C4',
-        position: 'absolute',
-        bottom:0,
-        width:'100%'
     }
 })
 

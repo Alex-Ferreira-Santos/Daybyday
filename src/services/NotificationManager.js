@@ -17,7 +17,6 @@ class NotificationManager{
               importance: 4, // (optional) default: 4. Int value of the Android notification importance
               vibrate: true, // (optional) default: true. Creates the default vibration patten if true.
             },
-            (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
         );
     }
 
@@ -54,36 +53,16 @@ class NotificationManager{
         PushNotification.cancelAllLocalNotifications();
     }
 
-    agendarNotificacao() {
-
-        const data = [{
-            id:1,
-            title:'Novo cupom disponível!!!',
-            message: 'Um cupom de R$15 acabou de sair especialmente para você, veja as possibilidades!',
-            order: 1
-          },{
-            id:2,
-            title:'Já provou nosso novo espaguete?',
-            message: 'Temos uma nova receita para o nosso fabuloso espaguete com almôndegas, que tal pedir um para prová-lo?',
-            order:2
-          },{
-            id:3,
-            title:'Nossos pratos estão em promoção!!!',
-            message: 'Diversos dos melhores pratos que temos estão em promoção, venha ver a lista completa!',
-            order:3
-        }]
-        data.map(item => {
-            PushNotification.localNotificationSchedule({
-                id: item.id,
-                date: new Date(Date.now()),
-                channelId: '123',
-                title: item.title,
-                message: item.message,
-                allowWhileIdle: false,
-                color: "#FF4141",
-            })
+    ScheduleWaterNotification(ml) {
+        PushNotification.localNotificationSchedule({
+            id: 1,
+            date: new Date(Date.now()),
+            channelId: '123',
+            title: 'Lembrete de água 💧',
+            message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
+            allowWhileIdle: false,
+            color: "yellow",
         })
-
     }
 }
 

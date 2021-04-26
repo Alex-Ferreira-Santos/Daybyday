@@ -3,6 +3,7 @@ import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {aguaForm} from '../../styles/Agua'
 import Water from '../../Model/water'
 import Agua from '../../Database/agua'
+import {notificationManager} from '../../services/NotificationManager'
 
 class AguaForm extends Component{
     constructor(props){
@@ -11,6 +12,9 @@ class AguaForm extends Component{
             litros: '',
             horas: '',
         }
+        this.notificador
+        this.notificador = notificationManager
+        this.notificador.configure()
     }
 
     insert(litros,horas,tempo){
@@ -23,6 +27,10 @@ class AguaForm extends Component{
         const water = new Water(litros,horas,tempo)
         const agua = new Agua
         await agua.update(water)
+    }
+
+    ScheduleNotification = (ml) => {
+        notificationManager.ScheduleWaterNotification(ml)
     }
 
     render() { 
@@ -79,11 +87,14 @@ class AguaForm extends Component{
                         if(parseInt(this.state.horas)<10){
                             this.setState({horas: '10'})
                         }
+                        const litros = this.state.litros * 1000
+                        const quantidade = litros / this.state.horas
                         if(params.edit){
                             this.update(this.state.litros,this.state.horas,59)
                         }else{
                             this.insert(this.state.litros,this.state.horas,59)
                         }
+                        this.ScheduleNotification(quantidade)
                         
                         this.props.navigation.navigate('AguaSuccessful')
                         }}>

@@ -4,7 +4,7 @@ const agua = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: '#3EDDE8',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center'
     },
     title:{
@@ -41,7 +41,7 @@ const aguaForm = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#3EDDE8',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center'
     },
     title:{
@@ -102,7 +102,7 @@ const aguaSuccessful = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#3EDDE8',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center'
     },
     title:{
@@ -137,7 +137,7 @@ const aguaOptions = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: '#3EDDE8',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center'
     },
     title:{

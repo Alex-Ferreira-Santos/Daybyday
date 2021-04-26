@@ -33,6 +33,8 @@ export default class Agua{
     }
 
     closeDB(db){
+        console.log('===========================')
+        console.log(db)
         if(db){
             console.log('Fechando banco de dados')
             db.close().then(status => console.log('Banco de dados desconectado')).catch(error => console.log(error))
