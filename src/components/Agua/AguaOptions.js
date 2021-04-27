@@ -21,6 +21,7 @@ class AguaOptions extends Component {
         this.ClosePopUp = this.ClosePopUp.bind(this)
         this.ChangeToActivateButton = this.ChangeToActivateButton.bind(this)
         this.ProximaNotificação = this.ProximaNotificação.bind(this)
+        
     }
 
     async select(){
@@ -47,6 +48,10 @@ class AguaOptions extends Component {
     }
 
     async ProximaNotificação(){
+        if(this.props.route.params !== undefined){
+            this.props.route.params.reload = false
+            return
+        }
         await this.select()  
         this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
         /*setInterval( async()=>{
@@ -57,6 +62,8 @@ class AguaOptions extends Component {
             }
             this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
         },60000)*/
+        
+        
     }
 
     ClosePopUp(){
@@ -82,14 +89,19 @@ class AguaOptions extends Component {
         const quantidade = litros / this.state.agua[0][0].horas
         this.setState({quantidade: quantidade.toFixed(0)})
     }
-
-    componentDidMount(){
-        this.ProximaNotificação()
-    }
     
     render(){
-        console.log(this.state.agua)
+        try{
+            if(this.props.route.params.reload!==undefined){
+                if(this.props.route.params){
+                    this.ProximaNotificação()
+                }
+            }
+        }catch{
+            
+        }
         if(this.state.agua[0] === undefined){
+            this.ProximaNotificação()
             return(
                 <View style={{flex:1,justifyContent:'center',alignItems: 'center',backgroundColor:'#3EDDE8'}}>
                     <Text style={{fontSize: 50}}>Loading...</Text>

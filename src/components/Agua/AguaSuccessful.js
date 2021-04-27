@@ -10,7 +10,7 @@ class AguaSuccessful extends Component{
                 <Text style={aguaSuccessful.title}>Pronto</Text>
                 <Text style={aguaSuccessful.notification}>Você irá receber uma notificação a cada 1 hora para lembra-lo de beber água</Text>
                 <Image source={copo} style={aguaSuccessful.copo}/>
-                <TouchableHighlight style={aguaSuccessful.button} underlayColor='#114A4A' onPress={()=>this.props.navigation.navigate('AguaOptions')}>
+                <TouchableHighlight style={aguaSuccessful.button} underlayColor='#114A4A' onPress={()=>this.props.navigation.navigate('AguaOptions',{reload:true})}>
                     <Text style={aguaSuccessful.textButton}>Seguir</Text>
                 </TouchableHighlight>
             </View>
