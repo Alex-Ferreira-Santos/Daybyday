@@ -62,6 +62,8 @@ class NotificationManager{
             message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
             allowWhileIdle: false,
             color: "yellow",
+            repeatType:'time',
+            repeatTime:60*(60*1000)
         })
     }
 }

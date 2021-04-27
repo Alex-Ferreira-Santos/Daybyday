@@ -29,7 +29,8 @@ class AguaOptions extends Component {
         await agua.select().then( value => {
             this.atribuiValor(value,this.agua)
         })
-        this.setState({agua:this.agua})
+        this.state.agua = this.agua
+        //this.setState({agua:this.agua})
         this.CalculaQuantidade()
     }
 
@@ -48,10 +49,7 @@ class AguaOptions extends Component {
     }
 
     async ProximaNotificação(){
-        if(this.props.route.params !== undefined){
-            this.props.route.params.reload = false
-            return
-        }
+        
         await this.select()  
         this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
         /*setInterval( async()=>{
@@ -63,7 +61,9 @@ class AguaOptions extends Component {
             this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
         },60000)*/
         
-        
+        if(this.props.route.params !== undefined){
+            this.props.route.params.reload = false
+        }
     }
 
     ClosePopUp(){
@@ -87,7 +87,16 @@ class AguaOptions extends Component {
     CalculaQuantidade(){
         const litros = this.state.agua[0][0].litros * 1000
         const quantidade = litros / this.state.agua[0][0].horas
-        this.setState({quantidade: quantidade.toFixed(0)})
+        if(this.props.route.params){
+            if(this.props.route.params.reload){
+                this.setState({quantidade: quantidade.toFixed(0)})
+            }else{
+                this.state.quantidade = quantidade.toFixed(0)
+            }
+        }else{
+            this.setState({quantidade: quantidade.toFixed(0)})
+        }
+        
     }
     
     render(){
