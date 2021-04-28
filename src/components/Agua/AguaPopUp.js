@@ -1,8 +1,15 @@
 import React,{Component} from 'react'
 import {View,Text,TouchableHighlight} from 'react-native'
 import {aguaPopup} from '../../styles/Agua'
+import {notificationManager} from '../../services/NotificationManager'
 
 class AguaPopUp extends Component{
+    constructor(props){
+        super(props)
+        this.notification
+        this.notification = notificationManager
+        this.notification.configure()
+    }
     render(){
         return (
             <View style={aguaPopup.container}>
@@ -16,6 +23,7 @@ class AguaPopUp extends Component{
                     <TouchableHighlight style={aguaPopup.desableButton} underlayColor='#810D0D' onPress={()=>{
                         this.props.invisible()
                         this.props.change()
+                        this.notification.cancelWaterNotifications()
                     }}>
                         <Text style={aguaPopup.desable}>Desativar</Text>
                     </TouchableHighlight>

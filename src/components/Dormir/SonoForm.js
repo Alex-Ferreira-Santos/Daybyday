@@ -18,6 +18,8 @@ class SonoForm extends Component{
         this.notification = notificationManager
         this.notification.configure()
         console.log(new Date().toString())
+        console.log(Date.parse(new Date()))
+        console.log(new Date().setHours(8))
     }
 
     insert(horasDormidas,horaAcordar){
@@ -30,7 +32,7 @@ class SonoForm extends Component{
         const sono = new Sono
         const sleep = new Sleep(horasDormidas,horaAcordar)
         sono.update(sleep)
-    }
+    } 
 
     render(){
         const params = this.props.route.params
@@ -58,7 +60,7 @@ class SonoForm extends Component{
                     </View>
                     <View style={sonoForm.section}>
                         <Text style={sonoForm.label}>Hora que deseja acordar</Text>
-                        <TextInput placeholder='Selecione a hora que deseja acordar' style={sonoForm.input} placeholderTextColor='#4F58A1' onFocus={()=>{this.setState({visible: true})}} value={this.state.hour}/>
+                        <TextInput placeholder='Selecione a hora que deseja acordar' style={sonoForm.input} placeholderTextColor='#4F58A1' onFocus={()=>{this.setState({visible: true})}} value={this.state.hour} showSoftInputOnFocus={false}/>
                         {this.state.visible && (<DateTimePicker mode={'time'} value={new Date()} onChange={(value,data)=>{
                             this.setState({visible: false})
                             if(data === undefined){
@@ -77,7 +79,7 @@ class SonoForm extends Component{
                         }else{
                             this.insert(this.state.sleep,this.state.hour)
                         }
-                        this.notification.ScheduleSleepNotification()
+                        this.notification.ScheduleSleepNotification(this.state.hour)
                         this.props.navigation.navigate('SonoData')
                     }}>
                         <Text style={sonoForm.textButton}>Confirmar</Text>

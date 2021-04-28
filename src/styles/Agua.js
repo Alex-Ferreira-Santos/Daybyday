@@ -212,6 +212,7 @@ const aguaPopup = StyleSheet.create({
     container:{
         width: '100%',
         height: '100%',
+        top:0,
         backgroundColor: 'rgba(26,90,95,0.8)',
         justifyContent: 'center',
         alignItems: 'center',

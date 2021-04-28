@@ -30,7 +30,6 @@ class AguaOptions extends Component {
             this.atribuiValor(value,this.agua)
         })
         this.state.agua = this.agua
-        //this.setState({agua:this.agua})
         this.CalculaQuantidade()
     }
 

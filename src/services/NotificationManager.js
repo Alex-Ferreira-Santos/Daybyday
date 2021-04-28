@@ -63,14 +63,19 @@ class NotificationManager{
             allowWhileIdle: false,
             color: "yellow",
             repeatType:'time',
-            repeatTime:60*(60*1000)
+            repeatTime:30*1000
         })
     }
 
-    ScheduleSleepNotification() {
+    cancelWaterNotifications(){
+        PushNotification.cancelLocalNotifications({id:1})
+    }
+
+    ScheduleSleepNotification(hour) {
+        console.log(hour)
         PushNotification.localNotificationSchedule({
-            id: 1,
-            date: new Date(Date.now()),
+            id: 2,
+            date: new Date().setHours(12,36),
             channelId: '123',
             title: 'Está perto da hora de dormir 💤💤',
             message: `Para manter um sono controlado, você deve dormir dentro de 30 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
