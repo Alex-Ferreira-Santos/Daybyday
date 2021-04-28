@@ -56,14 +56,14 @@ class NotificationManager{
     ScheduleWaterNotification(ml) {
         PushNotification.localNotificationSchedule({
             id: 1,
-            date: new Date(Date.now()),
+            date: new Date(Date.now()) + new Date().getMinutes()*(60*1000),
             channelId: '123',
             title: 'Lembrete de água 💧',
             message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
             allowWhileIdle: false,
             color: "yellow",
             repeatType:'time',
-            repeatTime:30*1000
+            repeatTime:60*(60*1000)
         })
     }
 

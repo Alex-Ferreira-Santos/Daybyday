@@ -4,6 +4,7 @@ import {aguaOptions} from '../../styles/Agua'
 import AguaPopUp from './AguaPopUp'
 import Agua from '../../Database/agua'
 import Water from '../../Model/water';
+import {notificationManager} from '../../services/NotificationManager'
  
 class AguaOptions extends Component {
     constructor(props){
@@ -12,16 +13,18 @@ class AguaOptions extends Component {
             visivel:false,
             excludeButton: '',
             textExcludeButton: 'Desativar',
-            title: `A proxima notificação virá em 59 minutos`,
+            title: `A proxima notificação virá em 60 minutos`,
             subtitle: 'Desativar notificação',
             agua: [],
-            quantidade: '',
+            quantidade: 0,
         }
         this.agua = []
         this.ClosePopUp = this.ClosePopUp.bind(this)
         this.ChangeToActivateButton = this.ChangeToActivateButton.bind(this)
         this.ProximaNotificação = this.ProximaNotificação.bind(this)
-        
+        this.notification
+        this.notification = notificationManager
+        this.notification.configure()
     }
 
     async select(){
@@ -48,18 +51,9 @@ class AguaOptions extends Component {
     }
 
     async ProximaNotificação(){
-        
-        await this.select()  
-        this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
-        /*setInterval( async()=>{
-            if(this.state.agua[0][0].tempo>0){
-                await this.update(this.state.agua[0][0].tempo - 1)
-            }else{
-                await this.update(59)
-            }
-            this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`
-        },60000)*/
-        
+        await this.select()
+        this.setState({title:`A proxima notificação virá em ${this.state.agua[0][0].tempo - new Date().getMinutes()} minutos`})
+    
         if(this.props.route.params !== undefined){
             this.props.route.params.reload = false
         }
@@ -136,6 +130,7 @@ class AguaOptions extends Component {
                             this.setState({visivel: true})
                         }else{
                             this.ChangeToDesableButton()
+                            this.notification.ScheduleWaterNotification(parseInt(this.state.quantidade))
                             alert('As notificações foram habilitadas')
                         }          
                     }}>

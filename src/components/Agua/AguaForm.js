@@ -90,9 +90,9 @@ class AguaForm extends Component{
                         const litros = this.state.litros * 1000
                         const quantidade = litros / this.state.horas
                         if(params.edit){
-                            this.update(this.state.litros,this.state.horas,59)
+                            this.update(this.state.litros,this.state.horas,60)
                         }else{
-                            this.insert(this.state.litros,this.state.horas,59)
+                            this.insert(this.state.litros,this.state.horas,60)
                         }
                         this.ScheduleNotification(quantidade)
                         
