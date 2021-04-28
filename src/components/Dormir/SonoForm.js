@@ -4,6 +4,7 @@ import {sonoForm} from '../../styles/Sono'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import Sono from '../../Database/Sono';
 import Sleep from '../../Model/sleep'
+import {notificationManager} from '../../services/NotificationManager'
 
 class SonoForm extends Component{
     constructor(props){
@@ -13,6 +14,10 @@ class SonoForm extends Component{
             hour: '',
             sleep: ''
         }
+        this.notification
+        this.notification = notificationManager
+        this.notification.configure()
+        console.log(new Date().toString())
     }
 
     insert(horasDormidas,horaAcordar){
@@ -72,6 +77,7 @@ class SonoForm extends Component{
                         }else{
                             this.insert(this.state.sleep,this.state.hour)
                         }
+                        this.notification.ScheduleSleepNotification()
                         this.props.navigation.navigate('SonoData')
                     }}>
                         <Text style={sonoForm.textButton}>Confirmar</Text>

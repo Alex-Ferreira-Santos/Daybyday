@@ -66,6 +66,18 @@ class NotificationManager{
             repeatTime:60*(60*1000)
         })
     }
+
+    ScheduleSleepNotification() {
+        PushNotification.localNotificationSchedule({
+            id: 1,
+            date: new Date(Date.now()),
+            channelId: '123',
+            title: 'Está perto da hora de dormir 💤💤',
+            message: `Para manter um sono controlado, você deve dormir dentro de 30 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
+            allowWhileIdle: false,
+            color: "yellow",
+        })
+    }
 }
 
 export const notificationManager = new NotificationManager();

@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 const massa = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#DFCD2A'
     },
@@ -40,7 +40,7 @@ const massa = StyleSheet.create({
 const massaForm = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#DFCD2A'
     },
@@ -96,7 +96,7 @@ const massaForm = StyleSheet.create({
 const massaData = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#DFCD2A',
     },
@@ -145,7 +145,7 @@ const massaData = StyleSheet.create({
 const massaFinal = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#DFCD2A',
     },
