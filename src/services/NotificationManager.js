@@ -65,7 +65,7 @@ class NotificationManager{
         })
     }
 
-    cancelWaterNotifications(id){
+    cancelNotifications(id){
         PushNotification.cancelLocalNotifications({id:id})
     }
 
@@ -94,15 +94,17 @@ class NotificationManager{
         }else{
             day = new Date().getDate()
         }
+        //`${new Date().getFullYear()}-${mouth}-${day}T${hour.trim()}:00.000Z`
         PushNotification.localNotificationSchedule({
             id: 2,
-            date: new Date(`${new Date().getFullYear()}-${mouth}-${day}T${hour.trim()}:00.000Z`),
+            date: new Date(),
             channelId: '123',
-            title: 'Está perto da hora de dormir 💤💤',
-            message: `Para manter um sono controlado, você deve dormir dentro de 30 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
+            title: 'Está na hora de dormir 💤💤',
+            message: `Para manter um sono controlado, você deve dormir dentro de 10 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
             allowWhileIdle: false,
             color: "yellow",
-            repeatType: 'day',
+            repeatType: 'time',
+            repeatTime: 3000
         })
     }
 }

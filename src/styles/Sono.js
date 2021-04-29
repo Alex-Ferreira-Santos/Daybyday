@@ -161,6 +161,7 @@ const sonoPopup = StyleSheet.create({
         position: 'absolute',
         height: '100%',
         width: '100%',
+        top:0,
         backgroundColor: 'rgba(35,30,86,0.8)',
         justifyContent: 'center',
         alignItems:'center'

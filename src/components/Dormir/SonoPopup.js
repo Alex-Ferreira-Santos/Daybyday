@@ -1,8 +1,15 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native'
 import {sonoPopup} from '../../styles/Sono'
+import {notificationManager} from '../../services/NotificationManager'
 
 class SonoPopup extends Component{
+    constructor(props){
+        super(props)
+        this.notification
+        this.notification = notificationManager
+        this.notification.configure()
+    }
     render(){
         return (
             <View style={sonoPopup.container}>
@@ -16,6 +23,7 @@ class SonoPopup extends Component{
                     <TouchableHighlight underlayColor='#810707' style={sonoPopup.desableButton} onPress={()=>{
                         this.props.close()
                         this.props.desable()
+                        this.notification.cancelNotifications(2)
                         alert('As notificações foram desativadas')
                     }}>
                         <Text style={sonoPopup.desableButtonText}>Desativar</Text>

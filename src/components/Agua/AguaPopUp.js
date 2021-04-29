@@ -23,7 +23,7 @@ class AguaPopUp extends Component{
                     <TouchableHighlight style={aguaPopup.desableButton} underlayColor='#810D0D' onPress={()=>{
                         this.props.invisible()
                         this.props.change()
-                        this.notification.cancelWaterNotifications(1)
+                        this.notification.cancelNotifications(1)
                     }}>
                         <Text style={aguaPopup.desable}>Desativar</Text>
                     </TouchableHighlight>

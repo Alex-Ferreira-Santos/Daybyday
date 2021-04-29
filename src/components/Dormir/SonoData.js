@@ -3,6 +3,7 @@ import {View,Text,TouchableHighlight} from 'react-native'
 import Sono from '../../Database/Sono';
 import {sonoData} from '../../styles/Sono'
 import SonoPopup from './SonoPopup'
+import {notificationManager} from '../../services/NotificationManager'
 
 class SonoData extends Component{
     constructor(props){
@@ -22,6 +23,9 @@ class SonoData extends Component{
         this.desable = this.desable.bind(this)
         this.enable = this.enable.bind(this)
         this.select()
+        this.notification
+        this.notification = notificationManager
+        this.notification.configure()
     }
 
     closePopup(){
@@ -87,6 +91,7 @@ class SonoData extends Component{
                         this.setState({visible: true})
                     }else{
                         alert('As notificações foram habilitadas')
+                        this.notification.ScheduleSleepNotification(this.state.horas.toString())
                         this.enable()
                     }
                     
