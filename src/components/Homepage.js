@@ -139,7 +139,7 @@ class Homepage extends Component{
         <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={async ()=>{
           await this.selectAgua()
           if(this.state.aguaVisited){
-            this.props.navigation.navigate('AguaOptions')
+            this.props.navigation.navigate('AguaOptions',{reload:true})
           }else{
             this.props.navigation.navigate('AguaHome')
           }

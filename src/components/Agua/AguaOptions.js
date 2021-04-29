@@ -52,8 +52,6 @@ class AguaOptions extends Component {
 
     async ProximaNotificação(){
         await this.select()
-        this.setState({title:`A proxima notificação virá em ${this.state.agua[0][0].tempo - new Date().getMinutes()} minutos`})
-    
         if(this.props.route.params !== undefined){
             this.props.route.params.reload = false
         }
@@ -73,7 +71,7 @@ class AguaOptions extends Component {
     ChangeToDesableButton(){
         this.setState({excludeButton:''})
         this.setState({textExcludeButton:'Desativar'})
-        this.setState({title: `A proxima notificação virá em ${this.state.agua[0][0].tempo} minutos`})
+        this.setState({title: `A proxima notificação virá em ${this.state.agua[0][0].tempo - new Date().getMinutes()} minutos`})
         this.setState({subtitle: 'Desativar notificação'})
     }
 
@@ -83,11 +81,14 @@ class AguaOptions extends Component {
         if(this.props.route.params){
             if(this.props.route.params.reload){
                 this.setState({quantidade: quantidade.toFixed(0)})
+                this.setState({title:`A proxima notificação virá em ${this.state.agua[0][0].tempo - new Date().getMinutes()} minutos`})
             }else{
                 this.state.quantidade = quantidade.toFixed(0)
+                this.state.title = `A proxima notificação virá em ${this.state.agua[0][0].tempo - new Date().getMinutes()} minutos`
             }
         }else{
             this.setState({quantidade: quantidade.toFixed(0)})
+            this.setState({title:`A proxima notificação virá em ${this.state.agua[0][0].tempo - new Date().getMinutes()} minutos`})
         }
         
     }

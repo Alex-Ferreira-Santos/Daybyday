@@ -17,9 +17,16 @@ class SonoForm extends Component{
         this.notification
         this.notification = notificationManager
         this.notification.configure()
+        let mouth
+        if(new Date().getUTCMonth() + 1 > 9){
+            mouth = new Date().getUTCMonth() + 1
+        }else{
+            mouth = `0${new Date().getUTCMonth() + 1}`
+        }
         console.log(new Date().toString())
-        console.log(Date.parse(new Date()))
-        console.log(new Date().setHours(8))
+        console.log(new Date())
+        console.log(new Date(`${new Date().getFullYear()}-${mouth}-${new Date().getDate()}T8:00:00.000Z`))
+        
     }
 
     insert(horasDormidas,horaAcordar){

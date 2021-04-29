@@ -49,14 +49,12 @@ class NotificationManager{
         })
     }
 
-    cancelAllLocalNotification = () => {
-        PushNotification.cancelAllLocalNotifications();
-    }
 
     ScheduleWaterNotification(ml) {
+        const minutes = parseInt(new Date().getMinutes())
         PushNotification.localNotificationSchedule({
             id: 1,
-            date: new Date(Date.now()) + new Date().getMinutes()*(60*1000),
+            date: new Date(Date.now() + minutes*(60*1000)),
             channelId: '123',
             title: 'Lembrete de água 💧',
             message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
@@ -67,15 +65,15 @@ class NotificationManager{
         })
     }
 
-    cancelWaterNotifications(){
-        PushNotification.cancelLocalNotifications({id:1})
+    cancelWaterNotifications(id){
+        PushNotification.cancelLocalNotifications({id:id})
     }
 
     ScheduleSleepNotification(hour) {
         console.log(hour)
         PushNotification.localNotificationSchedule({
             id: 2,
-            date: new Date().setHours(12,36),
+            date: new Date(),
             channelId: '123',
             title: 'Está perto da hora de dormir 💤💤',
             message: `Para manter um sono controlado, você deve dormir dentro de 30 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
