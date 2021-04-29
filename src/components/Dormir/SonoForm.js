@@ -23,10 +23,6 @@ class SonoForm extends Component{
         }else{
             mouth = `0${new Date().getUTCMonth() + 1}`
         }
-        console.log(new Date().toString())
-        console.log(new Date())
-        console.log(new Date(`${new Date().getFullYear()}-${mouth}-${new Date().getDate()}T8:00:00.000Z`))
-        
     }
 
     insert(horasDormidas,horaAcordar){

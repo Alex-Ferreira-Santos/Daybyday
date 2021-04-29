@@ -70,15 +70,39 @@ class NotificationManager{
     }
 
     ScheduleSleepNotification(hour) {
-        console.log(hour)
+        let mouth
+        let day
+        if(new Date().getUTCMonth() + 1 > 9){
+            mouth = new Date().getUTCMonth() + 1
+        }else{
+            mouth = `0${new Date().getUTCMonth() + 1}`
+        }
+        if(new Date() > new Date(`${new Date().getFullYear()}-${mouth}-${new Date().getDate()}T${hour.trim()}:00.000Z`)){
+            if(new Date().getMonth() + 1 == 2){
+                if(new Date().getDate() + 1 > 28){
+                    day = 1
+                }else{
+                    day = new Date().getDate() + 1
+                }
+            }else{
+                if(new Date().getDate() + 1 > 31){
+                    day = 1
+                }else{
+                    day = new Date().getDate() + 1
+                } 
+            } 
+        }else{
+            day = new Date().getDate()
+        }
         PushNotification.localNotificationSchedule({
             id: 2,
-            date: new Date(),
+            date: new Date(`${new Date().getFullYear()}-${mouth}-${day}T${hour.trim()}:00.000Z`),
             channelId: '123',
             title: 'Está perto da hora de dormir 💤💤',
             message: `Para manter um sono controlado, você deve dormir dentro de 30 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
             allowWhileIdle: false,
             color: "yellow",
+            repeatType: 'day',
         })
     }
 }
