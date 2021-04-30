@@ -77,11 +77,7 @@ class SonoData extends Component{
 
     render(){
         try {
-            if(this.props.routes.params.reload === undefined){
-                if(this.props.route.params){
-                    this.select()
-                }
-            }
+            
         } finally {        
             return(
                 <View style={sonoData.container}>

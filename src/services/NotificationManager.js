@@ -71,40 +71,51 @@ class NotificationManager{
 
     ScheduleSleepNotification(hour) {
         
-        let mouth
+        let month
         let day
 
         if(new Date().getUTCMonth() + 1 > 9){
-            mouth = new Date().getUTCMonth() + 1
+            month = new Date().getUTCMonth() + 1
         }else{
-            mouth = `0${new Date().getUTCMonth() + 1}`
+            month = `0${new Date().getUTCMonth() + 1}`
         }
 
-        if(new Date() > new Date(`${new Date().getFullYear()}-${mouth}-${new Date().getDate()}T${hour.trim()}:00.000Z`)){
-            if(new Date().getMonth() + 1 == 2){
-                if(new Date().getDate() + 1 > 28){
+        if(new Date() > new Date(`${new Date().getFullYear()}-${month}-${new Date().getDate()}T${hour.trim()}:00.000Z`)){
+            if([4,6,9,11].includes(new Date().getMonth() + 1)){
+                if(new Date().getDate() + 1 > 30){
                     day = 1
                 }else{
                     day = new Date().getDate() + 1
                 }
             }else{
-                if(new Date().getDate() + 1 > 31){
-                    day = 1
+                if(new Date().getMonth() + 1 == 2){
+                    if(new Date().getDate() + 1 > 28){
+                        day = 1
+                    }else{
+                        day = new Date().getDate() + 1
+                    }
                 }else{
-                    day = new Date().getDate() + 1
+                    if(new Date().getDate() + 1 > 31){
+                        day = 1
+                    }else{
+                        day = new Date().getDate() + 1
+                    } 
                 } 
-            } 
+            }
+            
         }else{
             day = new Date().getDate()
+        }
+        if(day < 10){
+            day = `0${day}`
         }
         const timezone = new Date().getTimezoneOffset()/60
 
         Date.prototype.addHours = function (value) {
             this.setHours(this.getHours() + value);
         }
-          
-        var data = new Date(`${new Date().getFullYear()}-${mouth}-${day}T${hour.trim()}:00.000Z`);   
-        data.addHours(-(8 + timezone.toFixed()));
+        var data = new Date(`${new Date().getFullYear()}-${month}-${day}T${hour.trim()}:00.000Z`);
+        data.addHours(-8);
         PushNotification.localNotificationSchedule({
             id: 2,
             date: data,
