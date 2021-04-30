@@ -76,35 +76,43 @@ class SonoData extends Component{
     }
 
     render(){
-        return(
-            <View style={sonoData.container}>
-                <Text style={sonoData.title}>Na última noite você dormiu {this.state.horas} horas</Text>
-                <Text style={sonoData.customText}>{this.state.horas} {this.state.frase}</Text>
-                <Text style={sonoData.alert}>Para te alertar a hora certa de dormir, uma notificação será enviada para você de acordo com a hora que você deseja dormir</Text>
+        try {
+            if(this.props.routes.params.reload === undefined){
+                if(this.props.route.params){
+                    this.select()
+                }
+            }
+        } finally {        
+            return(
+                <View style={sonoData.container}>
+                    <Text style={sonoData.title}>Na última noite você dormiu {this.state.horas} horas</Text>
+                    <Text style={sonoData.customText}>{this.state.horas} {this.state.frase}</Text>
+                    <Text style={sonoData.alert}>Para te alertar a hora certa de dormir, uma notificação será enviada para você de acordo com a hora que você deseja dormir</Text>
 
-                <TouchableHighlight style={sonoData.changeButton} underlayColor='#00104A' onPress={()=>this.props.navigation.navigate('SonoForm',{edit:true})}>
-                    <Text style={sonoData.ButtonText}>Trocar os horários</Text>
-                </TouchableHighlight>
+                    <TouchableHighlight style={sonoData.changeButton} underlayColor='#00104A' onPress={()=>this.props.navigation.navigate('SonoForm',{edit:true})}>
+                        <Text style={sonoData.ButtonText}>Trocar os horários</Text>
+                    </TouchableHighlight>
 
-                <TouchableHighlight style={[sonoData.desableButton,this.state.enable]} underlayColor={this.state.underlayColor} onPress={()=>{
-                    if(this.state.text === 'Desativar as notificações'){
-                        this.setState({visible: true})
-                    }else{
-                        alert('As notificações foram habilitadas')
-                        this.notification.ScheduleSleepNotification(this.state.horas.toString())
-                        this.enable()
-                    }
-                    
-                }}>
-                    <Text style={sonoData.ButtonText}>{this.state.text}</Text>
-                </TouchableHighlight>
+                    <TouchableHighlight style={[sonoData.desableButton,this.state.enable]} underlayColor={this.state.underlayColor} onPress={()=>{
+                        if(this.state.text === 'Desativar as notificações'){
+                            this.setState({visible: true})
+                        }else{
+                            alert('As notificações foram habilitadas')
+                            this.notification.ScheduleSleepNotification(this.state.horas.toString())
+                            this.enable()
+                        }
+                        
+                    }}>
+                        <Text style={sonoData.ButtonText}>{this.state.text}</Text>
+                    </TouchableHighlight>
 
-                <TouchableHighlight style={sonoData.menuButton} underlayColor='#118F1D' onPress={()=>this.props.navigation.navigate('Homepage')}>
-                    <Text style={sonoData.ButtonText}>Voltar ao menu</Text>
-                </TouchableHighlight>
-                {this.state.visible && (<SonoPopup close={this.closePopup} desable={this.desable}/>)}
-            </View>
-        )
+                    <TouchableHighlight style={sonoData.menuButton} underlayColor='#118F1D' onPress={()=>this.props.navigation.navigate('Homepage')}>
+                        <Text style={sonoData.ButtonText}>Voltar ao menu</Text>
+                    </TouchableHighlight>
+                    {this.state.visible && (<SonoPopup close={this.closePopup} desable={this.desable}/>)}
+                </View>
+            )
+        }
     }
 }
 

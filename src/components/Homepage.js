@@ -197,7 +197,7 @@ class Homepage extends Component{
         <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={async ()=>{
           await this.selectSono()
           if(this.state.sonoVisited){
-            this.props.navigation.navigate('SonoData')
+            this.props.navigation.navigate('SonoData',{reload:true})
           }else{
             this.props.navigation.navigate('SonoHome')
           }

@@ -17,12 +17,6 @@ class SonoForm extends Component{
         this.notification
         this.notification = notificationManager
         this.notification.configure()
-        let mouth
-        if(new Date().getUTCMonth() + 1 > 9){
-            mouth = new Date().getUTCMonth() + 1
-        }else{
-            mouth = `0${new Date().getUTCMonth() + 1}`
-        }
     }
 
     insert(horasDormidas,horaAcordar){
@@ -83,7 +77,7 @@ class SonoForm extends Component{
                             this.insert(this.state.sleep,this.state.hour)
                         }
                         this.notification.ScheduleSleepNotification(this.state.hour)
-                        this.props.navigation.navigate('SonoData')
+                        this.props.navigation.navigate('SonoData',{reload:true})
                     }}>
                         <Text style={sonoForm.textButton}>Confirmar</Text>
                     </TouchableHighlight>
