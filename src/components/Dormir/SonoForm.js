@@ -12,7 +12,8 @@ class SonoForm extends Component{
         this.state = {
             visible: false,
             hour: '',
-            sleep: ''
+            sleep: '',
+            fulldate: ''
         }
         this.notification
         this.notification = notificationManager
@@ -63,6 +64,7 @@ class SonoForm extends Component{
                             if(data === undefined){
                                 return
                             }
+                            this.setState({fulldate: data.toString()})
                             this.setState({hour: data.toString().slice(15,21)})
                         }} is24Hour={true}/>)}
                     </View>
@@ -76,7 +78,7 @@ class SonoForm extends Component{
                         }else{
                             this.insert(this.state.sleep,this.state.hour)
                         }
-                        this.notification.ScheduleSleepNotification(this.state.hour)
+                        this.notification.ScheduleSleepNotification(this.state.fulldate)
                         this.props.navigation.navigate('SonoData',{reload:true})
                     }}>
                         <Text style={sonoForm.textButton}>Confirmar</Text>

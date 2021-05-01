@@ -94,56 +94,12 @@ class NotificationManager{
         })
     }
 
-    ScheduleSleepNotification(hour) {
+    ScheduleSleepNotification(date) {
+        date = new Date((Date.parse(date) + 24 * 60 * 60 * 1000) - 8 * 60 * 60 * 1000).toString()
         
-        let month
-        let day
-
-        if(new Date().getUTCMonth() + 1 > 9){
-            month = new Date().getUTCMonth() + 1
-        }else{
-            month = `0${new Date().getUTCMonth() + 1}`
-        }
-
-        if(new Date() > new Date(`${new Date().getFullYear()}-${month}-${new Date().getDate()}T${hour.trim()}:00.000Z`)){
-            if([4,6,9,11].includes(new Date().getMonth() + 1)){
-                if(new Date().getDate() + 1 > 30){
-                    day = 1
-                }else{
-                    day = new Date().getDate() + 1
-                }
-            }else{
-                if(new Date().getMonth() + 1 == 2){
-                    if(new Date().getDate() + 1 > 28){
-                        day = 1
-                    }else{
-                        day = new Date().getDate() + 1
-                    }
-                }else{
-                    if(new Date().getDate() + 1 > 31){
-                        day = 1
-                    }else{
-                        day = new Date().getDate() + 1
-                    } 
-                } 
-            }
-            
-        }else{
-            day = new Date().getDate()
-        }
-        if(day < 10){
-            day = `0${day}`
-        }
-        const timezone = new Date().getTimezoneOffset()/60
-
-        Date.prototype.addHours = function (value) {
-            this.setHours(this.getHours() + value);
-        }
-        var data = new Date(`${new Date().getFullYear()}-${month}-${day}T${hour.trim()}:00.000Z`);
-        data.addHours(-(8+timezone));
         PushNotification.localNotificationSchedule({
             id: 2.1,
-            date: data,
+            date: new Date(date),
             channelId: '123',
             title: 'Está na hora de dormir 💤💤',
             message: `Para manter um sono controlado, você deve dormir dentro de 10 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
