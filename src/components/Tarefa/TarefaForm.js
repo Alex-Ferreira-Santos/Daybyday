@@ -79,7 +79,7 @@ class TarefaForm extends Component {
                     </View>
                     <View style={tarefaForm.section}>
                         <Text style={tarefaForm.label}>Data de término</Text>
-                        <TextInput placeholder='Selecione a data de término aqui' style={tarefaForm.input} onFocus={()=>{this.setState({show: true})}} value={this.state.time}/>
+                        <TextInput placeholder='Selecione a data de término aqui' style={tarefaForm.input} onFocus={()=>{this.setState({show: true})}} value={this.state.time} showSoftInputOnFocus={false}/>
                         {this.state.show && (<DateTimePicker mode={this.state.mode} value={new Date()} onChange={(value,data)=> {
                                 if(data === undefined){
                                     return;
@@ -96,13 +96,11 @@ class TarefaForm extends Component {
                                     this.minutes = data.toString().slice(15)
                                     this.setState({hour: data.toString().slice(15,21)})
                                     this.setState({show:false})
-                                    
                                 }
                                 
                                 this.setState({fulldate: `${this.day}${this.minutes}`})
                                 this.setState({time: `${this.state.day}${this.state.hour}`})
                                 this.setState({mode:'date'})
-
                             }} is24Hour={true}  
                             />)}
                     </View>
@@ -137,11 +135,11 @@ class TarefaForm extends Component {
                         }else{
                             await this.update(this.state.title,this.state.description,this.state.time,this.state.priority,false,params.id)
                             alert(`tarefa ${this.state.title} editada com sucesso`)
+                            this.notification.cancelNotifications(params.id)
                         }
                         await this.select()
-                        console.log(this.state.tarefa[0])
                         this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
-                        //this.notification.ScheduleTaskNotification(this.state.fulldate, this.state.time, this.state.priority)
+                        this.notification.ScheduleTaskNotification(this.state.fulldate, this.state.title, this.state.priority,this.state.tarefa[0][this.state.tarefa.length - 1])
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
                     </TouchableHighlight>

@@ -53,7 +53,7 @@ class NotificationManager{
     ScheduleWaterNotification(ml) {
         const minutes = parseInt(new Date().getMinutes())
         PushNotification.localNotificationSchedule({
-            id: 1,
+            id: 1.1,
             date: new Date(Date.now() + minutes*(60*1000)),
             channelId: '123',
             title: 'Lembrete de água 💧',
@@ -69,15 +69,28 @@ class NotificationManager{
         PushNotification.cancelLocalNotifications({id:id})
     }
 
-    ScheduleTaskNotification(date,title,priority){
+    ScheduleTaskNotification(date,title,priority,id){
+        let prioridade
+        switch(priority){
+            case 'Baixa':
+                prioridade = 'low'
+                break
+            case 'Média':
+                prioridade = 'low'
+                break
+            case 'Alta':
+                prioridade = 'high'
+                break
+        }
         PushNotification.localNotificationSchedule({
-            id: 1,
-            date: '',
+            id: id,
+            date: new Date(`${date}`),
             channelId: '123',
-            title: 'Lembrete de água 💧',
-            message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
+            title: `Está na hora da tarefa de ${title}❗`,
+            message: `A tarefa de ${title} está na hora de ser feita 📋`,
             allowWhileIdle: false,
             color: "yellow",
+            priority: prioridade
         })
     }
 
@@ -129,7 +142,7 @@ class NotificationManager{
         var data = new Date(`${new Date().getFullYear()}-${month}-${day}T${hour.trim()}:00.000Z`);
         data.addHours(-(8+timezone));
         PushNotification.localNotificationSchedule({
-            id: 2,
+            id: 2.1,
             date: data,
             channelId: '123',
             title: 'Está na hora de dormir 💤💤',
