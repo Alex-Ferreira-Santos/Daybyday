@@ -2,8 +2,15 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native'
 import TarefaDB from '../../Database/tarefa';
 import {tarefaPopup} from '../../styles/Tarefa'
+import {notificationManager} from '../../services/NotificationManager'
 
 class TarefaPopup extends Component {
+    constructor(props){
+        super(props)
+        this.notification
+        this.notification = notificationManager
+        this.notification.configure()
+    }
 
     async delete(id){
         const tarefa = new TarefaDB
@@ -25,6 +32,7 @@ class TarefaPopup extends Component {
                             alert(`Tarefa ${this.props.titulo} excluida com sucesso`)
                             await this.delete(this.props.id)
                             this.props.goback()
+                            this.notification.cancelNotifications(this.props.id)
                         }}>
                             <Text style={tarefaPopup.excludeButtonText}>Excluir</Text>
                         </TouchableHighlight>

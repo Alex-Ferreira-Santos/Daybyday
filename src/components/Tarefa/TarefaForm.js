@@ -90,9 +90,7 @@ class TarefaForm extends Component {
                                     this.setState({mode:'time'})
                                     return;
                                 }
-  
- 
-                                if(this.state.mode === 'time'){
+                                if(this.state.mode === 'time' && this.minutes === ''){
                                     this.minutes = data.toString().slice(15)
                                     this.setState({hour: data.toString().slice(15,21)})
                                     this.setState({show:false})
@@ -139,7 +137,7 @@ class TarefaForm extends Component {
                         }
                         await this.select()
                         this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
-                        this.notification.ScheduleTaskNotification(this.state.fulldate, this.state.title, this.state.priority,this.state.tarefa[0][this.state.tarefa.length - 1])
+                        this.notification.ScheduleTaskNotification(this.state.fulldate, this.state.title, this.state.priority,this.state.tarefa[0][this.state.tarefa[0].length - 1].id)
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
                     </TouchableHighlight>
