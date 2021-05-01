@@ -5,6 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import RNPickerSelect from 'react-native-picker-select' ;
 import Task from '../../Model/task'
 import TarefaDB from '../../Database/tarefa';
+import {notificationManager} from '../../services/NotificationManager'
 
 class TarefaForm extends Component {
     constructor(props){
@@ -19,9 +20,15 @@ class TarefaForm extends Component {
             priority:'',
             show: false,
             mode: 'date',
-            tarefa: []
+            tarefa: [],
+            fulldate: ''
         }
         this.tarefa = []
+        this.day = ''
+        this.minutes = ''
+        this.notification
+        this.notification = notificationManager
+        this.notification.configure()
     }
 
     async insert(titulo,descricao,dataDeTermino,prioridade,concluido){
@@ -78,6 +85,7 @@ class TarefaForm extends Component {
                                     return;
                                 }
                                 if(this.state.mode === 'date'){
+                                    this.day = data.toString().slice(0,15)
                                     this.setState({day: data.toString().slice(3,15)})
                                     this.setState({mode:'time'})
                                     return;
@@ -85,11 +93,13 @@ class TarefaForm extends Component {
   
  
                                 if(this.state.mode === 'time'){
+                                    this.minutes = data.toString().slice(15)
                                     this.setState({hour: data.toString().slice(15,21)})
                                     this.setState({show:false})
                                     
                                 }
                                 
+                                this.setState({fulldate: `${this.day}${this.minutes}`})
                                 this.setState({time: `${this.state.day}${this.state.hour}`})
                                 this.setState({mode:'date'})
 
@@ -129,7 +139,9 @@ class TarefaForm extends Component {
                             alert(`tarefa ${this.state.title} editada com sucesso`)
                         }
                         await this.select()
+                        console.log(this.state.tarefa[0])
                         this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
+                        //this.notification.ScheduleTaskNotification(this.state.fulldate, this.state.time, this.state.priority)
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
                     </TouchableHighlight>

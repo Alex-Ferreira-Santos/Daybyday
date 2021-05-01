@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 const tarefaHome = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#B94B4B',
     },
@@ -41,7 +41,7 @@ const tarefaHome = StyleSheet.create({
 const tarefaMain = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#B94B4B',
     },

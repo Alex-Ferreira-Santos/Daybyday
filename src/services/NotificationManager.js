@@ -69,6 +69,18 @@ class NotificationManager{
         PushNotification.cancelLocalNotifications({id:id})
     }
 
+    ScheduleTaskNotification(date,title,priority){
+        PushNotification.localNotificationSchedule({
+            id: 1,
+            date: '',
+            channelId: '123',
+            title: 'Lembrete de água 💧',
+            message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
+            allowWhileIdle: false,
+            color: "yellow",
+        })
+    }
+
     ScheduleSleepNotification(hour) {
         
         let month
@@ -115,7 +127,7 @@ class NotificationManager{
             this.setHours(this.getHours() + value);
         }
         var data = new Date(`${new Date().getFullYear()}-${month}-${day}T${hour.trim()}:00.000Z`);
-        data.addHours(-8);
+        data.addHours(-(8+timezone));
         PushNotification.localNotificationSchedule({
             id: 2,
             date: data,

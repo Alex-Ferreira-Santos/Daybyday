@@ -94,6 +94,7 @@ class SonoData extends Component{
                             this.setState({visible: true})
                         }else{
                             alert('As notificações foram habilitadas')
+                            console.log(this.state.horas)
                             this.notification.ScheduleSleepNotification(this.state.horas.toString())
                             this.enable()
                         }
