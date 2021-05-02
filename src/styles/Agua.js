@@ -57,31 +57,32 @@ const aguaForm = StyleSheet.create({
         paddingBottom: 10
     },
     dica:{
-        fontSize: 14,
-        textAlign: 'center',
+        fontSize: 18,
+        textAlign: 'justify',
         width: '80%',
-        margin: 20,
+        marginTop: 20,
     },
     view:{
         width:'90%',
-        marginVertical: 10
+        marginBottom: 20
     },
     label:{
-        fontSize: 18,
+        fontSize: 21,
         marginBottom:4,
     },
     input:{
         backgroundColor: '#DADADA',
-        height: 30,
+        height: 40,
         borderRadius: 15,
         paddingVertical: 7,
         borderColor: '#707070',
         borderWidth: 1.7
     },
     tips:{
-        textAlign: 'center',
+        textAlign: 'justify',
         width: '80%',
-        marginBottom: 5
+        marginBottom: 10,
+        fontSize: 16,
     },
     next:{
         backgroundColor: '#177070',

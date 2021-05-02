@@ -17,14 +17,14 @@ class AguaForm extends Component{
         this.notificador.configure()
     }
 
-    insert(litros,horas,tempo){
-        const water = new Water(litros,horas,tempo)
+    insert(litros){
+        const water = new Water(litros,18,60)
         const agua = new Agua
         agua.insert(water)
     }
 
-    async update(litros,horas,tempo){
-        const water = new Water(litros,horas,tempo)
+    async update(litros){
+        const water = new Water(litros,18,60)
         const agua = new Agua
         await agua.update(water)
     }
@@ -60,27 +60,12 @@ class AguaForm extends Component{
                         }}
                         />
                     </View>
-                    <View style={aguaForm.view}>
-                        <Text style={aguaForm.label}>Em quanto tempo:</Text>
-                        <TextInput placeholder='Digite a quantidade de Horas aqui' style={aguaForm.input} keyboardType='number-pad' maxLength={2} value={this.state.horas} onChangeText={value=>{
-                            if (parseInt(value) > 20) {
-                                value = '20';
-                            }
-                            this.setState({horas: value}) 
-                        }}
-                        onEndEditing={(value)=>{
-                            if (parseInt(value.nativeEvent.text) < 10) {
-                                value = '10';
-                                this.setState({horas: value}) 
-                            }
-                        }}
-                        />
-                    </View>
-                    <Text style={aguaForm.tips}>O valor minimo para litros é 1,5 e o maximo é 4. Para as horas o minimo é 10 e o maximo é 20</Text>
-                    <Text style={aguaForm.tips}>De acordo com a quantidade de horas, o tempo da notificação vai mudar</Text>
+                    
+                    <Text style={aguaForm.tips}>O valor minimo para litros é 1,5 e o maximo é 4.</Text>
+                    <Text style={aguaForm.tips}>O quantidade de água é calculada ao longo de 18 horas</Text>
 
                     <TouchableHighlight style={aguaForm.next} underlayColor='#114A4A' onPress={()=>{
-                        if(this.state.horas === '' || this.state.litros === ''){
+                        if(this.state.litros === ''){
                             alert('Ainda há campos incompletos')
                             return
                         }
@@ -88,11 +73,11 @@ class AguaForm extends Component{
                             this.setState({horas: '10'})
                         }
                         const litros = this.state.litros * 1000
-                        const quantidade = litros / this.state.horas
+                        const quantidade = litros / 18
                         if(params.edit){
-                            this.update(this.state.litros,this.state.horas,60)
+                            this.update(this.state.litros)
                         }else{
-                            this.insert(this.state.litros,this.state.horas,60)
+                            this.insert(this.state.litros)
                         }
                         this.ScheduleNotification(quantidade)
                         

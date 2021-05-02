@@ -118,7 +118,6 @@ class AguaOptions extends Component {
                 <View style={aguaOptions.editar}>
                     <Text style={aguaOptions.subtitle}>Editar Notificação</Text>
                     <Text style={aguaOptions.data}>Litros atuais: {this.state.agua[0][0].litros} litros</Text>
-                    <Text style={aguaOptions.data}>Horas atuais: {this.state.agua[0][0].horas} horas</Text>
                     <TouchableHighlight style={aguaOptions.editButton} underlayColor='#3A74A9' onPress={()=>this.props.navigation.navigate('AguaForm',{edit:true})}>
                         <Text style={aguaOptions.ButtonText}>Editar</Text>
                     </TouchableHighlight>
