@@ -49,8 +49,14 @@ class SonoData extends Component{
         await sono.select().then( value => {
             this.atribuiValor(value,this.sono)
         })
-        this.setState({sono:this.sono})
-        this.CustomText()
+        this.state.sono = this.sono
+        if(this.props.route.params !== undefined){
+            if(this.props.route.params.reload){
+                this.CustomText() 
+                this.props.route.params.reload = false
+            }
+        }
+        
     }
 
     atribuiValor(data,array){
@@ -77,7 +83,11 @@ class SonoData extends Component{
 
     render(){
         try {
-            
+            if(this.props.route.params.reload!==undefined){
+                if(this.props.route.params){
+                    this.select()
+                }
+            }
         } finally {        
             return(
                 <View style={sonoData.container}>
