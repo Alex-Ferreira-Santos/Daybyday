@@ -22,7 +22,6 @@ class Homepage extends Component{
     super(props)
     this.state = {
       visible: false,
-      adm:false,
       aguaVisited: false,
       massaVisited: false,
       sonoVisited: false,
@@ -36,15 +35,10 @@ class Homepage extends Component{
     this.tarefa = []
     this.alimentacao = []
     this.ClosePopUp = this.ClosePopUp.bind(this)
-    this.setAdm = this.setAdm.bind(this)
   }
 
   ClosePopUp(){
     this.setState({visible: false})
-  }
-
-  setAdm(){
-    this.setState({adm:true})
   }
 
   async selectAgua(){
@@ -155,9 +149,9 @@ class Homepage extends Component{
           await this.selectAlimentacao()
           if(this.state.alimentacaoVisited){
             
-            this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0],adm:this.state.adm})
+            this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0]})
           }else{
-            this.props.navigation.navigate('AlimentacaoHome',{receitas:this.state.alimentacao[0],adm:this.state.adm})
+            this.props.navigation.navigate('AlimentacaoHome',{receitas:this.state.alimentacao[0]})
           }
           }}>
           <View style={styles.Buttoncontainer}>
@@ -215,7 +209,7 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        {this.state.visible && (<ExtraHome close={this.ClosePopUp} setAdm={this.setAdm}/>)}
+        {this.state.visible && (<ExtraHome close={this.ClosePopUp}/>)}
       </View>
     )
   }

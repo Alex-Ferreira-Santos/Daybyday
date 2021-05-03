@@ -54,7 +54,7 @@ class AlimentacaoMain extends Component{
                     {this.state.show && params.receitas.map(receita => (
                         <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={async ()=>{
                             await this.selectByIdTarefa(receita.id)
-                            this.props.navigation.navigate('AlimentacaoDieta',{receita: this.state.alimentacaoById[0],adm: params.adm})
+                            this.props.navigation.navigate('AlimentacaoDieta',{receita: this.state.alimentacaoById[0]})
                             }} key={receita.id}>
                             <Text style={alimentacaoMain.dietaName}>{receita.nome}</Text>
                          </TouchableHighlight>

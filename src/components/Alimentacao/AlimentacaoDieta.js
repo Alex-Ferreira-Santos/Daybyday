@@ -85,13 +85,13 @@ class AlimentacaoDieta extends Component {
                         <Text style={alimentacaoDieta.buttonText}>Voltar</Text>
                     </TouchableHighlight>
 
-                    {params.adm && (<TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm',{title: 'Editar a receita', receita: params.receita.nome, buttonColor: {backgroundColor: '#A59F1A'},buttonText:'Editar',underlayColor:'#8D8918',id:params.receita.id})}>
+                    <TouchableHighlight style={alimentacaoDieta.editButton} underlayColor='#8D8918' onPress={()=>this.props.navigation.navigate('AlimentacaoForm',{title: 'Editar a receita', receita: params.receita.nome, buttonColor: {backgroundColor: '#A59F1A'},buttonText:'Editar',underlayColor:'#8D8918',id:params.receita.id})}>
                         <Text style={alimentacaoDieta.buttonText}>Editar</Text>
-                    </TouchableHighlight>)}
+                    </TouchableHighlight>
 
-                    {params.adm && (<TouchableHighlight style={alimentacaoDieta.deleteButton} underlayColor='#8D1B1B' onPress={()=>{this.setState({show: true})}}>
+                    <TouchableHighlight style={alimentacaoDieta.deleteButton} underlayColor='#8D1B1B' onPress={()=>{this.setState({show: true})}}>
                         <Text style={alimentacaoDieta.buttonText}>Excluir</Text>
-                    </TouchableHighlight>)}
+                    </TouchableHighlight>
 
                 </ScrollView>
                 {this.state.show && (<AlimentacaoPopup goback={this.goback} backToMain={this.backToMain} id={params.receita.id} titulo={params.receita.nome}/>)}

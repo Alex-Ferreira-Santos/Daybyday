@@ -18,7 +18,7 @@ class AlimentacaoHome extends Component {
                 <Image source={brocolis} style={alimentacaoHome.brocolis}/>
                 <TouchableHighlight style={alimentacaoHome.button} underlayColor='#1D470E' onPress={()=>{
                     this.updateVisited()
-                    this.props.navigation.navigate('AlimentacaoMain',{adm:params.adm,receitas:params.receitas})
+                    this.props.navigation.navigate('AlimentacaoMain',{receitas:params.receitas})
                     }}>
                     <Text style={alimentacaoHome.buttonText}>Próximo</Text>
                 </TouchableHighlight>
