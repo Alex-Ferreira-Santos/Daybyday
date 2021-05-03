@@ -3,26 +3,26 @@ import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator()
-import Homepage from './src/components/Homepage'
-import AguaHome from './src/components/Agua/AguaHome'
-import AguaForm from './src/components/Agua/AguaForm';
-import AguaSuccessful from './src/components/Agua/AguaSuccessful';
-import AguaOptions from './src/components/Agua/AguaOptions';
-import MassaHome from './src/components/Massa/MassaHome';
-import MassaForm from './src/components/Massa/MassaForm';
-import MassaData from './src/components/Massa/MassaData';
-import MassaFinal from './src/components/Massa/MassaFinal';
-import SonoHome from './src/components/Dormir/SonoHome';
-import SonoForm from './src/components/Dormir/SonoForm';
-import SonoData from './src/components/Dormir/SonoData';
-import TarefaHome from './src/components/Tarefa/TarefaHome';
-import TarefaMain from './src/components/Tarefa/TarefaMain';
-import TarefaForm from './src/components/Tarefa/TarefaForm';
-import TarefaDetail from './src/components/Tarefa/TarefaDetails';
-import AlimentacaoHome from './src/components/Alimentacao/AlimentacaoHome';
-import AlimentacaoMain from './src/components/Alimentacao/AlimentacaoMain';
-import AlimentacaoDieta from './src/components/Alimentacao/AlimentacaoDieta';
-import AlimentacaoForm from './src/components/Alimentacao/AlimentacaoForm';
+import Homepage from './src/pages/Homepage'
+import AguaHome from './src/pages/Agua/AguaHome'
+import AguaForm from './src/pages/Agua/AguaForm';
+import AguaSuccessful from './src/pages/Agua/AguaSuccessful';
+import AguaOptions from './src/pages/Agua/AguaOptions';
+import MassaHome from './src/pages/Massa/MassaHome';
+import MassaForm from './src/pages/Massa/MassaForm';
+import MassaData from './src/pages/Massa/MassaData';
+import MassaFinal from './src/pages/Massa/MassaFinal';
+import SonoHome from './src/pages/Dormir/SonoHome';
+import SonoForm from './src/pages/Dormir/SonoForm';
+import SonoData from './src/pages/Dormir/SonoData';
+import TarefaHome from './src/pages/Tarefa/TarefaHome';
+import TarefaMain from './src/pages/Tarefa/TarefaMain';
+import TarefaForm from './src/pages/Tarefa/TarefaForm';
+import TarefaDetail from './src/pages/Tarefa/TarefaDetails';
+import AlimentacaoHome from './src/pages/Alimentacao/AlimentacaoHome';
+import AlimentacaoMain from './src/pages/Alimentacao/AlimentacaoMain';
+import AlimentacaoDieta from './src/pages/Alimentacao/AlimentacaoDieta';
+import AlimentacaoForm from './src/pages/Alimentacao/AlimentacaoForm';
 
 class App extends Component{
   render(){

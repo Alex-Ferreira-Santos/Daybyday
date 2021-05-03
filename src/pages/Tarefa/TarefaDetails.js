@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native'
 import TarefaDB from '../../Database/tarefa';
 import {tarefaDetails} from '../../styles/Tarefa'
-import TarefaPopup from './TarefaPopup'
+import TarefaPopup from '../../components/Tarefa/TarefaPopup'
 
 class TarefaDetail extends Component {
     constructor(props){

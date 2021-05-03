@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
 import TarefaDB from '../../Database/tarefa';
 import {tarefaMain} from '../../styles/Tarefa'
-import Tarefa from './Tarefa';
+import Tarefa from '../../components/Tarefa/Tarefa';
 
 class TarefaMain extends Component{
     constructor(props){

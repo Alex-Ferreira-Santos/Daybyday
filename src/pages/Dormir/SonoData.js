@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight} from 'react-native'
 import Sono from '../../Database/Sono';
 import {sonoData} from '../../styles/Sono'
-import SonoPopup from './SonoPopup'
+import SonoPopup from '../../components/Dormir/SonoPopup'
 import {notificationManager} from '../../services/NotificationManager'
 
 class SonoData extends Component{
