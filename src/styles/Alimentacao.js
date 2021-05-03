@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native'
 const alimentacaoHome = StyleSheet.create({
     container: {
         flex:1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#59A73D'
     },
@@ -39,7 +39,7 @@ const alimentacaoHome = StyleSheet.create({
 const alimentacaoMain = StyleSheet.create({
     container:{
         flex:1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#59A73D'
     },
@@ -186,11 +186,11 @@ const alimentacaoDieta = StyleSheet.create({
 
 const alimentacaoForm = StyleSheet.create({
     container:{
-        flex:1,
         backgroundColor: '#59A73D',
     },
     scrollContainer:{
-        justifyContent: 'center',
+        flex:1,
+        justifyContent: 'space-around',
         alignItems: 'center',
     },
     main:{
