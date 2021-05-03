@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { Linking } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
-import AlimentacaoPopup from './AlimentacaoPopup'
+import AlimentacaoPopup from '../../components/Alimentacao/AlimentacaoPopup'
 import AlimentacaoDB from '../../Database/alimetacao'
 
 class AlimentacaoDieta extends Component {

@@ -8,7 +8,7 @@ import peso from '../img/peso.png'
 import lista from '../img/lista-de-tarefas.png'
 import lua from '../img/lua-crescente.png'
 import config from '../img/configuracao.png'
-import ExtraHome from './Extra/ExtraHome';
+import ExtraHome from '../components/Extra/ExtraHome';
 
 import Agua from '../Database/agua'
 import Massa from '../Database/massa';
