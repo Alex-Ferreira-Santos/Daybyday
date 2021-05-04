@@ -92,28 +92,4 @@ export default class TarefaDB{
             }).catch( err => console.log(err))
         })
     }
-
-    update(food,id){
-        return new Promise((resolve, reject) =>{
-            this.initDB().then( db => {
-                db.transaction(tx => {
-                    tx.executeSql(`UPDATE food SET nome = '${food.nome}', imagem = '${food.imagem}', ingredientes = '${food.ingredientes}', modoDePreparo = '${food.modoDePreparo}', fonte = '${food.fonte}' WHERE id = ${id}`,[]).then(([tx,results])=>{
-                        resolve(results)
-                    }) 
-                }).then((results)=>this.closeDB()).catch(err => console.log(err))
-            }).catch(err => console.log(err))
-        })
-    }
-
-    delete(id){
-        return new Promise((resolve, reject) => {
-            this.initDB().then( db => {
-                db.transaction( tx => {
-                    tx.executeSql(`DELETE FROM food WHERE id = ${id}`,[]).then(([tx, result]) => {
-                        resolve(result)
-                    })
-                }).then( result => this.closeDatabase()).catch( err => console.log(err))
-            }).catch( err => console.log(err))
-        })
-    }
 }

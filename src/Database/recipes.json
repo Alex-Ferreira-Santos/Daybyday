@@ -25,5 +25,72 @@
         ],
         "modoDePreparo": "Coloque todos os ingredientes no liquidificador, com exceção do fermento, e bata até ficar homogêneo. Se você estiver usando farinha de aveia, pode misturar todos os ingredientes manualmente. Acrescente o fermento por último e misture delicadamente. Aqueça uma frigideira antiaderente em fogo baixo. Espalhe um pouco da massa e tampe para abafar e já começar a assar o outro lado. Verifique se está bem assada e vire para assar o outro lado até dourar. Tampe novamente para abafar. Repita o processo até terminar a massa Sirva com o acompanhamento de sua preferência (mel, frutas, geleias, castanhas)",
         "fonte": "https://www.receiteria.com.br/receita/panqueca-de-aveia/"
+    },
+    {
+        "id": 3,
+        "nome": "Dadinhos de tapioca",
+        "image": "https://www.receiteria.com.br/wp-content/uploads/dadinhos-de-tapioca-730x449.png",
+        "ingredientes": [
+            "250 g de queijo coalho",
+            "250 g de tapioca granulada",
+            "500 ml de leite fervente",
+            "Sal e pimenta",
+            "Orégano, ou o tempero de sua preferência"
+        ],
+        "modoDePreparo": "Prepare uma forma de 20 x 25 cm forrada com filme plástico. Rale o queijo no ralo grosso e coloque-o em uma vasilha. Adicione a tapioca, coloque uma pitada de sal, um pouquinho de pimenta, orégano e misture . Adicione o leite fervente e vá mexendo até incorporar o leite e a massa ficar homogênea. Espalhe a mistura na forma preparada, alise para ficar retinha e leve para a geladeira por no mínimo 3 horas. Após esse tempo, tire da geladeira, corte em quadradinhos e acomode os cubinhos em uma assadeira antiaderente ou forrada com papel manteiga. Leve para assar por uns 40 minutos, até que fiquem douradinhos (se preferir, você pode fazer frito). Retire do forno. Está pronto!",
+        "fonte": "https://www.receiteria.com.br/receita/dadinhos-de-tapioca/"
+    },
+    {
+        "id": 4,
+        "nome": "Guacamole",
+        "image": "https://www.aminhafestinha.com/wp-content/uploads/2019/07/guacamole.jpg",
+        "ingredientes": [
+            "2 abacates",
+            "2 colheres (sopa) suco de limão",
+            "2 colheres (sopa) cebola picada",
+            "2 tomates sem sementes picados",
+            "1 colhere (sopa) coentro picado (opcional)",
+            "1 pimenta dedo de moça ou 1 colher (chá) de pimenta calabresa",
+            "a gosto Sal"
+        ],
+        "modoDePreparo": "Coloque a polpa do abacate em um recipiente e amasse com um garfo. Adicione o limão, a cebola picada, o sal, a pimenta picada sem semente (ou a pimenta calabresa), e o coentro. Por último, misture delicadamente o tomate.",
+        "fonte": "http://blogdamimis.com.br/2014/11/18/guacamole-arriba/"
+    },
+    {
+        "id": 5,
+        "nome": "Camarão com macarrão integral",
+        "image": "https://lh3.googleusercontent.com/proxy/niB5oW4rkQdwvUmVH--yVAMy2_iLaiV6VzkAoK0SGMtM9PGaxM3ijMLPyDpHuG_6OMUqkUIuJV6WEmYKIsoro8K8UoikElqIVJAFAWbxmm3JjaaHJHyUsj1MC5ODKjj-qhDlOqHOXe1vkBRCLORli4j8th00ufIVFWUe6TqVUG7gOswbSVGw5Yn-Bt0xgwBREfmCAitiQYhv7XkQ90yM85Toc10Y",
+        "ingredientes": [
+            "500 gramas camarão descascado",
+            "400 gramas macarrão integral",
+            "1 cebola picada",
+            "1 pimentão picado",
+            "2 dentes alho picado",
+            "1 colher (sopa) azeite de oliva",
+            "5 tomates picados",
+            "à gosto pimenta",
+            "à gosto Sal",
+            "0,5 xícara (chá) tempero verde picado",
+            "0,5 xícara (chá) manjericão"
+        ],
+        "modoDePreparo": "Refogue a cebola, o pimentão e o alho no azeite. Adicione o tomate e deixe cozinhar o molho. Acrescente a salsinha, o camarão, a pimenta e o sal. Enquanto isso, cozinhe o macarrão em água fervente como escrito na embalagem. Disponha a massa em uma travessa, jogue as folhas de manjericão e cubra com o molho.",
+        "fonte": "http://blogdamimis.com.br/2015/12/07/camarao-com-macarrao-integral/"
+    },
+    {
+        "id": 6,
+        "nome": "Massa primavera",
+        "image": "https://lh3.googleusercontent.com/proxy/Bt20UhdhFFURLi2EFl_ZDLAEe13o4AgvzYkucvZB4rdc5GutkzGE_kPTW0GXXEilRlsl6prxSXdq97tW84DnpIxcl2ZNoiwl8TUWeBev1TWQaadVHepz1NRFAd8UrAFNAi_xGS_B1nleiu3wmPDU1KezSzCn69xh016vc93bl4sBYBuI8otX0tQqGSJURGx9cHQ",
+        "ingredientes": [
+            "2 xícaras (chá) macarrão cozido tipo parafuso",
+            "1 xícara (chá) abobrinha picada",
+            "0,5 xícara (chá) tomate cereja fatiado",
+            "1 colher (sopa) azeite de oliva",
+            "1 xícara (chá) alho poró em rodelas",
+            "1 colher (sopa) manjericão picado",
+            "à gosto Pimenta do reino",
+            "à gosto Sal"
+        ],
+        "modoDePreparo": "Cozinhe o macarrão em água fervente. Aqueça uma frigideira antiaderente e refogue o alho poró. Acrescente a abobrinha picada e tempere com sal e pimenta do reino. Junte as rodelas de tomate cereja e mexa enquanto cozinha. Para finalizar, adicione o azeite de oliva e o manjericão.",
+        "fonte": "http://blogdamimis.com.br/2015/11/24/massa-primavera/"
     }
 ]

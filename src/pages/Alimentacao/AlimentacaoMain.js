@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
-import AlimentacaoDB from '../../Database/alimetacao';
 import {alimentacaoMain} from '../../styles/Alimentacao'
 import Recipes from '../../Database/recipes.json'
 
@@ -43,7 +42,7 @@ class AlimentacaoMain extends Component{
                 <ScrollView style={alimentacaoMain.dietas}>
                     {Recipes.map( recipes => (
                         <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>{
-                            this.props.navigation.navigate('AlimentacaoDieta')
+                            this.props.navigation.navigate('AlimentacaoDieta',{recipe: recipes})
                             }} key={recipes.id}>
                             <Text style={alimentacaoMain.dietaName}>{recipes.nome}</Text>
                          </TouchableHighlight>

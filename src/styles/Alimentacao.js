@@ -95,7 +95,7 @@ const alimentacaoDieta = StyleSheet.create({
     main:{
         backgroundColor:'white',
         width: '90%',
-        maxHeight: 500,
+        marginVertical: 30,
         borderRadius: 30,
     },
     containerMain:{
@@ -114,11 +114,12 @@ const alimentacaoDieta = StyleSheet.create({
         fontSize: 15
     },
     subtitle:{
-        fontSize: 20,
+        fontSize: 22,
         marginVertical: 20,
     },
     bold:{
         fontWeight: 'bold',
+        fontSize: 18,
     },
     font:{
         fontSize: 15,
@@ -166,13 +167,14 @@ const alimentacaoDieta = StyleSheet.create({
         color: 'white'
     },
     ingredients:{
-        width:'80%',
+        width:'90%',
         marginBottom: 20
     },
     preparo:{
         width:'90%',
-        textAlign: 'center',
-        marginBottom: 20
+        textAlign: 'justify',
+        marginBottom: 20,
+        fontSize: 16
     },
     image:{
         width: '80%',
@@ -180,138 +182,9 @@ const alimentacaoDieta = StyleSheet.create({
         marginTop: 10,
         borderRadius: 20,
         borderWidth: 2,
-        borderColor: 'black'
+        borderColor: 'black',
+        backgroundColor: 'gray'
     }
 })
 
-const alimentacaoForm = StyleSheet.create({
-    container:{
-        backgroundColor: '#59A73D',
-    },
-    scrollContainer:{
-        flex:1,
-        justifyContent: 'space-around',
-        alignItems: 'center',
-    },
-    main:{
-        backgroundColor:'white',
-        width: '80%',
-        borderRadius: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 30
-    },
-    title:{
-        fontSize: 30,
-        marginBottom: 20
-    },
-    section:{
-        width: '90%',
-        marginVertical: 5
-    },
-    label:{
-        fontSize: 20
-    },
-    input:{
-        backgroundColor: '#E5E5E5',
-        height: 30,
-        paddingVertical: 0,
-        borderRadius: 20,
-        paddingLeft: 8,
-        borderWidth: 1,
-        borderColor: '#979797',
-        marginTop: 8
-    },
-    button:{
-        backgroundColor: '#21560E',
-        width: '50%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 20,
-        paddingVertical: 3,
-        marginVertical: 10
-    },
-    buttonText:{
-        fontSize: 20,
-        color: 'white'
-    },
-    biggerInput:{
-        height: 80
-    },
-    name:{
-        fontSize: 20,
-        width: '80%',
-        textAlign: 'center',
-        position: 'relative',
-        bottom: 10,
-        fontWeight: 'bold'
-    } 
-})
-
-const alimentacaoPopup = StyleSheet.create({
-    container:{
-        backgroundColor: 'rgba(45,86,31,0.8)',
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    main:{
-        backgroundColor:'white',
-        width: '70%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 20,
-        paddingVertical: 10
-    },
-    warning:{
-        color: 'red',
-        fontSize: 20,
-        textAlign: 'center',
-        width: '80%',
-        marginBottom: 10
-    },
-    text:{
-        fontSize: 15,
-        textAlign: 'center',
-        width: '70%',
-        marginBottom: 10
-    },
-    name:{
-        fontSize: 20,
-        textAlign: 'center',
-        width: '80%',
-        fontWeight: 'bold',
-        marginBottom: 40
-    },
-    buttons:{
-        flexDirection: 'row',
-        width: '90%',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    },
-    backButton:{
-        backgroundColor:'#C4C4C4',
-        borderRadius: 20,
-        width: '46%',
-        paddingVertical: 3,
-        alignItems: 'center',
-    },
-    backButtonText:{
-        fontSize: 15
-    },
-    excludeButton:{
-        backgroundColor:'#D81D1D',
-        borderRadius: 20,
-        width: '46%',
-        paddingVertical: 3,
-        alignItems: 'center',
-    },
-    excludeButtonText:{
-        fontSize: 15,
-        color: 'white'
-    }
-})
-
-export {alimentacaoHome,alimentacaoMain, alimentacaoDieta, alimentacaoForm,alimentacaoPopup}
+export {alimentacaoHome,alimentacaoMain, alimentacaoDieta}
