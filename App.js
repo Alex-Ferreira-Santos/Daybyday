@@ -22,7 +22,6 @@ import TarefaDetail from './src/pages/Tarefa/TarefaDetails';
 import AlimentacaoHome from './src/pages/Alimentacao/AlimentacaoHome';
 import AlimentacaoMain from './src/pages/Alimentacao/AlimentacaoMain';
 import AlimentacaoDieta from './src/pages/Alimentacao/AlimentacaoDieta';
-import AlimentacaoForm from './src/pages/Alimentacao/AlimentacaoForm';
 
 class App extends Component{
   render(){
@@ -71,19 +70,6 @@ class App extends Component{
             options={{ headerShown: false }}
             name="AlimentacaoDieta"
             component={AlimentacaoDieta}
-          />
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="AlimentacaoForm"
-            component={AlimentacaoForm}
-            initialParams={{
-              title: 'Inserir receita',
-              receita: '',
-              buttonColor: '',
-              buttonText: 'Inserir',
-              underlayColor: '#1D470E',
-              id:''
-            }}
           />
           <Stack.Screen
             options={{ headerShown: false }}

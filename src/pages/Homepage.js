@@ -16,7 +16,6 @@ import Sono from '../Database/Sono';
 import TarefaDB from '../Database/tarefa';
 import AlimentacaoDB from '../Database/alimetacao'
 import VisitedDB from '../Database/visited'
-import recipes from '../Database/recipes.json'
 
 class Homepage extends Component{
   constructor(props){
@@ -91,19 +90,9 @@ class Homepage extends Component{
     this.setState({tarefa:this.tarefa})
   }
 
-  async selectAlimentacao(){
-    const alimentacao = new AlimentacaoDB
-    await alimentacao.select().then( value => {
-        this.atribuiValor(value,this.alimentacao)     
-    })
-    this.setState({alimentacao:this.alimentacao})
-  }
-
   async createTables(){
     const agua = new Agua
     await agua.select()
-    const alimentacao = new AlimentacaoDB
-    await alimentacao.select()
     const massa = new Massa
     await massa.select()
     const tarefa = new TarefaDB
@@ -112,9 +101,6 @@ class Homepage extends Component{
     await sono.select()
     const visited = new VisitedDB()
     await visited.select()
-    recipes.map(async recipe => {
-      await alimentacao.insert(recipe)
-    })
   }
 
   atribuiValor(data,array){
@@ -126,7 +112,6 @@ class Homepage extends Component{
 
   componentDidMount(){
     this.createTables()
-    
   }
 
   render(){
@@ -151,12 +136,10 @@ class Homepage extends Component{
 
         <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={async ()=>{
           await this.selectVisited()
-          await this.selectAlimentacao()
           if(this.state.alimentacaoVisited){
-            
-            this.props.navigation.navigate('AlimentacaoMain',{receitas:this.state.alimentacao[0]})
+            this.props.navigation.navigate('AlimentacaoMain')
           }else{
-            this.props.navigation.navigate('AlimentacaoHome',{receitas:this.state.alimentacao[0]})
+            this.props.navigation.navigate('AlimentacaoHome')
           }
           }}>
           <View style={styles.Buttoncontainer}>

@@ -10,7 +10,6 @@ class AlimentacaoHome extends Component {
         visited.update(true)
     }
     render(){
-        const params = this.props.route.params
         return (
             <View style={alimentacaoHome.container}>
                 <Text style={alimentacaoHome.title}>Alimentação</Text>
@@ -18,7 +17,7 @@ class AlimentacaoHome extends Component {
                 <Image source={brocolis} style={alimentacaoHome.brocolis}/>
                 <TouchableHighlight style={alimentacaoHome.button} underlayColor='#1D470E' onPress={()=>{
                     this.updateVisited()
-                    this.props.navigation.navigate('AlimentacaoMain',{receitas:params.receitas})
+                    this.props.navigation.navigate('AlimentacaoMain')
                     }}>
                     <Text style={alimentacaoHome.buttonText}>Próximo</Text>
                 </TouchableHighlight>

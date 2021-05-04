@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
 import AlimentacaoDB from '../../Database/alimetacao';
 import {alimentacaoMain} from '../../styles/Alimentacao'
+import Recipes from '../../Database/recipes.json'
 
 class AlimentacaoMain extends Component{
     constructor(props){
@@ -15,14 +16,6 @@ class AlimentacaoMain extends Component{
         this.alimentacao = []
         this.alimentacaoById = []
         this.corAleatoria = this.corAleatoria.bind(this)
-    }
-
-    async selectByIdTarefa(id){
-        const alimentacao = new AlimentacaoDB 
-        await alimentacao.SelectById(id).then(data => {
-          this.atribuiValor(data,this.alimentacaoById)
-        })
-        this.setState({alimentacaoById: this.alimentacaoById})
     }
 
     atribuiValor(data,array){
@@ -41,23 +34,18 @@ class AlimentacaoMain extends Component{
         this.state.lastColor = corSelecionada
         return corSelecionada
     }
+
     render(){ 
-        console.log(this.props.route.params)
-        const params = this.props.route.params
-        if(params === undefined){
-            this.state.show = false
-        }
         return ( 
             <View style={alimentacaoMain.container}>
                 <Text style={alimentacaoMain.title}>Alimentação</Text>
                 <Text style={alimentacaoMain.text}>Receitas disponíveis</Text>
                 <ScrollView style={alimentacaoMain.dietas}>
-                    {this.state.show && params.receitas.map(receita => (
-                        <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={async ()=>{
-                            await this.selectByIdTarefa(receita.id)
-                            this.props.navigation.navigate('AlimentacaoDieta',{receita: this.state.alimentacaoById[0]})
-                            }} key={receita.id}>
-                            <Text style={alimentacaoMain.dietaName}>{receita.nome}</Text>
+                    {Recipes.map( recipes => (
+                        <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>{
+                            this.props.navigation.navigate('AlimentacaoDieta')
+                            }} key={recipes.id}>
+                            <Text style={alimentacaoMain.dietaName}>{recipes.nome}</Text>
                          </TouchableHighlight>
                     ))}
                 </ScrollView>
