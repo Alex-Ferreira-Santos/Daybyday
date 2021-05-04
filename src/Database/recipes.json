@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "nome": "Chips assado de batata doce e alecrim",
+        "image": "https://www.receiteria.com.br/wp-content/uploads/chips-assado-de-batata-doce-e-alecrim-730x449.png",
+        "ingredientes": [
+            "3 batatas-doces",
+            "Azeite de oliva",
+            "Sal e pimenta a gosto",
+            "Alecrim a gosto"
+        ],
+        "modoDePreparo": "Lave as batatas. Com o auxílio de um mandolin, corte-as, com casca, em rodelas bem fininhas. Ajeite as fatias em uma assadeira coberta com silpat ou papel-manteiga e untada com azeite. Tempere com sal e pimenta, regue com um fio de azeite e complete com o alecrim. Leve ao forno preaquecido a 200° por 20 minutos ou até as fatias ficarem douradas. O tempo pode variar de um forno para outro. Quanto mais fininhas forem as fatias, mais rápido elas assam. Retire do forno e deixe esfriar uns cinco minutinhos antes de servir porque assim elas ficam bem crocantes",
+        "fonte": "https://www.receiteria.com.br/receita/chips-assado-de-batata-doce-e-alecrim/"
+    },
+    {
+        "id": 2,
+        "nome": "Panqueca de aveia",
+        "image": "https://www.receiteria.com.br/wp-content/uploads/panqueca-de-aveia-730x449.png",
+        "ingredientes": [
+            "1 xícara de aveia em flocos finos ou farinha de aveia",
+            "1 xícara de água",
+            "2 colheres de sopa de melado",
+            "1 colher de sopa de farinha de linhaça",
+            "1 colher de chá de fermento químico em pó"
+        ],
+        "modoDePreparo": "Coloque todos os ingredientes no liquidificador, com exceção do fermento, e bata até ficar homogêneo. Se você estiver usando farinha de aveia, pode misturar todos os ingredientes manualmente. Acrescente o fermento por último e misture delicadamente Aqueça uma frigideira antiaderente em fogo baixo. Espalhe um pouco da massa e tampe para abafar e já começar a assar o outro lado Verifique se está bem assada e vire para assar o outro lado até dourar. Tampe novamente para abafar Repita o processo até terminar a massa Sirva com o acompanhamento de sua preferência (mel, frutas, geleias, castanhas)",
+        "fonte": "https://www.receiteria.com.br/receita/panqueca-de-aveia/"
+    }
+]

@@ -16,6 +16,7 @@ import Sono from '../Database/Sono';
 import TarefaDB from '../Database/tarefa';
 import AlimentacaoDB from '../Database/alimetacao'
 import VisitedDB from '../Database/visited'
+import recipes from '../Database/recipes.json'
 
 class Homepage extends Component{
   constructor(props){
@@ -93,7 +94,7 @@ class Homepage extends Component{
   async selectAlimentacao(){
     const alimentacao = new AlimentacaoDB
     await alimentacao.select().then( value => {
-        this.atribuiValor(value,this.alimentacao)
+        this.atribuiValor(value,this.alimentacao)     
     })
     this.setState({alimentacao:this.alimentacao})
   }
@@ -111,6 +112,9 @@ class Homepage extends Component{
     await sono.select()
     const visited = new VisitedDB()
     await visited.select()
+    recipes.map(async recipe => {
+      await alimentacao.insert(recipe)
+    })
   }
 
   atribuiValor(data,array){
@@ -122,6 +126,7 @@ class Homepage extends Component{
 
   componentDidMount(){
     this.createTables()
+    
   }
 
   render(){

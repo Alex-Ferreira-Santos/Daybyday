@@ -42,6 +42,7 @@ class AlimentacaoMain extends Component{
         return corSelecionada
     }
     render(){ 
+        console.log(this.props.route.params)
         const params = this.props.route.params
         if(params === undefined){
             this.state.show = false

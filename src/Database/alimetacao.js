@@ -1,4 +1,5 @@
 import SQLite from 'react-native-sqlite-storage'
+import Chips from '../img/chips-assado-de-batata-doce-e-alecrim.png'
 SQLite.DEBUG(true)
 SQLite.enablePromise(true)
 
@@ -54,6 +55,7 @@ export default class TarefaDB{
             }).catch( err => console.log(err))
         })
     }
+
 
     select(){
         return new Promise(resolve => {

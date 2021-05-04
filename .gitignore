@@ -34,7 +34,6 @@ local.properties
 node_modules/
 npm-debug.log
 yarn-error.log
-src/Database/senha.js
 # BUCK
 buck-out/
 \.buckd/
