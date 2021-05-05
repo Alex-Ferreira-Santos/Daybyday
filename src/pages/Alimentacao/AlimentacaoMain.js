@@ -39,7 +39,7 @@ class AlimentacaoMain extends Component{
             <View style={alimentacaoMain.container}>
                 <Text style={alimentacaoMain.title}>Alimentação</Text>
                 <Text style={alimentacaoMain.text}>Receitas disponíveis</Text>
-                <ScrollView style={alimentacaoMain.dietas}>
+                <ScrollView style={alimentacaoMain.dietas} showsVerticalScrollIndicator={false}>
                     {Recipes.map( recipes => (
                         <TouchableHighlight style={[alimentacaoMain.dieta,{backgroundColor: this.corAleatoria()}]} underlayColor='#B6E98F' onPress={()=>{
                             this.props.navigation.navigate('AlimentacaoDieta',{recipe: recipes})
@@ -50,9 +50,6 @@ class AlimentacaoMain extends Component{
                 </ScrollView>
                 <TouchableHighlight style={alimentacaoMain.button} onPress={()=>this.props.navigation.navigate('Homepage')}>
                     <Text style={alimentacaoMain.buttonText}>Voltar ao menu</Text>
-                </TouchableHighlight>
-               <TouchableHighlight style={alimentacaoMain.button} underlayColor='#1D470E' onPress={()=>this.props.navigation.navigate('AlimentacaoForm')}>
-                    <Text style={alimentacaoMain.buttonText}>Inserir</Text>
                 </TouchableHighlight>
             </View>
         )

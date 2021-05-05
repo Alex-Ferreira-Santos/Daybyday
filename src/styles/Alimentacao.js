@@ -54,8 +54,8 @@ const alimentacaoMain = StyleSheet.create({
     dietas:{
         backgroundColor: 'white',
         width: '80%',
-        maxHeight: 300,
-        borderWidth: 1
+        maxHeight: 500,
+        borderWidth: 1,
     },
     button:{
         backgroundColor: '#21560E',
@@ -64,7 +64,6 @@ const alimentacaoMain = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 20,
         paddingVertical: 3,
-        marginTop: 20
     },
     buttonText:{
         fontSize: 20,
@@ -73,7 +72,7 @@ const alimentacaoMain = StyleSheet.create({
     dieta:{
         width: '100%',
         backgroundColor: '#BEF394',
-        height: 40,
+        minHeight: 40,
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomWidth: 1,
@@ -119,7 +118,7 @@ const alimentacaoDieta = StyleSheet.create({
     },
     bold:{
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 16,
     },
     font:{
         fontSize: 15,
@@ -137,24 +136,6 @@ const alimentacaoDieta = StyleSheet.create({
     },
     backButton:{
         backgroundColor: '#21560E',
-        width: '50%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 20,
-        paddingVertical: 3,
-        marginVertical: 10
-    },
-    editButton:{
-        backgroundColor: '#A59F1A',
-        width: '50%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 20,
-        paddingVertical: 3,
-        marginTop: 10
-    },
-    deleteButton:{
-        backgroundColor: '#A11F1F',
         width: '50%',
         justifyContent: 'center',
         alignItems: 'center',

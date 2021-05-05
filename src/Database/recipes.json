@@ -92,5 +92,46 @@
         ],
         "modoDePreparo": "Cozinhe o macarrão em água fervente. Aqueça uma frigideira antiaderente e refogue o alho poró. Acrescente a abobrinha picada e tempere com sal e pimenta do reino. Junte as rodelas de tomate cereja e mexa enquanto cozinha. Para finalizar, adicione o azeite de oliva e o manjericão.",
         "fonte": "http://blogdamimis.com.br/2015/11/24/massa-primavera/"
+    },
+    {
+        "id": 7,
+        "nome": "Risotto Light de Funghi",
+        "image": "https://www.figosefunghis.com.br/wp-content/uploads/2012/01/Risotto_3-c%C3%B3pia.jpg",
+        "ingredientes": [
+            "1 xícara e 1/3 de arroz 7 grãos",
+            "1 potinho de caldo de carne dissolvido em 1 litro de água bem quente",
+            "2 colheres de sopa de azeite",
+            "1 cebola média bem picada",
+            "1/2 xícara de chá de vinho branco seco",
+            "2 colheres de sopa de queijo parmesão ou pecorino ralado",
+            "1 xícara de chá de funghi seco hidratado em água quente",
+            "1 xícara de chá do caldo do funghi já peneirado",
+            "1 dente de alho amassado",
+            "1 colher de chá de ervas secas a sua escolha (usei ervas de provence)",
+            "pimenta do reino preta moída na hora",
+            "sal a gosto" 
+        ],
+        "modoDePreparo": "Numa panela aqueça o azeite e refogue a cebola até ficar transparente. Adicione o alho e mexa. Em seguida junte o arroz e dê uma breve fritadinha nele. Regue com o vinho branco e mexa novamente até que o álcool evapore. Comece a regar o arroz com o caldo de carne, uma concha por vez, acrescentando mais sempre que o arroz estiver secando. Quando o arroz estiver quase al dente junte o funghi hidratado picado e o seu caldo peneirado. Tempere com as ervas secas a gosto e com a pimenta. Junte o queijo ralado. Misture tudo delicadamente e prove para ver se será necessário acrescentar mais sal. Se for necessário acrescente mais caldo de carne até o arroz atingir o ponto de cozimento desejado. Quando estiver pronto desligue a panela, tampe, deixe descansar por 3 minutos e sirva.",
+        "fonte": "http://www.figosefunghis.com.br/risotto-light/"
+    },
+    {
+        "id": 8,
+        "nome": "Fricassé de frango light",
+        "image": "https://www.figosefunghis.com.br/wp-content/uploads/2016/08/Fricass%C3%A9-de-Frango-R%C3%A1pido_Figos-e-Funghis.jpg",
+        "ingredientes": [
+            "4 filés de peito de frango bem limpos e sem pele, cortados em cubos",
+            "3 espigas de milho verde cozido ou 1 lata grande",
+            "1/2 xícara (chá) de azeitonas verdes sem caroço fatiadas ou picadas",
+            "1 xícara (chá) de creme de ricota light",
+            "2/3 de xícara (chá) de leite desnatado",
+            "1 fio de azeite",
+            "1 cebola picada",
+            "1 dente de alho bem picado",
+            "salsinha fresca bem picada",
+            "sal e pimenta a gosto",
+            "batata palha para finalizar"
+        ],
+        "modoDePreparo": "Tempere os cubos de peito de frango com sal e pimenta a gosto. Coloque o azeite em uma frigideira bem quente e doure os cubos de frango. Se quiser dê uma desfiada bem grosseira nos cubos de frango, mas se preferir deixe assim mesmo. Junte a cebola, o alho, o milho e as azeitonas. Ajuste o sal e a pimenta se necessário e adicione salsinha fresca picada a gosto. Forre o fundo de ramequins individuais ou de um refratário grande com o refogado de frango e milho. Reserve. Preaqueça o forno a 190º. Enquanto isso misture o creme de ricota com o leite e leve ao fogo médio em uma panelinha, assim que começar a ferver desligue.Cubra o refogado de frango com o molho e leve para gratinar por 15 a 20 minutos. Quando estiver pronto retire do forno e cubra com batata palha. Sirva em seguida.",
+        "fonte": "http://www.figosefunghis.com.br/fricasse-de-frango-light/"
     }
 ]
