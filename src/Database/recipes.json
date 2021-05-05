@@ -133,5 +133,124 @@
         ],
         "modoDePreparo": "Tempere os cubos de peito de frango com sal e pimenta a gosto. Coloque o azeite em uma frigideira bem quente e doure os cubos de frango. Se quiser dê uma desfiada bem grosseira nos cubos de frango, mas se preferir deixe assim mesmo. Junte a cebola, o alho, o milho e as azeitonas. Ajuste o sal e a pimenta se necessário e adicione salsinha fresca picada a gosto. Forre o fundo de ramequins individuais ou de um refratário grande com o refogado de frango e milho. Reserve. Preaqueça o forno a 190º. Enquanto isso misture o creme de ricota com o leite e leve ao fogo médio em uma panelinha, assim que começar a ferver desligue.Cubra o refogado de frango com o molho e leve para gratinar por 15 a 20 minutos. Quando estiver pronto retire do forno e cubra com batata palha. Sirva em seguida.",
         "fonte": "http://www.figosefunghis.com.br/fricasse-de-frango-light/"
+    },
+    {
+        "id": 9,
+        "nome": "Salada de tomate cereja",
+        "image": "http://cdn.blogdamimis.com.br/wp-content/uploads/2015/04/salada-tomate-blog-da-mimis-michelle-franzoni-post.jpg",
+        "ingredientes": [
+            "3 xícaras (chá) tomate cereja",
+            "1 cebola roxa pequena",
+            "0,5 xícara (chá) cebolinha picada",
+            "1 colher (sopa) azeite de oliva",
+            "1 copo água gelada",
+            "8 pedras gelo",
+            "à gosto Pimenta do reino",
+            "à gosto Sal"
+        ],
+        "modoDePreparo": "Corte a cebola ao meio e depois em fatias bem finas. Coloque em um recipiente com a água e gelo, para tirar o ardido da cebola. Deixe por 20 minutos e escorra. Corte os tomates na metade e coloque em uma travessa. Junte a cebola, o sal e a pimenta, misturando bem. Finalize com o azeite e a cebolinha.",
+        "fonte": "http://blogdamimis.com.br/2015/04/20/salada-de-tomate-cereja/"
+    },
+    {
+        "id": 10,
+        "nome": "Salada roxa refrescante",
+        "image": "http://cdn.blogdamimis.com.br/wp-content/uploads/2015/12/Salada-Roxa-refrescante-blog-da-mimis-michelle-franzoni-post.png",
+        "ingredientes": [
+            "4 xícaras (chá) repolho roxo",
+            "1 cenoura grande cortada em fatias",
+            "1 xícara (chá) manga cortada em cubos",
+            "2 colheres (sopa) salsinha picada",
+            "2 colheres (sopa) suco de limão",
+            "2 colheres (sopa) azeite de oliva",
+            "à gosto Sal",
+            "à gosto pimenta do reino" 
+        ],
+        "modoDePreparo": "Cozinhe rapidamente as rodelas de cenoura, deixando-as crocantes ainda. Pique finamente o repolho e distribua em um recipiente. Junte a cenoura e a manga. Para o molho, misture o suco de limão e o azeite, e regue a salada. Tempere com sal e pimenta do reino.",
+        "fonte": "http://blogdamimis.com.br/2015/12/10/salada-roxa-refrescante/"
+    },
+    {
+        "id": 11,
+        "nome": "Bife à rolê recheado",
+        "image": "http://cdn.blogdamimis.com.br/wp-content/uploads/2017/03/bife-role-blog-da-mimis-michelle-franzoni-post.png",
+        "ingredientes": [
+            "750 Kg carne cortada em bifes finos",
+            "1 unidade cenoura cortada em palitos",
+            "2 unidades cebolas picadas",
+            "1 colher (sopa) alho picado",
+            "1 colher (sopa) azeite",
+            "A gosto Sal",
+            "A gosto Pimenta do reino",
+            "1 caixa palitos de dente de madeira para fechar os bifes" 
+        ],
+        "modoDePreparo": "Tempere todos os bifes com sal e pimenta do reino. Recheie os bifes com 2 palitos de cenoura e enrole, espetando 2 a 3 palitos de dente para fechar o rolinho. Pré aqueça a panela e coloque o óleo. Frite os bifes aos poucos para dourar e separe. Doure bem a cebola e o alho na mesma panela. Coloque tudo na panela de pressão e complete com água até 1 dedo acima. Deixe cozinhar por cerca de 15 minutos após pegar pressão. Se quiser o molho mais grosso, depois que a carne estiver cozida, deixe o molho reduzir com a tampa da panela aberta. Pronto. É só servir!",
+        "fonte": "http://blogdamimis.com.br/2017/03/14/bife-role-receita-magrinha-com-molho-especial/"
+    },
+    {
+        "id": 12,
+        "nome": "Almôndega light",
+        "image": "http://cdn.blogdamimis.com.br/wp-content/uploads/2014/10/alm%C3%B4ndegas-blog-da-mimis-michelle-franzoni-post.jpg",
+        "ingredientes": [
+            "500 gramas carne moída magra",
+            "1 clara",
+            "0,5 cebola",
+            "1 dente alho",
+            "2 colheres (sopa) farelo de aveia ou 1,5 fatias de pão integral",
+            "0,5 xícara (chá) salsinha",
+            "1 colher (chá) Sal",
+            "a gosto Pimenta do reino"
+        ],
+        "modoDePreparo": "Cortar a cebola em pedaços grandes e bater no processador ou liquidificador com a clara, o alho, o sal, pimenta, salsinha e farelo de aveia (ou pão integral picado). Misturar o creme à carne moída e fazer bolinhas. Assar em forno médio por cerca de 20 minutos.",
+        "fonte": "http://blogdamimis.com.br/2014/10/21/almondega-light/"
+    },
+    {
+        "id": 13,
+        "nome": "Quibe assado recheado",
+        "image": "http://cdn.blogdamimis.com.br/wp-content/uploads/2016/09/quibe-assado-blog-da-mimis-michelle-franzoni-post.png",
+        "ingredientes": [
+            "500g carne moída magra",
+            "1 xícara (chá) trigo para quibe",
+            "3 xícara (chá) água",
+            "0,5 xícara (chá) hortelã picada",
+            "2 dentes alhos picados",
+            "5 colheres (sopa) cream cheese light",
+            "1 cebola ralada",
+            "A gosto Sal",
+            "A gosto pimenta síria"
+        ],
+        "modoDePreparo": "Leve o trigo para quibe e coloque de molho na água em um recipiente por cerca de 1 hora. Escorra bem e aperte para sair toda a água. Coloque todos os ingredientes, com exceção do cream cheese, em uma travessa e misture bem, trabalhando a massa. Molde os quibes e preencha com o cream cheese. Coloque em forno alto (220o) por cerca de 30 minutos ou até dourar.",
+        "fonte": "http://blogdamimis.com.br/2016/09/14/quibe-assado-recheado/"
+    },
+    {
+        "id": 14,
+        "nome": "Pudim de Manga e Chia",
+        "image": "https://raquelicias.com.br/wp-content/uploads/2014/09/mangachia_gordelicias1-e1411612533605.jpg",
+        "ingredientes": [
+            "2 xícaras de leite de amêndoa [se quiser fazer o seu, tá aqui a receita]",
+            "1/2 xícara + 2 colheres de sopa de chia",
+            "1 colher de chá de extrato de baunilha",
+            "3 colheres de sopa de melado de cana [ou calda de maple, se tiver]",
+            "1/2 colher de chá de canela em pó",
+            "Uma pitada de cardamomo em pó",
+            "1 manga madura grande [ou 2 pequenas]"
+        ],
+        "modoDePreparo": "Em uma tigela, misture o leite de amêndoas, a chia, a baunilha, a canela, 2 colheres de sopa de melado e a pitada de cardamomo. Misture bem, de preferência usando um batedor de arame. Você vai perceber que o leite de amêndoas vai engrossando rapidamente, sem cozinhar nem nada. Guarde na geladeira por cerca de 8 horas. Descasque e corte a manga em pedaços que possam ser facilmente processados. Processe a manga e 1 colher de sopa de melado até que obtenha um creme espesso. Monte sua sobremesa em potinhos, começando com um pouquinho de creme de manga depois pudim e finalizando com creme de manga. Se quiser, ainda pode fazer uma graça enfeitando os potinhos com um pouquinho de granola ou nozes.",
+        "fonte": "https://raquelicias.com.br/2014/09/29/pudim-de-manga-e-chia/"
+    },
+    {
+        "id": 15,
+        "nome": "Pudim de Tapioca",
+        "image": "https://raquelicias.com.br/wp-content/uploads/2014/07/pudim-tapioca3.jpg",
+        "ingredientes": [
+            "2/3 de xícara (chá) de tapioca em grãos",
+            "2 xícaras (chá) de leite desnatado",
+            "200 ml de leite de coco light",
+            "3 ovos",
+            "1 xícara (chá) de leite em pó desnatado",
+            "5 colheres (sopa) de adoçante culinário",
+            "1 ½ xícara (chá) de coco fresco ralado",
+            "1 xícara de açúcar para o caramelo (opcional – se não fizer caramelo, unte a forma com 1 fio de óleo)"
+        ],
+        "modoDePreparo": "Deixe a tapioca de molho no leite desnatado por duas horas e reserve. No liquidificador, em velocidade máxima, bata o leite de coco, os ovos, o leite em pó, o açúcar, o coco ralado e a tapioca umedecida e escorrida. Caramelize o açúcar na forma (20 cm de diâmetro), em fogo baixo. Despeje a massa do pudim na forma e cubra com papel alumínio. Leve ao forno, preaquecido em temperatura média, por 50 minutos ou até que, ao enfiar um palito, ele saia limpo. Quando esfriar, leve à geladeira por pelo menos 2 horas. Desenforme e sirva.",
+        "fonte": "https://raquelicias.com.br/2014/07/01/pudim-de-tapioca-light/"
     }
 ]
