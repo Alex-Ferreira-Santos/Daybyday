@@ -2,8 +2,6 @@ import React,{Component} from 'react';
 import { Linking } from 'react-native';
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import {alimentacaoDieta} from '../../styles/Alimentacao'
-import AlimentacaoDB from '../../Database/alimetacao'
-import Recipes from '../../Database/recipes.json'
 
 class AlimentacaoDieta extends Component {
     constructor(props){

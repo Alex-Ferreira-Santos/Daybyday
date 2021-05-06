@@ -14,7 +14,6 @@ import Agua from '../Database/agua'
 import Massa from '../Database/massa';
 import Sono from '../Database/Sono';
 import TarefaDB from '../Database/tarefa';
-import AlimentacaoDB from '../Database/alimetacao'
 import VisitedDB from '../Database/visited'
 
 class Homepage extends Component{
@@ -198,6 +197,7 @@ class Homepage extends Component{
         </TouchableHighlight>
 
         {this.state.visible && (<ExtraHome close={this.ClosePopUp}/>)}
+        
       </View>
     )
   }

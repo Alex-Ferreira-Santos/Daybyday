@@ -5865,11 +5865,6 @@ react-native-screens@^2.10.1:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.15.2.tgz#a449700e895b462937211ec72ed6f09652758f06"
   integrity sha512-CagNf2APXkVoRlF3Mugr264FbKbrBg9eXUkqhIPVeZB8EsdS8XPrnt99yj/pzmT+yJMBY0dGrjXT8+68WYh6YQ==
 
-react-native-sha512@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-sha512/-/react-native-sha512-1.0.2.tgz#a6e181b53eb213760d597f3944e94ab673d33cda"
-  integrity sha512-/J2IT+HtImrvb2JqgN13PuIzL7xTFXKMJhZobK10zn3JsW9JfEXQuq4vF7bsPIC+W8tnJNKz0klmf6ehZA+urQ==
-
 react-native-size-matters@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz#24d0cfc335a2c730f6d58bd7b43ea5a41be4b49f"
