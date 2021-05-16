@@ -89,19 +89,6 @@ class Homepage extends Component{
     this.setState({tarefa:this.tarefa})
   }
 
-  async createTables(){
-    const agua = new Agua
-    await agua.select()
-    const massa = new Massa
-    await massa.select()
-    const tarefa = new TarefaDB
-    await tarefa.select()
-    const sono = new Sono
-    await sono.select()
-    const visited = new VisitedDB()
-    await visited.select()
-  }
-
   atribuiValor(data,array){
       array.push(data)
       if(array.length > 1){
@@ -109,9 +96,7 @@ class Homepage extends Component{
       }
   }
 
-  componentDidMount(){
-    this.createTables()
-  }
+  
 
   render(){
     return (
@@ -119,8 +104,8 @@ class Homepage extends Component{
         <Text style={styles.title}>Day by day</Text>
         <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
 
-        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={async ()=>{
-          await this.selectAgua()
+        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={()=>{
+          this.selectAgua()
           if(this.state.aguaVisited){
             this.props.navigation.navigate('AguaOptions',{reload:true})
           }else{
@@ -133,8 +118,8 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={async ()=>{
-          await this.selectVisited()
+        <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={()=>{
+          this.selectVisited()
           if(this.state.alimentacaoVisited){
             this.props.navigation.navigate('AlimentacaoMain')
           }else{
@@ -147,8 +132,8 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.peso]} underlayColor='#B6A721' onPress={async ()=>{
-          await this.selectMassa()
+        <TouchableHighlight style={[styles.touchable,styles.peso]} underlayColor='#B6A721' onPress={()=>{
+          this.selectMassa()
           if(this.state.massaVisited){
             this.props.navigation.navigate('MassaFinal')
           }else{
@@ -161,8 +146,8 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={async ()=>{
-          await this.selectTarefa()
+        <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={()=>{
+          this.selectTarefa()
           if(this.state.tarefaVisited){
             this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
           }else{
@@ -175,8 +160,8 @@ class Homepage extends Component{
           </View> 
         </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={async ()=>{
-          await this.selectSono()
+        <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={()=>{
+          this.selectSono()
           if(this.state.sonoVisited){
             this.props.navigation.navigate('SonoData',{reload:true})
           }else{
