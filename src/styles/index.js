@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         textAlign: 'center',
+        marginTop: 40
     },
     title:{
         fontSize: 40,

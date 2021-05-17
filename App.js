@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import 'react-native-gesture-handler'
+import {StatusBar} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator()
@@ -27,6 +28,7 @@ class App extends Component{
   render(){
     return (
       <NavigationContainer>
+        <StatusBar translucent backgroundColor="transparent" barStyle='dark-content'/>
         <Stack.Navigator>
           <Stack.Screen
             name="Homepage"

@@ -5,7 +5,7 @@ const agua = StyleSheet.create({
         flex: 1,
         backgroundColor: '#3EDDE8',
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     title:{
         fontSize: 30,
