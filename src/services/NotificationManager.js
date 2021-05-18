@@ -9,23 +9,45 @@ class NotificationManager{
         })
         PushNotification.createChannel(
             {
-              channelId: "123", // (required)
-              channelName: "main", // (required)
-              channelDescription: "A channel to categorise your notifications", // (optional) default: undefined.
+              channelId: "1", // (required)
+              channelName: "Lembrete de água", // (required)
+              channelDescription: "Notificação para lembrar você de se hidratar", // (optional) default: undefined.
               playSound: false, // (optional) default: true
               soundName: "default", // (optional) See `soundName` parameter of `localNotification` function
               importance: 4, // (optional) default: 4. Int value of the Android notification importance
               vibrate: true, // (optional) default: true. Creates the default vibration patten if true.
             },
         );
+        PushNotification.createChannel(
+            {
+              channelId: "2",
+              channelName: "Alerta de Tarefas",
+              channelDescription: "Notificação para alertar o horário de início de tarefa",
+              playSound: false,
+              soundName: "default",
+              importance: 4,
+              vibrate: true,
+            },
+        );
+        PushNotification.createChannel(
+            {
+              channelId: "3",
+              channelName: "Hora de dormir",
+              channelDescription: "Notificação para avisar a hora ideal para dormir",
+              playSound: false,
+              soundName: "default",
+              importance: 4,
+              vibrate: true,
+            },
+        );
     }
 
     ScheduleWaterNotification(ml) {
-        const minutes = parseInt(new Date().getMinutes())
+        const minutes = 60 - parseInt(new Date().getMinutes())
         PushNotification.localNotificationSchedule({
             id: 1.1,
-            date: new Date(Date.now() + minutes*(60*1000)),
-            channelId: '123',
+            date: new Date(Date.now())/* + minutes*(60*1000)*/,
+            channelId: '1',
             title: 'Lembrete de água 💧',
             message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
             allowWhileIdle: false,
@@ -55,7 +77,7 @@ class NotificationManager{
         PushNotification.localNotificationSchedule({
             id: id,
             date: new Date(`${date}`),
-            channelId: '123',
+            channelId: '2',
             title: `Está na hora da tarefa de ${title}❗`,
             message: `A tarefa de ${title} está na hora de ser feita 📋`,
             allowWhileIdle: false,
@@ -69,7 +91,7 @@ class NotificationManager{
         PushNotification.localNotificationSchedule({
             id: 2.1,
             date: new Date(date),
-            channelId: '123',
+            channelId: '3',
             title: 'Está na hora de dormir 💤💤',
             message: `Para manter um sono controlado, você deve dormir dentro de 10 minutos, lembre-se de colocar um despertador para não passar do horário ⏰`,
             allowWhileIdle: false,
