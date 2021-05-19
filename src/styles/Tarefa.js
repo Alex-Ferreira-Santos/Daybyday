@@ -170,13 +170,13 @@ const tarefa = StyleSheet.create({
 const tarefaForm = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#B94B4B',
     },
     title:{
-        fontSize: 30,
-        marginBottom: 50,
+        fontSize: 35,
+        marginTop: 50,
     },
     form:{
         backgroundColor: 'white',
@@ -184,6 +184,7 @@ const tarefaForm = StyleSheet.create({
         width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 40
     },
     section:{
         width: '90%',

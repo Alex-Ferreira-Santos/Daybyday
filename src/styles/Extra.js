@@ -4,9 +4,9 @@ const extraHome = StyleSheet.create({
     container:{
         backgroundColor: 'rgba(113,113,113,0.8)',
         position: 'absolute',
-        top:0,
+        top:-40,
         width: '100%',
-        height: '100%',
+        height: '110%',
         justifyContent: 'center',
         alignItems: 'center',
     },
