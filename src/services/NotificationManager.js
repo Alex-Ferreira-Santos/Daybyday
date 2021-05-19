@@ -5,7 +5,7 @@ class NotificationManager{
         PushNotification.configure({
             onNotification: notification => {
                 console.log(notification)
-            }
+            },
         })
         PushNotification.createChannel(
             {
@@ -45,15 +45,18 @@ class NotificationManager{
     ScheduleWaterNotification(ml) {
         const minutes = 60 - parseInt(new Date().getMinutes())
         PushNotification.localNotificationSchedule({
-            id: 1.1,
-            date: new Date(Date.now())/* + minutes*(60*1000)*/,
+            id: 10000000,
+            date: new Date(Date.now() + minutes*(60*1000)),
             channelId: '1',
             title: 'Lembrete de água 💧',
             message: `Está na hora de você beber outro copo de água, lembre-se de tomar um copo de ${ml.toFixed()}ml`,
             allowWhileIdle: false,
             color: "yellow",
             repeatType:'time',
-            repeatTime:60*(60*1000)
+            repeatTime: 60*(60*1000),
+            priority: 'high',
+            smallIcon: 'smallicon',
+            largeIcon: 'smallicon',
         })
     }
 
@@ -82,14 +85,16 @@ class NotificationManager{
             message: `A tarefa de ${title} está na hora de ser feita 📋`,
             allowWhileIdle: false,
             color: "yellow",
-            priority: prioridade
+            priority: prioridade,
+            smallIcon: 'smallicon',
+            largeIcon: 'smallicon',
         })
     }
 
     ScheduleSleepNotification(date) {
         date = new Date((Date.parse(date) + 24 * 60 * 60 * 1000) - 8 * 60 * 60 * 1000).toString()
         PushNotification.localNotificationSchedule({
-            id: 2.1,
+            id: 100000,
             date: new Date(date),
             channelId: '3',
             title: 'Está na hora de dormir 💤💤',
@@ -97,6 +102,9 @@ class NotificationManager{
             allowWhileIdle: false,
             color: "yellow",
             repeatType: 'day',
+            smallIcon: 'smallicon',
+            largeIcon: 'smallicon',
+            priority: 'high'
         })
     }
 }

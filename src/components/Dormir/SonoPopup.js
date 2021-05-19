@@ -23,7 +23,7 @@ class SonoPopup extends Component{
                     <TouchableHighlight underlayColor='#810707' style={sonoPopup.desableButton} onPress={()=>{
                         this.props.close()
                         this.props.desable()
-                        this.notification.cancelNotifications(2.1)
+                        this.notification.cancelNotifications(100000)
                         alert('As notificações foram desativadas')
                     }}>
                         <Text style={sonoPopup.desableButtonText}>Desativar</Text>
