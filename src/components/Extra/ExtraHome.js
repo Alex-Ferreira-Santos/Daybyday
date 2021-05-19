@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text, TouchableHighlight} from 'react-native'
+import {View,Text, TouchableHighlight,Linking} from 'react-native'
 import {extraHome} from '../../styles/Extra'
 import ExtraCopy from './ExtraCopy'
 
@@ -26,7 +26,7 @@ class ExtraHome extends Component {
 
                     <Text style={extraHome.contato}>Contato</Text>
                     <Text style={extraHome.send}>Mande um email para:</Text>
-                    <Text style={extraHome.email}>email@gmail.com</Text>
+                    <Text style={extraHome.email} onPress={()=>Linking.openURL('mailto:ricotefs@gmail.com')}>ricotefs@gmail.com</Text>
 
                     <TouchableHighlight style={extraHome.backButton} underlayColor='#5AA73F' onPress={()=>{
                         this.props.close()

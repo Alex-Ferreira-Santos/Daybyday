@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-import { Linking } from 'react-native';
-import {View,Text,TouchableHighlight} from 'react-native'
+import {View,Text,TouchableHighlight,Linking} from 'react-native'
 import {extraCopy} from '../../styles/Extra'
 
 class ExtraCopy extends Component {
