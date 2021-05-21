@@ -49,7 +49,8 @@ const extraHome = StyleSheet.create({
     },
     email:{
         fontSize:15,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'blue',
     },
     backButton:{
         backgroundColor: '#79D758',
