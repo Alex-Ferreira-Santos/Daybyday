@@ -45,10 +45,10 @@ class TarefaDetail extends Component {
         this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
     }
 
-    updateCheck(concluido){
+    async updateCheck(concluido){
         const tarefa = new TarefaDB
         const params = this.props.route.params
-        tarefa.updateConcluido(concluido,params.tarefa.id)
+        await tarefa.updateConcluido(concluido,params.tarefa.id)
     }
 
     checkConcluido(){
@@ -77,21 +77,25 @@ class TarefaDetail extends Component {
                     <Text style={[tarefaDetails.text,this.state.textLate]}>{params.tarefa.dataDeTermino}</Text>
                     <Text style={tarefaDetails.category}>Prioridade</Text>
                     <Text style={tarefaDetails.text}>{params.tarefa.prioridade}</Text>
-                    <TouchableHighlight style={[tarefaDetails.concluir,this.state.checked]} underlayColor='#367720' onPress={()=>{
+
+                    <TouchableHighlight style={[tarefaDetails.concluir,this.state.checked]} underlayColor='#367720' onPress={async ()=>{
                         if(this.state.buttonText === 'Concluir'){
                             this.setState({done: tarefaDetails.done})
                             this.setState({checked: tarefaDetails.unChecked})
                             this.setState({buttonText: 'Desfazer'})
-                            this.updateCheck(true)
+                            await this.updateCheck(true).then(async () =>{
+                                await this.goback()
+                            })
                         }else{
                             this.setState({done: ''})
                             this.setState({checked: ''})
                             this.setState({buttonText: 'Concluir'})
-                            this.updateCheck(false)
+                            await this.updateCheck(false) 
                         }      
                     }}>
                         <Text style={tarefaDetails.buttonText}>{this.state.buttonText}</Text>
                     </TouchableHighlight>
+
                     <View style={tarefaDetails.buttons}>
                         <TouchableHighlight style={tarefaDetails.editar} underlayColor='#B6B916' onPress={()=>this.props.navigation.navigate('TarefaForm',{
                             title:'Editar a tarefa',
