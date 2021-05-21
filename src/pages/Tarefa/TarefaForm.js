@@ -142,7 +142,7 @@ class TarefaForm extends Component {
                             this.notification.cancelNotifications(params.id)
                         }
                         await this.select()
-                        this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
+                        this.props.navigation.navigate('TarefaMain',{reload:true})
                         this.notification.ScheduleTaskNotification(this.state.fulldate, this.state.title, this.state.priority,this.state.tarefa[0][this.state.tarefa[0].length - 1].id)
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>

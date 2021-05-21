@@ -166,7 +166,7 @@ class Homepage extends Component{
         <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={async ()=>{
           await this.selectTarefa().finally( () => {
             if(this.state.tarefaVisited){
-            this.props.navigation.navigate('TarefaMain',{tarefa:this.state.tarefa[0]})
+            this.props.navigation.navigate('TarefaMain',{reload:true})
             }else{
               this.props.navigation.navigate('TarefaHome')
             }
