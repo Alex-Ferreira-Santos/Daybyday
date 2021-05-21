@@ -79,26 +79,32 @@ class TarefaForm extends Component {
                     </View>
                     <View style={tarefaForm.section}>
                         <Text style={tarefaForm.label}>Data de término</Text>
-                        <TextInput placeholder='Selecione a data de término aqui' style={tarefaForm.input} onFocus={()=>{this.setState({show: true})}} value={this.state.time} showSoftInputOnFocus={false}/>
+                        <TextInput placeholder='Selecione a data de término aqui' style={tarefaForm.input} onFocus={()=>{
+                            this.setState({show: true})
+                            this.setState({mode:'date'})
+                        }} value={this.state.time} showSoftInputOnFocus={false}/>
                         {this.state.show && (<DateTimePicker mode={this.state.mode} value={new Date()} onChange={(value,data)=> {
                                 if(data === undefined){
                                     return;
                                 }
+
                                 if(this.state.mode === 'date'){
                                     this.day = data.toString().slice(0,15)
                                     this.setState({day: data.toString().slice(3,15)})
                                     this.setState({mode:'time'})
                                     return;
                                 }
+
                                 if(this.state.mode === 'time' && this.minutes === ''){
                                     this.minutes = data.toString().slice(15)
-                                    this.setState({hour: data.toString().slice(15,21)})
                                     this.setState({show:false})
+                                    this.setState({hour: data.toString().slice(15,21)})
+           
                                 }
-                                
+
                                 this.setState({fulldate: `${this.day}${this.minutes}`})
                                 this.setState({time: `${this.state.day}${this.state.hour}`})
-                                this.setState({mode:'date'})
+                                this.minutes = ''
                             }} is24Hour={true}  
                             />)}
                     </View>

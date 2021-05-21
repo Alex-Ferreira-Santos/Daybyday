@@ -90,13 +90,14 @@ const alimentacaoDieta = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#59A73D'
+        backgroundColor: '#59A73D',
     },
     main:{
         backgroundColor:'white',
         width: '90%',
         marginVertical: 30,
         borderRadius: 30,
+        marginTop: 45
     },
     containerMain:{
         justifyContent: 'center',
