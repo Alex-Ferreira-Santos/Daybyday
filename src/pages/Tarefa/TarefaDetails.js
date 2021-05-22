@@ -18,7 +18,6 @@ class TarefaDetail extends Component {
         this.tarefa = []
         this.hide = this.hide.bind(this)
         this.goback = this.goback.bind(this)
-        this.checkConcluido()
     }
 
     async select(){
@@ -51,25 +50,12 @@ class TarefaDetail extends Component {
         await tarefa.updateConcluido(concluido,params.tarefa.id)
     }
 
-    checkConcluido(){
-        const params = this.props.route.params
-        if(params.concluido){
-            this.state.done = tarefaDetails.done
-            this.state.checked = tarefaDetails.unChecked
-            this.state.buttonText = 'Desfazer'
-        }else{
-            this.state.done = ''
-            this.state.checked = ''
-            this.state.buttonText = 'Concluir'
-        }
-    }
-
     render() {
         const params = this.props.route.params
         return (
             <View style={tarefaDetails.container}>
                 <Text style={tarefaDetails.pageTitle}>Detalhes</Text>
-                <View style={[tarefaDetails.main,this.state.done]}>
+                <View style={tarefaDetails.main}>
                     <Text style={tarefaDetails.title}>{params.tarefa.titulo}</Text>
                     <Text style={tarefaDetails.category}>Descrição</Text>
                     <Text style={tarefaDetails.text}>{params.tarefa.descricao}</Text>
@@ -78,22 +64,8 @@ class TarefaDetail extends Component {
                     <Text style={tarefaDetails.category}>Prioridade</Text>
                     <Text style={tarefaDetails.text}>{params.tarefa.prioridade}</Text>
 
-                    <TouchableHighlight style={[tarefaDetails.concluir,this.state.checked]} underlayColor='#367720' onPress={async ()=>{
-                        if(this.state.buttonText === 'Concluir'){
-                            this.setState({done: tarefaDetails.done})
-                            this.setState({checked: tarefaDetails.unChecked})
-                            this.setState({buttonText: 'Desfazer'})
-                            await this.updateCheck(true).then(async () =>{
-                                await this.goback()
-                            })
-                        }else{
-                            this.setState({done: ''})
-                            this.setState({checked: ''})
-                            this.setState({buttonText: 'Concluir'})
-                            await this.updateCheck(false) 
-                        }      
-                    }}>
-                        <Text style={tarefaDetails.buttonText}>{this.state.buttonText}</Text>
+                    <TouchableHighlight style={[tarefaDetails.concluir,tarefaDetails.voltar]} underlayColor='#367720' onPress={async ()=>{ await this.goback() }}>
+                        <Text style={tarefaDetails.buttonText}>Voltar</Text>
                     </TouchableHighlight>
 
                     <View style={tarefaDetails.buttons}>

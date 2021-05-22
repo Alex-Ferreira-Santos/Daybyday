@@ -59,15 +59,17 @@ class TarefaMain extends Component{
                     this.select()
                 }
             }
-        }finally{
-            if(this.state.tarefa[0] === undefined){
-                return(
-                    <View style={{flex:1,justifyContent:'center',alignItems: 'center',backgroundColor:'#B94B4B'}}>
-                        <Text style={{fontSize: 50}}>Loading...</Text>
-                    </View>
-                )
-            }else{
-                return(
+        }catch{
+
+        }
+        if(this.state.tarefa[0] === undefined){
+            return(
+                <View style={{flex:1,justifyContent:'center',alignItems: 'center',backgroundColor:'#B94B4B'}}>
+                    <Text style={{fontSize: 50}}>Loading...</Text>
+                </View>
+            )
+        }else{
+            return(
                     <View style={tarefaMain.container}>
                         <Text style={tarefaMain.title}>Suas tarefas</Text>
                         <Text style={tarefaMain.text}>Para editar ou excluir uma tarefa, clique em detalhes na tarefa que deseja modificar</Text>
@@ -103,8 +105,6 @@ class TarefaMain extends Component{
             }
             
         }   
-        
     }
-}
 
 export default TarefaMain;

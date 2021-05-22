@@ -286,8 +286,8 @@ const tarefaDetails = StyleSheet.create({
         fontSize: 22,
         marginVertical: 10
     },
-    concluir:{
-        backgroundColor:'#469A28',
+    voltar:{
+        backgroundColor:'#8F8F8F',
         borderRadius: 20,
         width: '50%',
         paddingVertical: 3,
@@ -321,15 +321,9 @@ const tarefaDetails = StyleSheet.create({
         width:'90%',
         marginVertical: 10
     },
-    done:{
-        backgroundColor: '#3EE882'
-    },
     textLate:{
         color: 'red'
     },
-    unChecked:{
-        backgroundColor: '#8F8F8F'
-    }
 })
 
 const tarefaPopup = StyleSheet.create({
