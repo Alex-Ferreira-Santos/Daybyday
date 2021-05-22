@@ -64,7 +64,7 @@ class TarefaDetail extends Component {
                     <Text style={tarefaDetails.category}>Prioridade</Text>
                     <Text style={tarefaDetails.text}>{params.tarefa.prioridade}</Text>
 
-                    <TouchableHighlight style={[tarefaDetails.concluir,tarefaDetails.voltar]} underlayColor='#367720' onPress={async ()=>{ await this.goback() }}>
+                    <TouchableHighlight style={[tarefaDetails.concluir,tarefaDetails.voltar]} underlayColor='#8f8f8f' onPress={async ()=>{ await this.goback() }}>
                         <Text style={tarefaDetails.buttonText}>Voltar</Text>
                     </TouchableHighlight>
 

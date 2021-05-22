@@ -287,7 +287,7 @@ const tarefaDetails = StyleSheet.create({
         marginVertical: 10
     },
     voltar:{
-        backgroundColor:'#8F8F8F',
+        backgroundColor:'#c4c4c4',
         borderRadius: 20,
         width: '50%',
         paddingVertical: 3,
