@@ -103,7 +103,7 @@ class TarefaMain extends Component{
                             <Text style={tarefaMain.buttonText}>Inserir nova tarefa</Text>
                         </TouchableHighlight>
                         <BannerAd
-                            unitId={'ca-app-pub-8189428112004694/9041014716'}
+                            unitId={adUnitId}
                             size={BannerAdSize.SMART_BANNER}
                         />
                     </View>

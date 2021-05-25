@@ -120,7 +120,7 @@ class SonoData extends Component{
                     </TouchableHighlight>
                     {this.state.visible && (<SonoPopup close={this.closePopup} desable={this.desable}/>)}
                     <BannerAd
-                        unitId={'ca-app-pub-8189428112004694/7919504739'}
+                        unitId={adUnitId}
                         size={BannerAdSize.SMART_BANNER}
                     />
                 </View>

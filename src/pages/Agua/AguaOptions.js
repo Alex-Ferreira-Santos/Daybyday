@@ -95,6 +95,7 @@ class AguaOptions extends Component {
     }
     
     render(){
+        const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-8189428112004694/6055209981';
         try{
             if(this.props.route.params.reload!==undefined){
                 if(this.props.route.params){
@@ -143,7 +144,7 @@ class AguaOptions extends Component {
                 </TouchableHighlight>
                 {this.state.visivel && (<AguaPopUp invisible={this.ClosePopUp} change={this.ChangeToActivateButton}/>)}
                 <BannerAd
-                    unitId={'ca-app-pub-8189428112004694/6055209981'}
+                    unitId={adUnitId}
                     size={BannerAdSize.SMART_BANNER}
                 />
             </View>

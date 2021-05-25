@@ -54,7 +54,7 @@ class AlimentacaoMain extends Component{
                     <Text style={alimentacaoMain.buttonText}>Voltar ao menu</Text>
                 </TouchableHighlight>
                 <BannerAd
-                    unitId={'ca-app-pub-8189428112004694/5484913085'}
+                    unitId={adUnitId}
                     size={BannerAdSize.SMART_BANNER}
                 />
             </View>
