@@ -62,7 +62,7 @@ class MassaFinal extends Component {
                     <Text style={massaFinal.textButton}>Voltar ao menu</Text>
                 </TouchableHighlight>
                 <BannerAd
-                    unitId={'ca-app-pub-8189428112004694/2667178055'}
+                    unitId={adUnitId}
                     size={BannerAdSize.SMART_BANNER}
                 />
             </View>
