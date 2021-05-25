@@ -94,6 +94,7 @@ class AguaOptions extends Component {
     }
     
     render(){
+        
         try{
             if(this.props.route.params.reload!==undefined){
                 if(this.props.route.params){

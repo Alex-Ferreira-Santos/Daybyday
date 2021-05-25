@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Text, View, TouchableHighlight,Image} from 'react-native'
 import {styles} from '../styles/index'
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob'
 
 import copoDeagua from '../img/copo-de-agua.png'
 import brocolis from '../img/brocolis.png'
@@ -115,6 +116,7 @@ class Homepage extends Component{
   
 
   render(){
+    const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-8189428112004694/5727370523';
     return (
       <View style={styles.container}> 
         <Text style={styles.title}>Day by day</Text>
@@ -200,7 +202,10 @@ class Homepage extends Component{
         </TouchableHighlight>
 
         {this.state.visible && (<ExtraHome close={this.ClosePopUp}/>)}
-        
+        <BannerAd
+          unitId={adUnitId}
+          size={BannerAdSize.SMART_BANNER}
+        />
       </View>
     )
   }
