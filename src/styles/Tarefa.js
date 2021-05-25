@@ -44,6 +44,7 @@ const tarefaMain = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#B94B4B',
+        paddingTop: 50,
     },
     title:{
         fontSize: 30,

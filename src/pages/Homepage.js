@@ -116,7 +116,6 @@ class Homepage extends Component{
   
 
   render(){
-    const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-8189428112004694/5727370523';
     return (
       <View style={styles.container}> 
         <Text style={styles.title}>Day by day</Text>
@@ -203,7 +202,7 @@ class Homepage extends Component{
 
         {this.state.visible && (<ExtraHome close={this.ClosePopUp}/>)}
         <BannerAd
-          unitId={adUnitId}
+          unitId={'ca-app-pub-8189428112004694/5727370523'}
           size={BannerAdSize.SMART_BANNER}
         />
       </View>

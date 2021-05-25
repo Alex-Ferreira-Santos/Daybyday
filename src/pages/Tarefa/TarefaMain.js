@@ -3,6 +3,7 @@ import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
 import TarefaDB from '../../Database/tarefa';
 import {tarefaMain} from '../../styles/Tarefa'
 import Tarefa from '../../components/Tarefa/Tarefa';
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob'
 
 class TarefaMain extends Component{
     constructor(props){
@@ -51,6 +52,7 @@ class TarefaMain extends Component{
     }
 
     render() {
+        const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-8189428112004694/9041014716';
         const params = this.props.route.params
         try{
             if(params.reload!==undefined){
@@ -100,6 +102,10 @@ class TarefaMain extends Component{
                         <TouchableHighlight style={tarefaMain.button} underlayColor='#5B0000' onPress={()=>this.props.navigation.navigate('TarefaForm')}>
                             <Text style={tarefaMain.buttonText}>Inserir nova tarefa</Text>
                         </TouchableHighlight>
+                        <BannerAd
+                            unitId={'ca-app-pub-8189428112004694/9041014716'}
+                            size={BannerAdSize.SMART_BANNER}
+                        />
                     </View>
                 )
             }

@@ -3,6 +3,7 @@ import {View,Text,Image,TouchableHighlight} from 'react-native'
 import {massaFinal} from '../../styles/Massa'
 import peso from '../../img/peso.png'
 import Massa from '../../Database/massa'
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob'
 
 class MassaFinal extends Component {
 
@@ -45,6 +46,7 @@ class MassaFinal extends Component {
     }
 
     render(){
+        const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-8189428112004694/2667178055';
         return (
             <View style={massaFinal.container}>
                 <Text style={massaFinal.title}>Seu IMC é de <Text style={massaFinal.bold}>{this.state.IMC}</Text></Text>
@@ -59,6 +61,10 @@ class MassaFinal extends Component {
                 <TouchableHighlight style={[massaFinal.button,massaFinal.menuButton]} onPress={()=>this.props.navigation.navigate('Homepage')}>
                     <Text style={massaFinal.textButton}>Voltar ao menu</Text>
                 </TouchableHighlight>
+                <BannerAd
+                    unitId={'ca-app-pub-8189428112004694/2667178055'}
+                    size={BannerAdSize.SMART_BANNER}
+                />
             </View>
         )
     }
