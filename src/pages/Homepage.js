@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Text, View, TouchableHighlight,Image} from 'react-native'
 import {styles} from '../styles/index'
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob'
 
 import copoDeagua from '../img/copo-de-agua.png'
 import brocolis from '../img/brocolis.png'
@@ -200,7 +201,10 @@ class Homepage extends Component{
         </TouchableHighlight>
 
         {this.state.visible && (<ExtraHome close={this.ClosePopUp}/>)}
-        
+        <BannerAd
+          unitId={'ca-app-pub-8189428112004694/5727370523'}
+          size={BannerAdSize.SMART_BANNER}
+        />
       </View>
     )
   }

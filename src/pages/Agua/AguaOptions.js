@@ -5,6 +5,7 @@ import AguaPopUp from '../../components/Agua/AguaPopUp'
 import Agua from '../../Database/agua'
 import Water from '../../Model/water';
 import {notificationManager} from '../../services/NotificationManager'
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob'
  
 class AguaOptions extends Component {
     constructor(props){
@@ -141,6 +142,10 @@ class AguaOptions extends Component {
                     <Text style={aguaOptions.textButton}>Voltar ao menu</Text>
                 </TouchableHighlight>
                 {this.state.visivel && (<AguaPopUp invisible={this.ClosePopUp} change={this.ChangeToActivateButton}/>)}
+                <BannerAd
+                    unitId={'ca-app-pub-8189428112004694/6055209981'}
+                    size={BannerAdSize.SMART_BANNER}
+                />
             </View>
             ) 
         }

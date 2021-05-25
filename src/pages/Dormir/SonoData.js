@@ -4,6 +4,7 @@ import Sono from '../../Database/Sono';
 import {sonoData} from '../../styles/Sono'
 import SonoPopup from '../../components/Dormir/SonoPopup'
 import {notificationManager} from '../../services/NotificationManager'
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob'
 
 class SonoData extends Component{
     constructor(props){
@@ -82,6 +83,7 @@ class SonoData extends Component{
     }
 
     render(){
+        const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-8189428112004694/7919504739';
         try {
             if(this.props.route.params.reload!==undefined){
                 if(this.props.route.params){
@@ -117,6 +119,10 @@ class SonoData extends Component{
                         <Text style={sonoData.ButtonText}>Voltar ao menu</Text>
                     </TouchableHighlight>
                     {this.state.visible && (<SonoPopup close={this.closePopup} desable={this.desable}/>)}
+                    <BannerAd
+                        unitId={'ca-app-pub-8189428112004694/7919504739'}
+                        size={BannerAdSize.SMART_BANNER}
+                    />
                 </View>
             )
         }
