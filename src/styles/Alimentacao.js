@@ -54,7 +54,8 @@ const alimentacaoMain = StyleSheet.create({
     dietas:{
         backgroundColor: 'white',
         width: '80%',
-        
+        minHeight: 200,
+        maxHeight: 300,
         borderWidth: 1,
     },
     button:{

@@ -73,9 +73,9 @@ const sonoForm = StyleSheet.create({
     },
     input:{
         backgroundColor: '#B2BAFC',
-        height: 30,
+        height: 50,
         paddingVertical: 0,
-        borderRadius: 20,
+        borderRadius: 10,
         borderColor: '#5C6DFF',
         borderWidth: 1.5,
     },
