@@ -71,12 +71,10 @@ const massaForm = StyleSheet.create({
         fontSize: 17
     },
     input:{
-        backgroundColor: '#E5E5E5',
-        borderRadius: 20,
-        height: 30,
+        backgroundColor: '#F5C84C',
+        borderRadius: 10,
+        height: 50,
         paddingVertical: 0,
-        borderColor: '#787878',
-        borderWidth: 1
     },
     button:{
         backgroundColor: '#323301',

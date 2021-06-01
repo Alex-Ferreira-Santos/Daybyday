@@ -71,12 +71,10 @@ const aguaForm = StyleSheet.create({
         marginBottom:4,
     },
     input:{
-        backgroundColor: '#DADADA',
-        height: 40,
-        borderRadius: 15,
+        backgroundColor: '#C5FBFF',
+        height: 50,
+        borderRadius: 10,
         paddingVertical: 7,
-        borderColor: '#707070',
-        borderWidth: 1.7
     },
     tips:{
         textAlign: 'justify',

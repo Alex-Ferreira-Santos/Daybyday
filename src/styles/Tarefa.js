@@ -196,16 +196,15 @@ const tarefaForm = StyleSheet.create({
         marginBottom: 5
     },
     input:{
-        backgroundColor: '#EAEAEA',
-        borderRadius: 20,
-        borderWidth: 1,
-        borderColor: '#8B8B8B',
-        height: 30,
+        backgroundColor: '#FFBABA',
+        borderRadius: 10,
+        height: 50,
         paddingVertical:0,
         paddingLeft: 10,
     },
     description:{
         height: 'auto',
+        minHeight: 50,
         maxHeight: 100
     },
     button:{
@@ -238,19 +237,19 @@ const pickerSelectStyles = StyleSheet.create({
         borderColor: '#959595',
         borderRadius: 15,
         color: 'black',
+        height: 50,
     },
     inputAndroid: {  
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#FFBABA',
         fontSize: 16,
         paddingVertical: 2,
-        borderWidth: 1,
-        borderColor: '#959595',
         borderRadius: 15,
         color: 'black',
+        height: 50,
     },
     placeholder:{
         fontSize: 14,
-        color: '#919191',
+        color: '#AE7575',
         paddingLeft: 10
     }
 });
