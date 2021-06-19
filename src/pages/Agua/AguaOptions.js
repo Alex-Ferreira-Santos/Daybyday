@@ -101,7 +101,7 @@ export function AguaOptions(){
                     unitId={adUnitId}
                     size={BannerAdSize.SMART_BANNER}
                     
-                />
+                /> 
             </View>
             ) 
         }
