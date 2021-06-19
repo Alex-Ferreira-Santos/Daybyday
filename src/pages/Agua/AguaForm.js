@@ -62,7 +62,7 @@ export function AguaForm(){
                     </View>
                     
                 <Text style={aguaForm.tips}>O valor minimo para litros é 1,5 e o maximo é 4.</Text>
-                <Text style={aguaForm.tips}>O quantidade de água é calculada ao longo de 18 horas</Text>
+                <Text style={aguaForm.tips}>O quantidade de água é calculada ao longo de 16 horas</Text>
 
                 <TouchableHighlight 
                     style={aguaForm.next} 

@@ -10,16 +10,16 @@ import Homepage from './src/pages/Homepage'
 import {AguaHome} from './src/pages/Agua/AguaHome'
 import {AguaForm} from './src/pages/Agua/AguaForm';
 import {AguaSuccessful} from './src/pages/Agua/AguaSuccessful';
-import AguaOptions from './src/pages/Agua/AguaOptions';
+import {AguaOptions} from './src/pages/Agua/AguaOptions';
 
 import MassaHome from './src/pages/Massa/MassaHome';
 import MassaForm from './src/pages/Massa/MassaForm';
 import MassaData from './src/pages/Massa/MassaData';
 import MassaFinal from './src/pages/Massa/MassaFinal';
 
-import SonoHome from './src/pages/Dormir/SonoHome';
-import SonoForm from './src/pages/Dormir/SonoForm';
-import SonoData from './src/pages/Dormir/SonoData';
+import {SonoHome} from './src/pages/Dormir/SonoHome';
+import {SonoForm} from './src/pages/Dormir/SonoForm';
+import {SonoData} from './src/pages/Dormir/SonoData';
 
 import TarefaHome from './src/pages/Tarefa/TarefaHome';
 import TarefaMain from './src/pages/Tarefa/TarefaMain';
