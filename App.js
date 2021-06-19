@@ -4,22 +4,28 @@ import {StatusBar} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator()
+
 import Homepage from './src/pages/Homepage'
-import AguaHome from './src/pages/Agua/AguaHome'
-import AguaForm from './src/pages/Agua/AguaForm';
-import AguaSuccessful from './src/pages/Agua/AguaSuccessful';
+
+import {AguaHome} from './src/pages/Agua/AguaHome'
+import {AguaForm} from './src/pages/Agua/AguaForm';
+import {AguaSuccessful} from './src/pages/Agua/AguaSuccessful';
 import AguaOptions from './src/pages/Agua/AguaOptions';
+
 import MassaHome from './src/pages/Massa/MassaHome';
 import MassaForm from './src/pages/Massa/MassaForm';
 import MassaData from './src/pages/Massa/MassaData';
 import MassaFinal from './src/pages/Massa/MassaFinal';
+
 import SonoHome from './src/pages/Dormir/SonoHome';
 import SonoForm from './src/pages/Dormir/SonoForm';
 import SonoData from './src/pages/Dormir/SonoData';
+
 import TarefaHome from './src/pages/Tarefa/TarefaHome';
 import TarefaMain from './src/pages/Tarefa/TarefaMain';
 import TarefaForm from './src/pages/Tarefa/TarefaForm';
 import TarefaDetail from './src/pages/Tarefa/TarefaDetails';
+
 import AlimentacaoHome from './src/pages/Alimentacao/AlimentacaoHome';
 import AlimentacaoMain from './src/pages/Alimentacao/AlimentacaoMain';
 import AlimentacaoDieta from './src/pages/Alimentacao/AlimentacaoDieta';
@@ -29,19 +35,13 @@ class App extends Component{
     return (
       <NavigationContainer>
         <StatusBar translucent backgroundColor="transparent" barStyle='dark-content'/>
-        <Stack.Navigator>
+        <Stack.Navigator headerMode='none'>
+          <Stack.Screen name="Homepage" component={Homepage}/>
           <Stack.Screen
-            name="Homepage"
-            component={Homepage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            options={{ headerShown: false }}
             name="AguaHome"
             component={AguaHome}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="AguaForm"
             component={AguaForm}
             initialParams={{
@@ -49,37 +49,30 @@ class App extends Component{
             }}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="AguaSuccessful"
             component={AguaSuccessful}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="AguaOptions"
             component={AguaOptions}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="AlimentacaoHome"
             component={AlimentacaoHome}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="AlimentacaoMain"
             component={AlimentacaoMain}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="AlimentacaoDieta"
             component={AlimentacaoDieta}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="MassaHome"
             component={MassaHome}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="MassaForm"
             component={MassaForm}
             initialParams={{
@@ -87,22 +80,18 @@ class App extends Component{
             }}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="MassaData"
             component={MassaData}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="MassaFinal"
             component={MassaFinal}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="TarefaHome"
             component={TarefaHome}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="TarefaMain"
             component={TarefaMain}
             initialParams={{
@@ -110,7 +99,6 @@ class App extends Component{
             }}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="TarefaForm"
             component={TarefaForm}
             initialParams={{
@@ -124,7 +112,6 @@ class App extends Component{
             }}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="TarefaDetail"
             component={TarefaDetail}
             initialParams={{
@@ -132,12 +119,10 @@ class App extends Component{
             }}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="SonoHome"
             component={SonoHome}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="SonoForm"
             component={SonoForm}
             initialParams={{
@@ -145,7 +130,6 @@ class App extends Component{
             }}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
             name="SonoData"
             component={SonoData}
           />
