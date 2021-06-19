@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Text, View, TouchableHighlight,Image} from 'react-native'
 import {styles} from '../styles/index'
-import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob'
+import { BannerAd, BannerAdSize} from '@react-native-firebase/admob'
 
 import copoDeagua from '../img/copo-de-agua.png'
 import brocolis from '../img/brocolis.png'
