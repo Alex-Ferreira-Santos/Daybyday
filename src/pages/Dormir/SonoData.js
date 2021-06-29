@@ -12,7 +12,6 @@ export function SonoData(){
     const [enable,setEnable] = useState({})
     const [text,setText] = useState('Desativar as notificações')
     const [underlayColor,setUnderlayColor] = useState('#810000')
-    const [sono,setSono] = useState({})
     const [horas, setHoras] = useState('')
     const [frase, setFrase] = useState('')
     const notification = notificationManager
@@ -43,7 +42,6 @@ export function SonoData(){
     async function select(){
         const sono = new Sono
         await sono.select().then( value => {
-            setSono(...value)
             CustomText(...value)
         })    
     }

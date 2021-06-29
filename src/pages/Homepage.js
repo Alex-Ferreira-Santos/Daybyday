@@ -17,6 +17,7 @@ import Sono from '../Database/Sono';
 import TarefaDB from '../Database/tarefa';
 import VisitedDB from '../Database/visited'
 
+
 class Homepage extends Component{
   constructor(props){
     super(props)
