@@ -1,112 +1,125 @@
-import React,{Component} from 'react';
+import React,{useState,useCallback,Component} from 'react';
 import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {tarefaForm,pickerSelectStyles} from '../../styles/Tarefa'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import RNPickerSelect from 'react-native-picker-select' ;
+import {useRoute,useNavigation,useFocusEffect} from '@react-navigation/native'
 import Task from '../../Model/task'
 import TarefaDB from '../../Database/tarefa';
 import {notificationManager} from '../../services/NotificationManager'
 
-class TarefaForm extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            Pagetitle: '',
-            title:'',
-            description: '',
-            day: '',
-            hour: '',
-            time: '',
-            priority:'',
-            show: false,
-            mode: 'date',
-            tarefa: [],
-            fulldate: ''
-        }
-        this.tarefa = []
-        this.day = ''
-        this.minutes = ''
-        this.notification
-        this.notification = notificationManager
-        this.notification.configure()
-    }
+let minutes = ''
+let dia
+function TarefaForm(){
+    const [title,setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [day, setDay] = useState('')
+    const [hour, setHour] = useState('')
+    const [time, setTime] = useState('')
+    const [priority,setPriority] = useState('')
+    const [show, setShow] = useState(false)
+    const [mode,setMode] = useState('date')
+    const [tarefa,setTarefa] = useState([])
+    const [fulldate,setFulldate] = useState('')
+    const navigation = useNavigation()
+    const {params} = useRoute()
+    const notification = notificationManager
+    notification.configure()
 
-    async insert(titulo,descricao,dataDeTermino,prioridade,concluido){
-        const task = new Task(titulo,descricao,dataDeTermino,prioridade,concluido)
+    async function insert(titulo,descricao,dataDeTermino,prioridade,concluido){
+        const task = {titulo,descricao,dataDeTermino,prioridade,concluido}
         const tarefa = new TarefaDB
         await tarefa.insert(task)
     }
 
-    async update(titulo,descricao,dataDeTermino,prioridade,concluido,id){
+    async function update(titulo,descricao,dataDeTermino,prioridade,concluido,id){
         const task = new Task(titulo,descricao,dataDeTermino,prioridade,concluido)
         const tarefa = new TarefaDB
         await tarefa.update(task,id)
     }
 
-    async select(){
+    async function select(){
         const tarefa = new TarefaDB
         await tarefa.select().then( value => {
-            this.atribuiValor(value,this.tarefa)
+            setTarefa(value)
         })
-        this.setState({tarefa:this.tarefa})
     }
 
-    atribuiValor(data,array){
-        array.push(data)
-        if(array.length > 1){
-          array.shift()
-        }
-    }
+    useFocusEffect(useCallback( () => {
+        select()
+    },[]))
 
-    render(){
-        const params = this.props.route.params
-        return (
-            <View style={tarefaForm.container}>
-                <Text style={tarefaForm.title}>{params.title}</Text>
-                <Text style={tarefaForm.taskName}>{params.taskName}</Text>
-                <View style={tarefaForm.form}>
-                    <View style={tarefaForm.section}>
-                        <Text style={tarefaForm.label}>Título</Text>
-                        <TextInput placeholder='Digite o título da tarefa aqui' style={tarefaForm.input} onChangeText={value=>{ 
-                            this.setState({title: value})
-                        }}/>
-                    </View>
-                    <View style={tarefaForm.section}>
-                        <Text style={tarefaForm.label}>Descrição</Text>
-                        <TextInput placeholder='Digite a descrição da tarefa aqui' style={[tarefaForm.input,tarefaForm.description]} multiline={true} onChangeText={value => {
-                            this.setState({description: value})
-                        }}/>
-                    </View>
-                    <View style={tarefaForm.section}>
-                        <Text style={tarefaForm.label}>Data de término</Text>
-                        <TextInput placeholder='Selecione a data de término aqui' style={tarefaForm.input} onFocus={()=>{
-                            this.setState({show: true})
-                            this.setState({mode:'date'})
-                        }} value={this.state.time} showSoftInputOnFocus={false}/>
-                        {this.state.show && (<DateTimePicker mode={this.state.mode} value={new Date()} onChange={(value,data)=> {
+    return (
+        <View style={tarefaForm.container}>
+            <Text style={tarefaForm.title}>{params.title}</Text>
+            <Text style={tarefaForm.taskName}>{params.taskName}</Text>
+            <View style={tarefaForm.form}>
+                <View style={tarefaForm.section}>
+                    <Text style={tarefaForm.label}>Título</Text>
+                    <TextInput 
+                        placeholder='Digite o título da tarefa aqui' 
+                        style={tarefaForm.input} 
+                        onChangeText={value=>{ 
+                            setTitle(value)
+                        }}
+                    />
+                </View>
+                <View style={tarefaForm.section}>
+                    <Text style={tarefaForm.label}>Descrição</Text>
+                    <TextInput 
+                        placeholder='Digite a descrição da tarefa aqui' 
+                        style={[tarefaForm.input,tarefaForm.description]} 
+                        multiline={true} 
+                        onChangeText={value => {
+                            setDescription(value)
+                        }}
+                    />
+                </View>
+                <View style={tarefaForm.section}>
+                    <Text style={tarefaForm.label}>Data de término</Text>
+                    <TextInput 
+                        placeholder='Selecione a data de término aqui' 
+                        style={tarefaForm.input} 
+                        onFocus={()=>{
+                            setShow(true)
+                            setMode('date')
+                        }} 
+                        value={time} 
+                        showSoftInputOnFocus={false}
+                    />
+                    {show && (
+                        <DateTimePicker 
+                            mode={mode} 
+                            value={new Date()} 
+                            onChange={(value,data)=> {
                                 if(data === undefined){
                                     return;
                                 }
 
-                                if(this.state.mode === 'date'){
-                                    this.day = data.toString().slice(0,15)
-                                    this.setState({day: data.toString().slice(3,15)})
-                                    this.setState({mode:'time'})
+                                if(mode === 'date'){
+                                    
+                                    dia = data.toString().slice(0,15)
+                                    console.log(dia)
+                                    setDay(data.toString().slice(3,15))
+                                    setMode('time')
                                     return;
                                 }
 
-                                if(this.state.mode === 'time' && this.minutes === ''){
-                                    this.minutes = data.toString().slice(15)
-                                    this.setState({show:false})
-                                    this.setState({hour: data.toString().slice(15,21)})
-           
+                                if(mode === 'time' && minutes === ''){
+                                    minutes = data.toString().slice(15)
+                                    setShow(false)
+                                    setHour(data.toString().slice(15,21))
                                 }
-
-                                this.setState({fulldate: `${this.day}${this.minutes}`})
-                                this.setState({time: `${this.state.day}${this.state.hour}`})
-                                this.minutes = ''
-                            }} is24Hour={true}  
-                            />)}
+                                console.log(dia)
+                                console.log(`${dia} ${minutes}`)
+                                setFulldate(`${dia} ${minutes}`)
+                                setTime(`${day}${data.toString().slice(15,21)}`)
+                                
+                                minutes = ''
+                            }} 
+                            is24Hour={true}  
+                        />
+                    )}
                     </View>
                     <View style={tarefaForm.section}>
                         <Text style={tarefaForm.label}>Prioridade</Text>
@@ -118,7 +131,7 @@ class TarefaForm extends Component {
                                     color: '#9EA0A4',
                                 }}
                                 onValueChange={(value)=>{
-                                    this.setState({priority: value})
+                                    setPriority(value)
                                 }}
                                 style={pickerSelectStyles}
                                 items={[
@@ -129,28 +142,30 @@ class TarefaForm extends Component {
                             />
                     </View>
                     <TouchableHighlight underlayColor={params.underlayColor} style={[tarefaForm.button,params.buttonColor]} onPress={async ()=>{
-                        if(this.state.title === '' || this.state.description === '' || this.state.time === '' || this.state.priority === ''){
+                        if(title === '' || description === '' || time === '' || priority === ''){
                             alert('Ainda há campos incompletos')
                             return
                         }
+                        await select()
+                        
+
                         if(params.buttonText === 'Inserir'){
-                            this.insert(this.state.title,this.state.description,this.state.time,this.state.priority,false)
-                            alert(`tarefa ${this.state.title} inserida com sucesso`)
+                            await insert(title,description,time,priority,false)    
+                            alert(`tarefa ${title} inserida com sucesso`)
                         }else{
-                            await this.update(this.state.title,this.state.description,this.state.time,this.state.priority,false,params.id)
-                            alert(`tarefa ${this.state.title} editada com sucesso`)
-                            this.notification.cancelNotifications(params.id)
+                            await update(title,description,time,priority,false,params.id)
+                            alert(`tarefa ${title} editada com sucesso`)
+                            notification.cancelNotifications(params.id)
                         }
-                        await this.select()
-                        this.props.navigation.navigate('TarefaMain',{reload:true})
-                        this.notification.ScheduleTaskNotification(this.state.fulldate, this.state.title, this.state.priority,this.state.tarefa[0][this.state.tarefa[0].length - 1].id)
+                        
+                        navigation.navigate('TarefaMain',{reload:true})
+                        notification.ScheduleTaskNotification(fulldate, title, priority,tarefa.length)
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
                     </TouchableHighlight>
                 </View>
             </View>
         )
-    }
 }
 
 export default TarefaForm;
