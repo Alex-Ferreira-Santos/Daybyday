@@ -1,4 +1,4 @@
-import React,{useState,useCallback,Component} from 'react';
+import React,{useState,useCallback} from 'react';
 import {View,Text,TextInput,TouchableHighlight} from 'react-native'
 import {tarefaForm,pickerSelectStyles} from '../../styles/Tarefa'
 import DateTimePicker from '@react-native-community/datetimepicker'
@@ -158,7 +158,7 @@ function TarefaForm(){
                             notification.cancelNotifications(params.id)
                         }
                         
-                        navigation.navigate('TarefaMain',{reload:true})
+                        navigation.navigate('TarefaMain')
                         notification.ScheduleTaskNotification(fulldate, title, priority,tarefa.length)
                     }}>
                         <Text style={[tarefaForm.buttonText,params.buttonTextColor]}>{params.buttonText}</Text>
