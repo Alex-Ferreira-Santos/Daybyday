@@ -1,5 +1,5 @@
 import React,{useState,useCallback} from 'react';
-import {View,Text,TouchableHighlight,ScrollView,FlatList} from 'react-native'
+import {View,Text,TouchableHighlight,FlatList} from 'react-native'
 import TarefaDB from '../../Database/tarefa';
 import {tarefaMain} from '../../styles/Tarefa'
 import Tarefa from '../../components/Tarefa/Tarefa';
