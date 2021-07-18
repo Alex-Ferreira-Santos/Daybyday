@@ -9,7 +9,8 @@ const agua = StyleSheet.create({
     },
     title:{
         fontSize: 30,
-        margin: 50
+        margin: 50,
+        fontWeight: 'bold'
     },
     text:{
         width: '70%',
@@ -46,11 +47,16 @@ const aguaForm = StyleSheet.create({
     },
     title:{
         fontSize: 30,
-        margin: 50
+        fontWeight: 'bold'
+    },
+    subtitle:{
+        fontSize: 25,
+        maxWidth: '90%',
+        textAlign: 'center'
     },
     form:{
         backgroundColor: 'white',
-        width: '80%',
+        width: '90%',
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center',
@@ -59,15 +65,15 @@ const aguaForm = StyleSheet.create({
     dica:{
         fontSize: 18,
         textAlign: 'justify',
-        width: '80%',
-        marginTop: 20,
+        width: '90%',
+        marginVertical: 20
     },
     view:{
         width:'90%',
         marginBottom: 20
     },
     label:{
-        fontSize: 21,
+        fontSize: 22,
         marginBottom:4,
     },
     input:{
@@ -75,16 +81,17 @@ const aguaForm = StyleSheet.create({
         height: 50,
         borderRadius: 10,
         paddingVertical: 7,
+        fontSize: 20
     },
     tips:{
         textAlign: 'justify',
-        width: '80%',
+        width: '90%',
         marginBottom: 10,
-        fontSize: 16,
+        fontSize: 15,
     },
     next:{
         backgroundColor: '#177070',
-        width: '80%',
+        width: '90%',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
@@ -94,6 +101,10 @@ const aguaForm = StyleSheet.create({
     confirmar:{
         color: 'white',
         fontSize: 18
+    },
+    error:{
+        color: 'red',
+        fontSize: 15,
     }
 })
 
@@ -106,7 +117,8 @@ const aguaSuccessful = StyleSheet.create({
     },
     title:{
         fontSize: 30,
-        margin: 50
+        margin: 50,
+        fontWeight: 'bold',
     },
     notification:{
         width:'80%',
@@ -143,6 +155,7 @@ const aguaOptions = StyleSheet.create({
         textAlign: 'center',
         fontSize: 25,
         margin: 20,
+        fontWeight: 'bold'
     },
     subtitle:{
         fontSize: 25,
