@@ -1,7 +1,8 @@
-import React,{Component} from 'react';
+import React,{Component,useState, useEffect} from 'react';
 import {Text, View, TouchableHighlight,Image} from 'react-native'
 import {styles} from '../styles/index'
 import { BannerAd, BannerAdSize} from '@react-native-firebase/admob'
+import {useNavigation} from '@react-navigation/native'
 
 import copoDeagua from '../img/copo-de-agua.png'
 import brocolis from '../img/brocolis.png'
@@ -17,199 +18,200 @@ import Sono from '../Database/Sono';
 import TarefaDB from '../Database/tarefa';
 import VisitedDB from '../Database/visited'
 
+function Homepage(){
+  const [visible,setVisible] = useState(false)
+  const [aguaVisited,setAguaVisited] = useState(false)
+  const [massaVisited,setMassaVisited] = useState(false)
+  const [sonoVisited,setSonoVisited] = useState(false)
+  const [tarefaVisited,setTarefaVisited] = useState(false)
+  const [alimentacaoVisited,setAlimentacaoVisited] = useState(false)
+  const [tarefa,setTarefa] = useState([])
+  const [visited,setVisited] = useState([])
+  const navigation = useNavigation()
 
-class Homepage extends Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      visible: false,
-      aguaVisited: false,
-      massaVisited: false,
-      sonoVisited: false,
-      tarefaVisited: false,
-      alimentacaoVisited: false,
-      tarefa: [],
-      alimentacao: [],
-      visited: [],
-    }
-    this.visited = [];
-    this.tarefa = []
-    this.alimentacao = []
-    this.ClosePopUp = this.ClosePopUp.bind(this)
+  function ClosePopUp(){
+    setVisible(false)
   }
 
-  ClosePopUp(){
-    this.setState({visible: false})
-  }
-
-  async selectAgua(){
+  async function selectAgua(){
     const agua = new Agua
     await agua.select().then( value => {
       if(value[0] !== undefined){
-        this.setState({aguaVisited: true})
+        setAguaVisited(true)
       }
     })
   }
 
-  async selectMassa(){
+  async function selectMassa(){
     const massa = new Massa
     await massa.select().then( value => {
       if(value[0] !== undefined){
-        this.setState({massaVisited: true})
+        setMassaVisited(true)
       }
     })
   }
 
-  async selectSono(){
+  async function selectSono(){
     const sono = new Sono
     await sono.select().then( value => {
       if(value[0] !== undefined){
-        this.setState({sonoVisited: true})
+        setSonoVisited(true)
       }
     })
   }
 
-  async selectVisited(){
+  async function selectVisited(){
     const visited = new VisitedDB()
     await visited.select().then( value => {
-      this.atribuiValor(value,this.visited)
+      setVisited(...value)
       if(value[0].visited){
-        this.setState({alimentacaoVisited: true})
+        setAlimentacaoVisited(true)
       }
     })
-    this.setState({visited:this.visited})
   }
 
-  async selectTarefa(){
+  async function selectTarefa(){
     const tarefa = new TarefaDB
     await tarefa.select().then( value => {
       if(value[0] !== undefined){
-        this.setState({tarefaVisited: true})
+        setTarefaVisited(true)
       }
-      this.atribuiValor(value,this.tarefa)
+      setTarefa(...value)
     })
-    this.setState({tarefa:this.tarefa})
   }
 
-  atribuiValor(data,array){
-      array.push(data)
-      if(array.length > 1){
-        array.shift()
-      }
-  }
-
-  createTable(){
+  async function createTable(){
     const agua = new Agua
-    agua.initDB()
+    await agua.initDB()
     const visited = new VisitedDB
-    visited.initDB()
+    await visited.initDB()
     const tarefa = new TarefaDB
-    tarefa.initDB()
+    await tarefa.initDB()
     const massa = new Massa
-    massa.initDB()
+    await massa.initDB()
     const sono = new Sono
-    sono.initDB()
+    await sono.initDB()
   }
 
-  componentDidMount(){
-    this.createTable()
-  }
-  
+  useEffect(()=>{
+    createTable()
+  },[])
 
-  render(){
-    return (
-      <View style={styles.container}> 
-        <Text style={styles.title}>Day by day</Text>
-        <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
+  return (
+    <View style={styles.container}> 
+      <Text style={styles.title}>Day by day</Text>
+      <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
 
-        <TouchableHighlight style={[styles.touchable,styles.agua]} underlayColor='#2EA6AD' onPress={async ()=>{
-          await this.selectAgua()
-          if(this.state.aguaVisited){
-            this.props.navigation.navigate('AguaOptions',{reload:true})
+      <TouchableHighlight 
+        style={[styles.touchable,styles.agua]} 
+        underlayColor='#2EA6AD' 
+        onPress={async ()=>{
+          await selectAgua()
+          if(aguaVisited){
+            navigation.navigate('AguaOptions')
           }else{
-            this.props.navigation.navigate('AguaHome')
+            navigation.navigate('AguaHome')
           }
-          }}>
-          <View style={styles.Buttoncontainer}>
-            <Image source={copoDeagua} style={styles.img}/>
-            <Text style={{fontSize: 20}}>Lembrete de água</Text>
-          </View> 
-        </TouchableHighlight>
+        }}
+      >
+        <View style={styles.Buttoncontainer}>
+          <Image source={copoDeagua} style={styles.img}/>
+          <Text style={{fontSize: 20}}>Lembrete de água</Text>
+        </View> 
+      </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.alimentacao]} underlayColor='#396D27' onPress={async ()=>{
-          await this.selectVisited()
-          if(this.state.alimentacaoVisited){
-            this.props.navigation.navigate('AlimentacaoMain')
+      <TouchableHighlight 
+        style={[styles.touchable,styles.alimentacao]} 
+        underlayColor='#396D27' 
+        onPress={async ()=>{
+          await selectVisited()
+          if(alimentacaoVisited){
+            navigation.navigate('AlimentacaoMain')
           }else{
-            this.props.navigation.navigate('AlimentacaoHome')
+            navigation.navigate('AlimentacaoHome')
           }
-          }}>
-          <View style={styles.Buttoncontainer}>
-            <Image source={brocolis} style={styles.img}/>
-            <Text style={{fontSize: 20}}>Alimentação</Text>
-          </View> 
-        </TouchableHighlight>
+        }}
+      >
+        <View style={styles.Buttoncontainer}>
+          <Image source={brocolis} style={styles.img}/>
+          <Text style={{fontSize: 20}}>Alimentação</Text>
+        </View> 
+      </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.peso]} underlayColor='#B6A721' onPress={async ()=>{
-          await this.selectMassa().finally(() => {
-            if(this.state.massaVisited){
-            this.props.navigation.navigate('MassaFinal')
+      <TouchableHighlight 
+        style={[styles.touchable,styles.peso]} 
+        underlayColor='#B6A721' 
+        onPress={async ()=>{
+          await selectMassa().finally(() => {
+            if(massaVisited){
+            navigation.navigate('MassaFinal')
             }else{
-              this.props.navigation.navigate('MassaHome')
+              navigation.navigate('MassaHome')
             }
           })      
-          }}>
-          <View style={styles.Buttoncontainer}>
-            <Image source={peso} style={styles.img}/>
-            <Text style={{fontSize: 20}}>Massa corporal</Text>
-          </View> 
-        </TouchableHighlight>
+        }}
+      >
+        <View style={styles.Buttoncontainer}>
+          <Image source={peso} style={styles.img}/>
+          <Text style={{fontSize: 20}}>Massa corporal</Text>
+        </View> 
+      </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.lista]} underlayColor='#963D3D' onPress={async ()=>{
-          await this.selectTarefa().finally( () => {
-            if(this.state.tarefaVisited){
-            this.props.navigation.navigate('TarefaMain',{reload:true})
+      <TouchableHighlight 
+        style={[styles.touchable,styles.lista]} 
+        underlayColor='#963D3D' 
+        onPress={async ()=>{
+          await selectTarefa().finally( () => {
+            if(tarefaVisited){
+            navigation.navigate('TarefaMain')
             }else{
-              this.props.navigation.navigate('TarefaHome')
+              navigation.navigate('TarefaHome')
             }
           })  
-          }}>
-          <View style={styles.Buttoncontainer}>
-            <Image source={lista} style={styles.img}/>
-            <Text style={{fontSize: 20}}>Lista de tarefas</Text>
-          </View> 
-        </TouchableHighlight>
+        }}
+      >
+        <View style={styles.Buttoncontainer}>
+          <Image source={lista} style={styles.img}/>
+          <Text style={{fontSize: 20}}>Lista de tarefas</Text>
+        </View> 
+      </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.dormir]} underlayColor='#373086' onPress={async ()=>{
-          await this.selectSono()
-          if(this.state.sonoVisited){
-            this.props.navigation.navigate('SonoData',{reload:true})
+      <TouchableHighlight 
+        style={[styles.touchable,styles.dormir]} 
+        underlayColor='#373086' 
+        onPress={async ()=>{
+          await selectSono()
+          if(sonoVisited){
+            navigation.navigate('SonoData')
           }else{
-            this.props.navigation.navigate('SonoHome')
+            navigation.navigate('SonoHome')
           }
-          }}>
-          <View style={styles.Buttoncontainer}>
-            <Image source={lua} style={styles.img}/>
-            <Text style={{fontSize: 20,color: 'white'}}>Auxiliador de sono</Text>
-          </View> 
-        </TouchableHighlight>
+        }}
+      >
+        <View style={styles.Buttoncontainer}>
+          <Image source={lua} style={styles.img}/>
+          <Text style={{fontSize: 20,color: 'white'}}>Auxiliador de sono</Text>
+        </View> 
+      </TouchableHighlight>
 
-        <TouchableHighlight style={[styles.touchable,styles.extra]} underlayColor='#792D7A' onPress={()=>{this.setState({visible:true})}}>
-          <View style={styles.Buttoncontainer}>
-            <Image source={config} style={styles.img}/>
-            <Text style={{fontSize: 20,color: 'white'}}>Extra</Text>
-          </View> 
-        </TouchableHighlight>
+      <TouchableHighlight 
+        style={[styles.touchable,styles.extra]} 
+        underlayColor='#792D7A' 
+        onPress={()=>{setVisible(true)}}
+      >
+        <View style={styles.Buttoncontainer}>
+          <Image source={config} style={styles.img}/>
+          <Text style={{fontSize: 20,color: 'white'}}>Extra</Text>
+        </View> 
+      </TouchableHighlight>
 
-        {this.state.visible && (<ExtraHome close={this.ClosePopUp}/>)}
-        <BannerAd
-          unitId={'ca-app-pub-8189428112004694/5727370523'}
-          size={BannerAdSize.SMART_BANNER}
-        />
-      </View>
-    )
-  }
+      {visible && (<ExtraHome close={ClosePopUp}/>)}
+      <BannerAd
+        unitId={'ca-app-pub-8189428112004694/5727370523'}
+        size={BannerAdSize.SMART_BANNER}
+      />
+    </View>
+  )
 }
-
 
 export default Homepage

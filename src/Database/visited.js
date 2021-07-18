@@ -22,7 +22,7 @@ export default class VisitedDB{
                     console.log('erro recebido: ' + error)
                     console.log('criando banco de dados')
                     db.transaction(tx => {
-                        tx.executeSql('CREATE TABLE IF NOT EXISTS visited (id INTEGER PRIMARY KEY AUTOINCREMENT, visited)')    
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS visited (id INTEGER PRIMARY KEY AUTOINCREMENT, aguaVisited BOOLEAN NOT NULL, alimentacaoVisited BOOLEAN NOT NULL, massaVisited BOOLEAN NOT NULL, tarefaVisited BOOLEAN NOT NULL, sonoVisited BOOLEAN NOT NULL)')    
                     }).then(()=>{
                         console.log('tabela visited criada com sucesso')
                     }).catch(error=>{
@@ -30,7 +30,7 @@ export default class VisitedDB{
                     })
                     if(vezes<1){
                         db.transaction(tx => {
-                            tx.executeSql('INSERT INTO visited VALUES(1,0)')    
+                            tx.executeSql('INSERT INTO visited VALUES(1,0,0,0,0,0)')    
                         }).then(()=>{
                             console.log('tabela visited criada com sucesso')
                         }).catch(error=>{
