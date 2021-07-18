@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 40
     },
+    main:{
+        flex:1,
+        width: '100%',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+    },
     title:{
         fontSize: 40,
     },

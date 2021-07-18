@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {View,Text, TouchableHighlight,Linking} from 'react-native'
+import {View,Text, TouchableHighlight,Linking,Modal} from 'react-native'
 import {extraHome} from '../../styles/Extra'
 import ExtraCopy from './ExtraCopy'
 
@@ -29,7 +29,13 @@ function ExtraHome({close}){
                     <Text style={extraHome.buttonText}>Voltar</Text>
                 </TouchableHighlight>
             </View>
-            {copyVisible && (<ExtraCopy close={ClosePopup}/>)}
+            <Modal
+                visible={copyVisible}
+                animationType='fade'
+                transparent={true}
+            >
+                <ExtraCopy close={ClosePopup}/>
+            </Modal>
         </View>
     )
 }

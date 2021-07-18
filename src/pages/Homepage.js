@@ -1,5 +1,5 @@
-import React,{Component,useState, useEffect} from 'react';
-import {Text, View, TouchableHighlight,Image} from 'react-native'
+import React,{useState, useEffect} from 'react';
+import {Text, View, TouchableHighlight,Image, Modal} from 'react-native'
 import {styles} from '../styles/index'
 import { BannerAd, BannerAdSize} from '@react-native-firebase/admob'
 import {useNavigation} from '@react-navigation/native'
@@ -20,12 +20,6 @@ import VisitedDB from '../Database/visited'
 
 function Homepage(){
   const [visible,setVisible] = useState(false)
-  const [aguaVisited,setAguaVisited] = useState(false)
-  const [massaVisited,setMassaVisited] = useState(false)
-  const [sonoVisited,setSonoVisited] = useState(false)
-  const [tarefaVisited,setTarefaVisited] = useState(false)
-  const [alimentacaoVisited,setAlimentacaoVisited] = useState(false)
-  const [tarefa,setTarefa] = useState([])
   const [visited,setVisited] = useState([])
   const navigation = useNavigation()
 
@@ -33,58 +27,17 @@ function Homepage(){
     setVisible(false)
   }
 
-  async function selectAgua(){
-    const agua = new Agua
-    await agua.select().then( value => {
-      if(value[0] !== undefined){
-        setAguaVisited(true)
-      }
-    })
-  }
-
-  async function selectMassa(){
-    const massa = new Massa
-    await massa.select().then( value => {
-      if(value[0] !== undefined){
-        setMassaVisited(true)
-      }
-    })
-  }
-
-  async function selectSono(){
-    const sono = new Sono
-    await sono.select().then( value => {
-      if(value[0] !== undefined){
-        setSonoVisited(true)
-      }
-    })
-  }
-
   async function selectVisited(){
     const visited = new VisitedDB()
     await visited.select().then( value => {
       setVisited(...value)
-      if(value[0].visited){
-        setAlimentacaoVisited(true)
-      }
-    })
-  }
-
-  async function selectTarefa(){
-    const tarefa = new TarefaDB
-    await tarefa.select().then( value => {
-      if(value[0] !== undefined){
-        setTarefaVisited(true)
-      }
-      setTarefa(...value)
     })
   }
 
   async function createTable(){
     const agua = new Agua
     await agua.initDB()
-    const visited = new VisitedDB
-    await visited.initDB()
+    await selectVisited() 
     const tarefa = new TarefaDB
     await tarefa.initDB()
     const massa = new Massa
@@ -99,15 +52,15 @@ function Homepage(){
 
   return (
     <View style={styles.container}> 
+      <View style={styles.main}>
       <Text style={styles.title}>Day by day</Text>
       <Text style={styles.subtitle}>Viva mais saudável a cada dia</Text>
 
       <TouchableHighlight 
         style={[styles.touchable,styles.agua]} 
         underlayColor='#2EA6AD' 
-        onPress={async ()=>{
-          await selectAgua()
-          if(aguaVisited){
+        onPress={()=>{
+          if(visited.aguaVisited === 1){
             navigation.navigate('AguaOptions')
           }else{
             navigation.navigate('AguaHome')
@@ -123,9 +76,8 @@ function Homepage(){
       <TouchableHighlight 
         style={[styles.touchable,styles.alimentacao]} 
         underlayColor='#396D27' 
-        onPress={async ()=>{
-          await selectVisited()
-          if(alimentacaoVisited){
+        onPress={()=>{
+          if(visited.alimentacaoVisited === 1){
             navigation.navigate('AlimentacaoMain')
           }else{
             navigation.navigate('AlimentacaoHome')
@@ -141,14 +93,12 @@ function Homepage(){
       <TouchableHighlight 
         style={[styles.touchable,styles.peso]} 
         underlayColor='#B6A721' 
-        onPress={async ()=>{
-          await selectMassa().finally(() => {
-            if(massaVisited){
+        onPress={()=>{
+          if(visited.massaVisited === 1){
             navigation.navigate('MassaFinal')
-            }else{
-              navigation.navigate('MassaHome')
-            }
-          })      
+          }else{
+            navigation.navigate('MassaHome')
+          }     
         }}
       >
         <View style={styles.Buttoncontainer}>
@@ -160,14 +110,12 @@ function Homepage(){
       <TouchableHighlight 
         style={[styles.touchable,styles.lista]} 
         underlayColor='#963D3D' 
-        onPress={async ()=>{
-          await selectTarefa().finally( () => {
-            if(tarefaVisited){
+        onPress={()=>{
+          if(visited.tarefaVisited === 1){
             navigation.navigate('TarefaMain')
-            }else{
-              navigation.navigate('TarefaHome')
-            }
-          })  
+          }else{
+            navigation.navigate('TarefaHome')
+          }
         }}
       >
         <View style={styles.Buttoncontainer}>
@@ -179,9 +127,8 @@ function Homepage(){
       <TouchableHighlight 
         style={[styles.touchable,styles.dormir]} 
         underlayColor='#373086' 
-        onPress={async ()=>{
-          await selectSono()
-          if(sonoVisited){
+        onPress={()=>{
+          if(visited.sonoVisited === 1){
             navigation.navigate('SonoData')
           }else{
             navigation.navigate('SonoHome')
@@ -204,12 +151,22 @@ function Homepage(){
           <Text style={{fontSize: 20,color: 'white'}}>Extra</Text>
         </View> 
       </TouchableHighlight>
+      </View>
+      <View>
+        <BannerAd
+          unitId={'ca-app-pub-8189428112004694/5727370523'}
+          size={BannerAdSize.SMART_BANNER}
+        />
+      </View>
 
-      {visible && (<ExtraHome close={ClosePopUp}/>)}
-      <BannerAd
-        unitId={'ca-app-pub-8189428112004694/5727370523'}
-        size={BannerAdSize.SMART_BANNER}
-      />
+      <Modal
+        visible={visible}
+        transparent={true}
+        animationType='fade'
+      >
+        <ExtraHome close={ClosePopUp}/>
+      </Modal>
+  
     </View>
   )
 }
